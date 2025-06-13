@@ -1,0 +1,86 @@
+/* FeatureHighlights.module.css */
+.featureHighlights {
+  width: 100%;
+  padding: var(--space-lg) 0;
+  text-align: center;
+}
+
+.sectionTitle {
+  /* Using GDS heading-h2 equivalent */
+  font-size: 24px; /* mobile */
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.3;
+  color: var(--ui-text-primary);
+  margin-bottom: var(--space-lg);
+}
+
+.highlightsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.highlightItem {
+  background-color: var(--ui-background-main); /* Or a slightly different shade like a light card color */
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-dropdown); /* A subtle shadow for cards */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.iconPlaceholder {
+  width: 48px;
+  height: 48px;
+  background-color: var(--ui-accent-secondary); /* Placeholder color */
+  border-radius: var(--radius-circular);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ui-text-on-dark);
+  font-size: 24px; /* For a potential text icon */
+}
+
+.phaseName {
+  /* Using GDS heading-h3 or body-large semibold */
+  font-size: 18px; /* mobile. GDS H3 mobile is 20px. body-large mobile is 16px. */
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.4;
+  color: var(--ui-text-primary);
+}
+
+.phaseDescription {
+  /* Using GDS body-small */
+  font-size: 13px; /* mobile. GDS body-small mobile is 13px. */
+  line-height: 1.5;
+  color: var(--ui-text-secondary);
+  max-width: 300px; /* Keep text lines from getting too long */
+}
+
+@media (min-width: 768px) {
+  .sectionTitle {
+    font-size: 32px; /* desktop */
+  }
+
+  .highlightsContainer {
+    flex-direction: row;
+    justify-content: space-around; /* Or space-between */
+    align-items: flex-start; /* Align items to the top if they have different heights */
+    gap: var(--space-md);
+  }
+
+  .highlightItem {
+    flex: 1; /* Allow items to grow and take equal space */
+    max-width: 200px; /* Max width for each item in a row */
+  }
+
+  .phaseName {
+    font-size: 20px; /* GDS H3 desktop is 24px. body-large desktop 18px. Using 20px as a medium. */
+  }
+
+  .phaseDescription {
+    font-size: 14px; /* GDS body-small desktop (if defined, else keep small) */
+  }
+}

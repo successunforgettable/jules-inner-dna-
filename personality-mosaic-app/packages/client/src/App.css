@@ -1,0 +1,9 @@
+/* App.css - For styles specific to the main App component or global layout overrides */
+/* Many global styles are now in styles/globals.css and variables in styles/variables.css */
+
+/* Example: If App component itself needed a specific layout override */
+/*
+#root > div { // Assuming App component is the direct child of #root
+  width: 100%;
+}
+*/

@@ -1,0 +1,31 @@
+/* WelcomeHeader.module.css */
+.welcomeHeader {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.logoTitle {
+  font-size: var(--font-size-display-large-mobile);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-display-large);
+  color: var(--ui-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.subtitle {
+  /* Was 20px/24px. GDS H3 is 20px/24px. GDS H2 is 24px/32px. */
+  /* Let's align with H3 as it's a subtitle for Display Large. */
+  font-size: var(--font-size-heading-h3-mobile);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading-h3);
+  color: var(--ui-text-secondary);
+}
+
+@media (min-width: 768px) {
+  .logoTitle {
+    font-size: var(--font-size-display-large-desktop);
+  }
+  .subtitle {
+    font-size: var(--font-size-heading-h3-desktop);
+  }
+}

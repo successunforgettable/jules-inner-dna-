@@ -1,0 +1,69 @@
+/* Header.module.css */
+.appHeader {
+  background-color: var(--ui-background-main); /* Or a specific header background, e.g., white or a light accent */
+  padding: var(--space-sm) 0; /* Vertical padding */
+  border-bottom: 1px solid var(--ui-border-container-empty); /* Subtle border */
+  box-shadow: var(--shadow-dropdown); /* Subtle shadow for depth */
+  width: 100%;
+  position: sticky; /* Make header sticky */
+  top: 0;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.headerContainer {
+  width: 100%;
+  max-width: var(--max-width-welcome); /* Using the widest page max-width for consistency */
+  margin: 0 auto;
+  padding: 0 var(--space-md); /* Mobile padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoTitle {
+  /* Using GDS heading-h3 or body-large bold equivalent */
+  font-size: 20px; /* mobile */
+  font-weight: var(--font-weight-bold);
+  color: var(--ui-accent-primary); /* Using accent for logo/title for prominence */
+  text-decoration: none;
+}
+
+.logoTitle:hover {
+  color: var(--ui-accent-secondary);
+}
+
+.navigation {
+  display: flex;
+  gap: var(--space-sm); /* Spacing between nav links */
+}
+
+.navLink {
+  /* Using GDS body-main or body-small */
+  font-size: 14px; /* mobile */
+  font-weight: var(--font-weight-medium);
+  color: var(--ui-text-secondary);
+  text-decoration: none;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.navLink:hover {
+  color: var(--ui-accent-primary);
+  background-color: var(--ui-background-welcome-gradient-end); /* Subtle hover background */
+}
+
+@media (min-width: 768px) {
+  .headerContainer {
+    padding: 0 var(--space-lg); /* Desktop padding */
+  }
+
+  .logoTitle {
+    font-size: 24px; /* desktop */
+  }
+
+  .navLink {
+    font-size: 16px; /* desktop */
+    gap: var(--space-md);
+  }
+}

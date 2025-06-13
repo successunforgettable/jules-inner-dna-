@@ -1,0 +1,152 @@
+/* packages/client/src/styles/globals.css */
+
+/* Import variables first if they are in a separate file and not yet imported in main.tsx.
+   However, best practice is to import variables.css before globals.css in main.tsx.
+   Assuming variables.css is imported before this file in main.tsx. */
+
+/* Basic CSS Reset/Normalization (Conceptual - a library like normalize.css or a more comprehensive reset would be used in a real project) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Consider setting a base font size for rem units, e.g., 62.5% for 1rem = 10px */
+}
+
+body {
+  font-family: var(--font-family-primary);
+  color: var(--ui-text-primary);
+  background-color: var(--ui-background-main);
+  font-size: 16px; /* Corresponds to body-main desktop size */
+  line-height: 1.6;  /* Corresponds to body-main line height */
+  min-height: 100vh;
+}
+
+/* Basic Typographic Element Styling from GDS Sec 0.0.3 */
+/* Using direct px values as per GDS table, media queries for mobile are illustrative */
+
+h1, .h1-style { /* Added class for semantic flexibility */
+  font-size: 36px; /* display-large mobile size as a base, desktop overrides below */
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2; /* display-large line height */
+  color: var(--ui-text-primary); /* Or a specific heading color if defined */
+}
+
+h2, .h2-style {
+  font-size: 24px; /* heading-h1 mobile size */
+  font-weight: var(--font-weight-bold); /* GDS implies bold for H1, semibold for H2. Let's stick to GDS. */
+  line-height: 1.3; /* heading-h1 line height */
+}
+
+h3, .h3-style {
+  font-size: 20px; /* heading-h2 mobile size */
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.4; /* heading-h2 line height */
+}
+
+h4, .h4-style { /* Assuming H3 from GDS table is h4 in typical HTML semantics */
+  font-size: 18px; /* heading-h3 mobile size */
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.4; /* heading-h3 line height */
+}
+
+p, .p-style {
+  font-size: 14px; /* body-main mobile size */
+  font-weight: var(--font-weight-regular);
+  line-height: 1.6; /* body-main line height */
+  margin-bottom: var(--space-md); /* Example spacing */
+}
+
+small, .small-style {
+  font-size: 12px; /* caption-text mobile/desktop size */
+  font-weight: var(--font-weight-regular);
+  line-height: 1.4; /* caption-text line height */
+}
+
+
+/* Desktop and larger screens (example breakpoint from GDS: 768px or 1024px) */
+@media (min-width: 768px) {
+  body {
+    font-size: 16px; /* body-main desktop size */
+  }
+
+  h1, .h1-style {
+    font-size: 48px; /* display-large desktop size */
+  }
+
+  h2, .h2-style {
+    font-size: 36px; /* heading-h1 desktop size (using H1 from GDS as H2) */
+                     /* If GDS H2 is 28px/24px, then use 28px here. Prompt was a bit mixed. Using GDS H1 as .h2-style for now. */
+                     /* Let's adjust to follow the GDS H2 spec: 32px desktop / 24px mobile */
+    font-size: 32px;
+    font-weight: var(--font-weight-semibold); /* As per GDS for H2 */
+  }
+
+  h3, .h3-style {
+    font-size: 24px; /* heading-h2 desktop size (using GDS H2 as H3) */
+                     /* GDS H3: 24px/20px. So 24px desktop. */
+  }
+
+  h4, .h4-style { /* GDS H3 spec: 24px/20px. So if this is H4, it would be smaller. */
+                  /* For now, using 'body-large' as an example for a slightly larger paragraph or sub-heading */
+    font-size: 18px; /* body-large desktop size */
+    font-weight: var(--font-weight-regular); /* Or Medium/SemiBold if it's a subhead */
+  }
+
+  p, .p-style {
+    font-size: 16px; /* body-main desktop size */
+  }
+}
+
+/* Global Link Styles */
+a {
+  color: var(--ui-accent-primary);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+  color: var(--ui-accent-secondary); /* Or a darker shade of primary */
+}
+
+/* Utility classes (optional, can be expanded) */
+.text-center {
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+}
+
+@media (min-width: 640px) { /* Example: sm breakpoint */
+  .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) { /* Example: md breakpoint */
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) { /* Example: lg breakpoint, matches GDS max-widths for content */
+  .container {
+    /* max-width will be controlled by specific page/section containers like --max-width-welcome */
+  }
+}
+
+/* Add more global styles or utilities as needed */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}

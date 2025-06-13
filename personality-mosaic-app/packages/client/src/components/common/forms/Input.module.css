@@ -1,0 +1,54 @@
+/* Input.module.css */
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-md);
+  width: 100%; /* Inputs usually take full width of their form container */
+}
+
+.label {
+  font-size: 14px; /* body-small */
+  font-weight: var(--font-weight-medium);
+  color: var(--ui-text-secondary);
+  margin-bottom: var(--space-xs);
+  text-align: left;
+}
+
+.input {
+  padding: var(--space-sm);
+  border: 1px solid var(--ui-border-container-empty); /* Using a defined border color */
+  border-radius: var(--radius-md);
+  font-size: 16px; /* body-main */
+  color: var(--ui-text-primary);
+  background-color: var(--ui-background-main); /* Or white if preferred for inputs */
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  width: 100%; /* Ensure input takes full width of container */
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--ui-accent-primary);
+  box-shadow: 0 0 0 3px rgba(var(--ui-accent-primary-rgb, 124, 58, 237), 0.3); /* Convert hex to RGB for shadow, needs --ui-accent-primary-rgb defined */
+}
+
+.inputError {
+  border-color: var(--system-error-primary);
+}
+
+.inputError:focus {
+  border-color: var(--system-error-primary);
+  box-shadow: 0 0 0 3px rgba(var(--system-error-primary-rgb, 239, 68, 68), 0.3); /* Needs --system-error-primary-rgb */
+}
+
+.errorMessage {
+  font-size: 12px; /* caption-text */
+  color: var(--system-error-primary);
+  margin-top: var(--space-xs);
+  text-align: left;
+}
+
+/* Define RGB versions of colors in variables.css if you want to use them for box-shadows with opacity */
+/* Example for variables.css:
+  --ui-accent-primary-rgb: 124, 58, 237;
+  --system-error-primary-rgb: 239, 68, 68;
+*/

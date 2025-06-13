@@ -1,0 +1,71 @@
+/* LinkButton.module.css */
+.linkButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xxs); /* Smaller gap for link buttons */
+  background: none;
+  border: none;
+  color: var(--ui-accent-primary);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: var(--space-xxs) var(--space-xs); /* Minimal padding */
+  font-weight: var(--font-weight-medium);
+  transition: color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  border-radius: var(--radius-sm); /* Slight radius for focus state */
+}
+
+/* Size: Medium (default, maps to body-small or button-text-small) */
+.medium {
+  font-size: var(--font-size-button-text-small-mobile);
+  line-height: var(--line-height-button-text-small);
+}
+/* Desktop size for medium if different, but button-text-small is same for now */
+/* @media (min-width: 768px) { .medium { font-size: var(--font-size-button-text-small-desktop); } } */
+
+
+/* Size: Small (maps to caption-text) */
+.small {
+  font-size: var(--font-size-caption-text-mobile);
+  line-height: var(--line-height-caption-text);
+}
+/* Desktop size for small if different, but caption-text is same for now */
+/* @media (min-width: 768px) { .small { font-size: var(--font-size-caption-text-desktop); } } */
+
+
+.linkButton:hover:not(.disabled) {
+  color: var(--ui-accent-secondary); /* Or a darker accent */
+  text-decoration: underline; /* Keep underline or remove if preferred on hover */
+}
+
+.linkButton:active:not(.disabled) {
+  transform: translateY(1px); /* Subtle press effect */
+  color: var(--ui-accent-secondary);
+}
+
+.linkButton:focus-visible { /* Modern focus indicator */
+  outline: 2px solid var(--ui-accent-primary);
+  outline-offset: 2px;
+  text-decoration: none; /* Remove underline on focus if outline is present */
+}
+
+
+.disabled {
+  color: var(--ui-text-secondary);
+  cursor: not-allowed;
+  text-decoration: none;
+  opacity: 0.7;
+}
+
+.iconWrapper {
+  display: inline-flex;
+  align-items: center;
+}
+.iconWrapper svg { /* Assuming icons are SVGs */
+  width: var(--font-size-button-text-small-desktop); /* Icon size matches text */
+  height: var(--font-size-button-text-small-desktop);
+}
+.small .iconWrapper svg {
+  width: var(--font-size-caption-text-desktop);
+  height: var(--font-size-caption-text-desktop);
+}
+```

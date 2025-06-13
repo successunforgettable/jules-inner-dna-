@@ -1,0 +1,42 @@
+/* PaletteSelector.module.css */
+.paletteSelectorContainer {
+  display: flex;
+  flex-direction: column; /* Mobile: Stack vertically */
+  gap: var(--space-md);
+  width: 100%;
+  max-width: var(--max-width-palette-container); /* e.g., 600px or as needed for 2-3 columns */
+  margin: 0 auto; /* Center the container */
+  padding: var(--space-sm);
+}
+
+/* Tablet layout (e.g., 2 columns then a row for the 5th, or flex-wrap) */
+@media (min-width: 600px) { /* Adjust breakpoint as needed */
+  .paletteSelectorContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive grid */
+    /* Or using flex-wrap:
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    */
+    gap: var(--space-lg);
+  }
+}
+
+/* Desktop layout (e.g., 3 columns then 2, or 5 in a row if wide enough) */
+@media (min-width: 900px) { /* Adjust breakpoint */
+  .paletteSelectorContainer {
+    /* If using grid, might adjust columns or keep auto-fit */
+    /* grid-template-columns: repeat(3, 1fr); /* Example: 3 columns */
+    /* Or ensure all 5 fit if the container is wide enough */
+    max-width: calc( (200px * 3) + (var(--space-lg) * 2) ); /* Max width for 3 desktop cards */
+                                                          /* Or for 5 cards: (200px * 5) + (var(--space-lg) * 4) */
+  }
+}
+
+/* Ensure cards take appropriate width in grid/flex layouts */
+/* The ColorPaletteCard.module.css already defines width for different contexts,
+   so this container primarily handles their arrangement.
+   If using grid, cards will try to fit the minmax.
+   If using flex, card's own width rules will apply.
+*/

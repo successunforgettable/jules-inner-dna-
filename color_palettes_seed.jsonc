@@ -1,0 +1,44 @@
+// color_palettes_seed.jsonc
+// Data for 5 ColorPaletteInfo documents, based on Sec 4.3.1
+// These are the base definitions. Type-specific descriptions are in TypeSpecificText.
+[
+  {
+    "paletteId": "state_very_good",
+    "stateName": "Very Good (Fully Activated)",
+    "genericDescription": "Operating at peak potential, embodying positive traits expansively.",
+    "baseGradientStyle": "linear-gradient(135deg, var(--state-very-good-light), var(--state-very-good-primary))",
+    "primaryColor": "var(--state-very-good-primary)"
+    // CSS variables for colors are defined in variables.css based on GDS
+  },
+  {
+    "paletteId": "state_good",
+    "stateName": "Good (Engaged)",
+    "genericDescription": "Functioning effectively, engaged with positive qualities.",
+    "baseGradientStyle": "linear-gradient(135deg, var(--state-good-light), var(--state-good-primary))",
+    "primaryColor": "var(--state-good-primary)"
+  },
+  {
+    "paletteId": "state_average",
+    "stateName": "Average (Partially Activated)",
+    "genericDescription": "Exhibiting a mix of positive and challenging traits, functional.",
+    "baseGradientStyle": "linear-gradient(135deg, var(--state-average-light), var(--state-average-primary))",
+    // Note: In variables.css, --state-neutral-* was used for "Average". Ensure mapping is consistent.
+    // For seed data, we can directly use the intended variable names.
+    "primaryColor": "var(--state-average-primary)"
+  },
+  {
+    "paletteId": "state_below_average",
+    "stateName": "Below Average (Restricted)",
+    "genericDescription": "Experiencing limitations, core issues becoming more apparent.",
+    "baseGradientStyle": "linear-gradient(135deg, var(--state-below-average-light), var(--state-below-average-primary))",
+    "primaryColor": "var(--state-below-average-primary)"
+  },
+  {
+    "paletteId": "state_destructive",
+    "stateName": "Destructive (Disconnected)",
+    "genericDescription": "Core fears highly active, behavior potentially harmful or dysfunctional.",
+    "baseGradientStyle": "linear-gradient(135deg, var(--state-destructive-light), var(--state-destructive-primary))",
+    "primaryColor": "var(--state-destructive-primary)"
+  }
+]
+```

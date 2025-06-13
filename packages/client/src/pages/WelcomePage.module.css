@@ -1,0 +1,32 @@
+/* WelcomePage.module.css */
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl); /* Spacing between sections */
+  padding-bottom: var(--space-xxl); /* Ensure space before end of page */
+  width: 100%; /* Ensure content wrapper takes full available width for centering */
+}
+
+.welcomeBackMessage {
+  /* Assuming body-large is defined in globals.css or GDS tokens are available */
+  /* For direct application if GDS token for font-size var is not available: */
+  font-size: 18px; /* Desktop size for body-large */
+  color: var(--ui-accent-primary);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--ui-background-welcome-gradient-end); /* A subtle background */
+  border-radius: var(--radius-md);
+  /* margin-top: calc(var(--space-xl) * -0.5); Pull it up slightly if header has large margin-bottom */
+  /* margin-bottom: calc(var(--space-xl) * -0.5); Reduce gap to HeroSection */
+  text-align: center;
+  max-width: var(--max-width-block-container); /* Consistent width with other content blocks */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 767px) {
+  .welcomeBackMessage {
+    font-size: 16px; /* Mobile size for body-large */
+  }
+}

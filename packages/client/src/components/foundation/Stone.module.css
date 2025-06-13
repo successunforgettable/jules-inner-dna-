@@ -1,0 +1,57 @@
+/* Stone.module.css - Updated with animated box-shadow for selected glow */
+.stone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--ui-text-on-dark);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--space-md);
+  border: 2px solid var(--ui-border-interactive);
+  box-shadow: var(--shadow-stone); /* Base shadow */
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  font-size: var(--font-size-interactive-text-mobile);
+  line-height: var(--line-height-interactive-text);
+
+  /* UPDATED transition property */
+  transition: opacity var(--animation-duration-medium, 400ms) ease,
+              transform var(--animation-duration-short, 250ms) ease-in-out,
+              box-shadow var(--animation-duration-short, 250ms) ease-in-out; /* Added box-shadow transition */
+}
+
+.desktop { width: 160px; height: calc(160px * 0.866 * 1.1); }
+.tablet { width: 140px; height: calc(140px * 0.866 * 1.1); font-size: var(--font-size-interactive-text-mobile); }
+.mobile { width: 120px; height: calc(120px * 0.866 * 1.1); }
+
+@media (min-width: 768px) {
+  .stone { font-size: var(--font-size-interactive-text-desktop); }
+}
+
+.contentWrapper { z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.textLine { display: block; }
+
+.selected {
+  /* This box-shadow creates the glow effect. It will now transition smoothly. */
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.1), 0 0 12px 3px var(--ui-accent-primary), var(--shadow-stone);
+  /* transform: scale(1.02); /* This transform will also animate. Framer Motion scale is on hover. */
+}
+
+.disabled { opacity: 0.6; cursor: not-allowed; }
+
+.checkmarkIconWrapper {
+  position: absolute; top: var(--space-xs); right: var(--space-xs);
+  background-color: rgba(var(--ui-accent-primary-rgb), 0.5);
+  border-radius: var(--radius-circular); padding: 3px;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2; border: 1px solid rgba(255,255,255,0.5);
+}
+.checkmarkIcon { width: 16px; height: 16px; color: var(--ui-text-on-dark); stroke-width: 3; }
+.tablet .checkmarkIconWrapper { padding: 2px; }
+.tablet .checkmarkIcon { width: 14px; height: 14px; }
+.mobile .checkmarkIconWrapper { padding: 2px; }
+.mobile .checkmarkIcon { width: 12px; height: 12px; }
+```

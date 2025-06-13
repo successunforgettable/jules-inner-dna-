@@ -1,0 +1,20 @@
+/* Layout.module.css */
+.layoutWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the wrapper takes at least the full viewport height */
+  background-color: var(--ui-background-main); /* Default background for pages if not overridden */
+}
+
+.mainContent {
+  flex-grow: 1; /* Allows this area to expand and push the footer down */
+  width: 100%;
+  /* Padding for the main content can be applied here or within individual page components.
+     If pages generally have their own max-width containers, this might not need much padding.
+     For now, assuming pages will handle their own internal padding and max-width.
+  */
+  /* Example:
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  */
+}

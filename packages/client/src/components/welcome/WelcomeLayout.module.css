@@ -1,0 +1,34 @@
+/* WelcomeLayout.module.css - Updated to use a static gradient */
+.welcomeLayout {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  /* Static gradient using GDS variables */
+  background: linear-gradient(135deg, var(--ui-background-welcome-gradient-start), var(--ui-background-welcome-gradient-end));
+  /* Removed animation properties */
+}
+
+.maxWidthContainer {
+  width: 100%;
+  max-width: var(--max-width-welcome);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--space-md); /* Mobile padding */
+}
+
+@media (min-width: 768px) { /* Tablet and Desktop */
+  .maxWidthContainer {
+    padding: 0 var(--space-lg); /* Desktop padding */
+  }
+}
+
+@media (min-width: 1024px) {
+  .maxWidthContainer {
+    padding: 0 var(--space-xl); /* Larger Desktop padding */
+  }
+}
+```

@@ -1,0 +1,47 @@
+/* Modal.module.css - Updated */
+.overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000; padding: var(--space-md);
+}
+.modal {
+  background-color: var(--ui-background-main);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-modal);
+  padding: var(--space-lg);
+  display: flex; flex-direction: column;
+  max-height: 90vh; overflow-y: auto;
+}
+.modal.small { width: 100%; max-width: 400px; }
+.modal.medium { width: 100%; max-width: 550px; }
+.modal.large { width: 100%; max-width: 700px; }
+
+.modalHeader {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: var(--space-md); padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--ui-border-container-empty);
+}
+.modalTitle {
+  font-size: var(--font-size-heading-h3-mobile);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading-h3);
+  color: var(--ui-text-primary);
+}
+@media (min-width: 768px) {
+  .modalTitle {
+    font-size: var(--font-size-heading-h3-desktop);
+  }
+}
+
+.closeButton {
+  background: none; border: none;
+  /* Using a text-based 'times' symbol, its size is relative to font-size */
+  font-size: var(--font-size-heading-h2-mobile); /* Larger clickable X */
+  font-weight: var(--font-weight-regular); /* Keep it light */
+  line-height: 1; /* Critical for aligning X properly */
+  color: var(--ui-text-secondary);
+  cursor: pointer; padding: 0 var(--space-xs);
+}
+.closeButton:hover { color: var(--ui-text-primary); }
+.modalContent {}

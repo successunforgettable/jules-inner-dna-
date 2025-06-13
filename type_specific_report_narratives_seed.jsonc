@@ -1,0 +1,76 @@
+// type_specific_report_narratives_seed.jsonc
+// Data for TypeSpecificText documents, category: 'reportSectionNarrative'
+// Based on Sec 6.3 (Sample Complete Report - Type 1 Example)
+// For Types 2-9, placeholder content is used, indicating what should be there.
+[
+  // --- Type 1 Report Narratives (Fully Populated based on Sec 6.3 structure) ---
+  {
+    "textKey": "type1_report_executive_summary",
+    "enneagramType": "1", "category": "reportSectionNarrative", "itemKey": "executiveSummary",
+    "content": "This report summarizes your Personality Mosaic assessment. Your Core Type is 1, often called The Reformer or The Perfectionist. This indicates a primary drive towards integrity, improvement, and adherence to high standards. Your results show a [wingCalculation.primaryWing] wing, with [wingCalculation.wingStrength] strength, suggesting you balance your core drive with qualities of Type [wingCalculation.primaryWing (number part)]. You typically operate in a blend of [stateAnalysisResult.primaryState] and [stateAnalysisResult.secondaryState] ([stateAnalysisResult.distribution.primaryPercentage]% / [stateAnalysisResult.distribution.secondaryPercentage]%), leading to an overall activation level of [stateAnalysisResult.overallActivation]/100. Your instinctual subtype stacking is [subtypeStackResult.primary] dominant, then [subtypeStackResult.secondary], with [subtypeStackResult.tertiary] least developed, a pattern described as [subtypeStackResult.stackType]. This unique combination shapes your worldview, motivations, and interactions. Deeper insights and growth paths are explored in the following sections."
+  },
+  {
+    "textKey": "type1_report_core_type_analysis",
+    "enneagramType": "1", "category": "reportSectionNarrative", "itemKey": "coreTypeAnalysis",
+    "content": "As a Type 1, your fundamental desire is for goodness, integrity, and balance. You strive to be right and to improve yourself, others, and the world around you. Your core fear is of being corrupt, evil, or defective. This drives your internal critic and your high standards. You value principles, justice, and responsibility. When healthy, Type 1s are wise, discerning, realistic, and noble, with a strong moral compass. Under stress, or in less healthy states, you may become critical, judgmental, self-righteous, or overly perfectionistic, leading to frustration and resentment. Your path to growth involves embracing serenity, accepting imperfections (in self and others), and recognizing that your worth is inherent, not based on being 'good enough'."
+  },
+  {
+    "textKey": "type1_report_wing_influence",
+    "enneagramType": "1", "category": "reportSectionNarrative", "itemKey": "wingInfluence",
+    "content": "Your [wingCalculation.primaryWing] (Type [wingCalculation.primaryWing (number part)]) wing adds specific qualities to your Type 1 core. \nIf 1w9 (The Idealist): You blend the principled nature of Type 1 with the peace-seeking qualities of Type 9. This can make you more detached, philosophical, and inclined to see the bigger picture, sometimes appearing calmer and more reserved than other Type 1s. You might focus on broad ideals and abstract improvements. \nIf 1w2 (The Advocate): You combine Type 1's drive for rightness with Type 2's interpersonal focus and desire to help. This can make you more action-oriented in service of others, more overtly critical of injustice affecting people, and more passionate in your efforts to reform and assist. You might focus on practical help and direct intervention."
+  },
+  {
+    "textKey": "type1_report_arrow_integration_disintegration",
+    "enneagramType": "1", "category": "reportSectionNarrative", "itemKey": "arrowDynamics",
+    "content": "When feeling secure and growing (Integration), you, as a Type 1, move towards the positive qualities of Type 7 ([arrowCalculation.integrationType]). This means you may find yourself becoming more spontaneous, joyful, open to new experiences, and less critical. You might feel lighter, more optimistic, and more appreciative of simple pleasures. Your awareness of this path is currently assessed as [arrowCalculation.integrationStrength].\nUnder stress or pressure (Disintegration), Type 1s move towards the less healthy aspects of Type 4 ([arrowCalculation.disintegrationType]). You might find yourself becoming more moody, withdrawn, self-pitying, and feeling misunderstood or that your efforts are unappreciated. Your awareness of this stress response is currently assessed as [arrowCalculation.disintegrationStrength]."
+  },
+  {
+    "textKey": "type1_report_operating_states",
+    "enneagramType": "1", "category": "reportSectionNarrative", "itemKey": "operatingStates",
+    "content": "Your chosen states ([stateAnalysisResult.primaryState] and [stateAnalysisResult.secondaryState]) and their distribution provide insight into your daily functioning. The blended description for your states is: \"[stateAnalysisResult.blendedDescription]\". Your overall activation level is [stateAnalysisResult.overallActivation]/100. \nKey Insights: [Bulleted list from stateAnalysisResult.insights]. \nRecommendations: [Bulleted list from stateAnalysisResult.recommendations]."
+  },
+  {
+    "textKey": "type1_report_instinctual_stack",
+    "enneagramType": "1", "category": "reportSectionNarrative", "itemKey": "instinctualStack",
+    "content": "Your instinctual subtype stack further refines your Type 1 expression. Your primary instinct is [subtypeStackResult.primary], followed by [subtypeStackResult.secondary], and then [subtypeStackResult.tertiary]. This is a [subtypeStackResult.stackType] stacking, with a confidence of [subtypeStackResult.confidence]%. \nDescription: [subtypeStackResult.stackDescription] \nAs a Type 1 with this stacking, you might prioritize [link primary instinct to Type 1 themes, e.g., if self-pres, 'perfecting your personal environment and routines for security and order']."
+  },
+  {
+    "textKey": "type1_report_growth_plan",
+    "enneagramType": "1", "category": "reportSectionNarrative", "itemKey": "growthPlan",
+    "content": "For your growth as a Type 1 ([wingCalculation.primaryWing]), consider these personalized pathways:\n1.  **Cultivate Self-Compassion:** Actively work against your inner critic. Practice acknowledging your efforts and inherent worth, separate from your achievements or 'goodness'.\n2.  **Embrace Imperfection:** Recognize that 'good enough' is often sufficient. Allow for mistakes in yourself and others as part of the human experience.\n3.  **Develop Spontaneity (Accessing Type 7):** Intentionally schedule unstructured time or try new things without a specific goal of improvement. Notice the joy in simple experiences.\n4.  **Manage Resentment:** When feeling critical or resentful, explore the underlying unmet need or fear. Communicate your needs more directly rather than expecting others to intuit them.\n5.  **Leverage Your [subtypeStackResult.primary] Instinct:** Understand how your dominant instinct influences your perfectionism and use it consciously for balance rather than rigidity.\n6.  **Understand Your [stateAnalysisResult.primaryState]/[stateAnalysisResult.secondaryState] Blend:** Use the insights from your operating states to manage your energy and responses more effectively."
+  },
+  {
+    "textKey": "type1_report_relationship_insights",
+    "enneagramType": "1", "category": "reportSectionNarrative", "itemKey": "relationshipInsights",
+    "content": "In relationships, Type 1s ([wingCalculation.primaryWing]) value honesty, responsibility, and shared principles. You are often a dependable and ethical partner/friend. However, your critical nature can sometimes lead to conflict if you expect perfection from others or frequently point out flaws. Your [subtypeStackResult.primary] instinct shapes how you express care and what you prioritize in connections (e.g., a Self-Pres Type 1 might show care through practical acts of service and ensuring shared comfort and security).\nKey to healthy relationships is relaxing your standards for others, communicating your needs and expectations clearly (rather than assuming they should be obvious), and appreciating the unique qualities your loved ones bring, even if they differ from your ideals. Learning to voice appreciation more often than criticism can significantly improve relational harmony."
+  },
+
+  // --- Types 2-9 Report Narratives (Placeholders) ---
+  // For Type 2
+  { "textKey": "type2_report_executive_summary", "enneagramType": "2", "category": "reportSectionNarrative", "itemKey": "executiveSummary", "content": "Placeholder: Executive Summary for Type 2, dynamically incorporating [wingCalculation.primaryWing], [stateAnalysisResult.primaryState], [subtypeStackResult.primary], etc." },
+  { "textKey": "type2_report_core_type_analysis", "enneagramType": "2", "category": "reportSectionNarrative", "itemKey": "coreTypeAnalysis", "content": "Placeholder: Detailed Core Type Analysis for Type 2, discussing motivations (to be needed, loved), fears (being unworthy of love), key characteristics (helpful, caring, possessive under stress), etc." },
+  { "textKey": "type2_report_wing_influence", "enneagramType": "2", "category": "reportSectionNarrative", "itemKey": "wingInfluence", "content": "Placeholder: Detailed description of Type 2 wing influences (e.g., 2w1 The Servant, 2w3 The Host/Hostess), how they blend with the core type." },
+  { "textKey": "type2_report_arrow_integration_disintegration", "enneagramType": "2", "category": "reportSectionNarrative", "itemKey": "arrowDynamics", "content": "Placeholder: Description of Type 2 integration to Type 4 (self-care, creativity) and disintegration to Type 8 (aggression, control), and how [arrowCalculation.integrationStrength]/[arrowCalculation.disintegrationStrength] applies." },
+  { "textKey": "type2_report_operating_states", "enneagramType": "2", "category": "reportSectionNarrative", "itemKey": "operatingStates", "content": "Placeholder: Analysis of [stateAnalysisResult.primaryState] & [stateAnalysisResult.secondaryState] for Type 2. Insights: [stateAnalysisResult.insights]. Recommendations: [stateAnalysisResult.recommendations]." },
+  { "textKey": "type2_report_instinctual_stack", "enneagramType": "2", "category": "reportSectionNarrative", "itemKey": "instinctualStack", "content": "Placeholder: Analysis of [subtypeStackResult.primary] dominant instinct for Type 2. Description: [subtypeStackResult.stackDescription]." },
+  { "textKey": "type2_report_growth_plan", "enneagramType": "2", "category": "reportSectionNarrative", "itemKey": "growthPlan", "content": "Placeholder: Personalized growth plan for Type 2, considering wing, arrows, states, and subtype." },
+  { "textKey": "type2_report_relationship_insights", "enneagramType": "2", "category": "reportSectionNarrative", "itemKey": "relationshipInsights", "content": "Placeholder: Relationship insights for Type 2." },
+
+  // ... (Similar placeholder structures for Types 3, 5, 6, 7, 8, 9 for all 8 report sections) ...
+  // Type 3 Example Placeholder
+  { "textKey": "type3_report_core_type_analysis", "enneagramType": "3", "category": "reportSectionNarrative", "itemKey": "coreTypeAnalysis", "content": "Placeholder: Detailed Core Type Analysis for Type 3..." },
+  // Type 4 (Example Placeholder, though full text might be derived from spec if available, but prompt asks for Type 1 full, others placeholder)
+  { "textKey": "type4_report_core_type_analysis", "enneagramType": "4", "category": "reportSectionNarrative", "itemKey": "coreTypeAnalysis", "content": "Placeholder: Detailed Core Type Analysis for Type 4..." },
+  // Type 5
+  { "textKey": "type5_report_core_type_analysis", "enneagramType": "5", "category": "reportSectionNarrative", "itemKey": "coreTypeAnalysis", "content": "Placeholder: Detailed Core Type Analysis for Type 5..." },
+  // Type 6
+  { "textKey": "type6_report_core_type_analysis", "enneagramType": "6", "category": "reportSectionNarrative", "itemKey": "coreTypeAnalysis", "content": "Placeholder: Detailed Core Type Analysis for Type 6..." },
+  // Type 7
+  { "textKey": "type7_report_core_type_analysis", "enneagramType": "7", "category": "reportSectionNarrative", "itemKey": "coreTypeAnalysis", "content": "Placeholder: Detailed Core Type Analysis for Type 7..." },
+  // Type 8
+  { "textKey": "type8_report_core_type_analysis", "enneagramType": "8", "category": "reportSectionNarrative", "itemKey": "coreTypeAnalysis", "content": "Placeholder: Detailed Core Type Analysis for Type 8..." },
+  // Type 9
+  { "textKey": "type9_report_core_type_analysis", "enneagramType": "9", "category": "reportSectionNarrative", "itemKey": "coreTypeAnalysis", "content": "Placeholder: Detailed Core Type Analysis for Type 9..." }
+  // ... (And so on for all 8 report sections for types 3, and 5 through 9)
+]
+```

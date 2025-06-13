@@ -1,0 +1,87 @@
+// foundation_stone_sets_seed.jsonc
+// Data for 9 FoundationStoneSet documents, based on Sec 2.3
+// Each stone's typeAffinityKey should map to the Enneagram type it primarily supports.
+[
+  {
+    "setId": "set1",
+    "instruction": "From these three, select the quality that feels most essentially YOU.",
+    "stones": [
+      { "stoneId": "s1_1", "contentLines": ["Integrity", "Honesty"], "typeAffinityKey": "type1" },
+      { "stoneId": "s1_2", "contentLines": ["Empathy", "Kindness"], "typeAffinityKey": "type2" },
+      { "stoneId": "s1_3", "contentLines": ["Ambition", "Drive"], "typeAffinityKey": "type3" }
+    ]
+  },
+  {
+    "setId": "set2",
+    "instruction": "Which of these motivations most often guides your actions?",
+    "stones": [
+      { "stoneId": "s2_1", "contentLines": ["Individuality", "Uniqueness"], "typeAffinityKey": "type4" },
+      { "stoneId": "s2_2", "contentLines": ["Knowledge", "Insight"], "typeAffinityKey": "type5" },
+      { "stoneId": "s2_3", "contentLines": ["Security", "Support"], "typeAffinityKey": "type6" }
+    ]
+  },
+  {
+    "setId": "set3",
+    "instruction": "Select the trait that best reflects your approach to joy and experience.",
+    "stones": [
+      { "stoneId": "s3_1", "contentLines": ["Enthusiasm", "Joyfulness"], "typeAffinityKey": "type7" },
+      { "stoneId": "s3_2", "contentLines": ["Strength", "Assertiveness"], "typeAffinityKey": "type8" },
+      { "stoneId": "s3_3", "contentLines": ["Peace", "Harmony"], "typeAffinityKey": "type9" }
+    ]
+  },
+  {
+    "setId": "set4",
+    "instruction": "Choose your primary mode of inner reflection.",
+    "stones": [
+      { "stoneId": "s4_1", "contentLines": ["Introspection"], "typeAffinityKey": "type1" }, // Example: Type 1, 4, 5 lean here
+      { "stoneId": "s4_2", "contentLines": ["Observation"], "typeAffinityKey": "type5" },  // Example: Type 5, 6, 7
+      { "stoneId": "s4_3", "contentLines": ["Contemplation"], "typeAffinityKey": "type9" } // Example: Type 9, 4
+    ]
+  },
+  {
+    "setId": "set5",
+    "instruction": "Which quality best describes your social interactions?",
+    "stones": [
+      { "stoneId": "s5_1", "contentLines": ["Authenticity"], "typeAffinityKey": "type4" }, // Example: Type 4, 2
+      { "stoneId": "s5_2", "contentLines": ["Discernment"], "typeAffinityKey": "type6" },  // Example: Type 6, 1, 5
+      { "stoneId": "s5_3", "contentLines": ["Loyalty"], "typeAffinityKey": "type2" }      // Example: Type 2, 6, 8
+    ]
+  },
+  {
+    "setId": "set6",
+    "instruction": "Select your most natural response to new opportunities.",
+    "stones": [
+      { "stoneId": "s6_1", "contentLines": ["Optimism"], "typeAffinityKey": "type7" },    // Example: Type 7, 9
+      { "stoneId": "s6_2", "contentLines": ["Decisiveness"], "typeAffinityKey": "type8" }, // Example: Type 8, 3, 1
+      { "stoneId": "s6_3", "contentLines": ["Adaptability"], "typeAffinityKey": "type3" }  // Example: Type 3, 7, 9
+    ]
+  },
+  {
+    "setId": "set7",
+    "instruction": "Which word resonates most with your sense of self?",
+    "stones": [
+      { "stoneId": "s7_1", "contentLines": ["Purposeful"], "typeAffinityKey": "type1" }, // Example: Type 1
+      { "stoneId": "s7_2", "contentLines": ["Helpful"], "typeAffinityKey": "type2" },    // Example: Type 2
+      { "stoneId": "s7_3", "contentLines": ["Effective"], "typeAffinityKey": "type3" }   // Example: Type 3
+    ]
+  },
+  {
+    "setId": "set8",
+    "instruction": "Choose the quality you value most in relationships.",
+    "stones": [
+      { "stoneId": "s8_1", "contentLines": ["Depth"], "typeAffinityKey": "type4" },        // Example: Type 4
+      { "stoneId": "s8_2", "contentLines": ["Clarity"], "typeAffinityKey": "type5" },      // Example: Type 5
+      { "stoneId": "s8_3", "contentLines": ["Dependability"], "typeAffinityKey": "type6" } // Example: Type 6
+    ]
+  },
+  {
+    "setId": "set9",
+    "instruction": "What is your core approach to achieving your goals?",
+    "stones": [
+      { "stoneId": "s9_1", "contentLines": ["Vision"], "typeAffinityKey": "type7" },         // Example: Type 7
+      { "stoneId": "s9_2", "contentLines": ["Determination"], "typeAffinityKey": "type8" },  // Example: Type 8
+      { "stoneId": "s9_3", "contentLines": ["Collaboration"], "typeAffinityKey": "type9" }   // Example: Type 9
+    ]
+  }
+]
+```

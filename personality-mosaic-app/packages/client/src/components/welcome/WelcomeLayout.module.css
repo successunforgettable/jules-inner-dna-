@@ -1,0 +1,58 @@
+/* WelcomeLayout.module.css */
+.welcomeLayout {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--space-xl); /* Space at the top */
+  padding-bottom: var(--space-xl); /* Space at the bottom */
+  background: linear-gradient(135deg, var(--ui-background-welcome-gradient-start), var(--ui-background-welcome-gradient-end));
+  animation: subtleGradientAnimation 15s ease infinite alternate;
+}
+
+/* Placeholder for subtle gradient animation */
+@keyframes subtleGradientAnimation {
+  0% {
+    background-position: 0% 50%;
+     /* background: linear-gradient(135deg, var(--ui-background-welcome-gradient-start), var(--ui-background-welcome-gradient-end)); */
+
+  }
+  50% {
+    background-position: 100% 50%;
+    /* background: linear-gradient(135deg, var(--ui-background-welcome-gradient-end), var(--ui-background-welcome-gradient-start)); */
+  }
+  100% {
+    background-position: 0% 50%;
+    /* background: linear-gradient(135deg, var(--ui-background-welcome-gradient-start), var(--ui-background-welcome-gradient-end)); */
+  }
+}
+/* Note: A true gradient animation often involves changing gradient angle or colors.
+   Animating background-position on a larger gradient is a simpler alternative.
+   For this placeholder, I'm assuming the gradient itself might shift or its angle subtly.
+   A more robust solution might use multiple background layers or pseudo-elements if needed.
+   The current keyframes will only work if the background size is larger than the element.
+   For now, it's a visual placeholder for "animated gradient".
+   A simpler, non-animated gradient is also fine for the placeholder stage.
+*/
+
+
+.maxWidthContainer {
+  width: 100%;
+  max-width: var(--max-width-welcome); /* 1200px from GDS */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--space-md); /* Mobile padding */
+}
+
+@media (min-width: 768px) { /* Tablet and Desktop */
+  .maxWidthContainer {
+    padding: 0 var(--space-lg); /* Desktop padding */
+  }
+}
+
+@media (min-width: 1024px) {
+  .maxWidthContainer {
+    padding: 0 var(--space-xl); /* Larger Desktop padding */
+  }
+}

@@ -1,0 +1,8 @@
+/* WelcomePage.module.css */
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl); /* Spacing between sections */
+  padding-bottom: var(--space-xxl); /* Ensure space before end of page */
+}

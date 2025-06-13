@@ -1,0 +1,94 @@
+/* ReportSection.module.css */
+.reportSection {
+  width: 100%;
+  padding: var(--space-lg) 0; /* Vertical padding, horizontal padding handled by parent layout */
+  margin-bottom: var(--space-lg);
+  /* border-bottom: 1px solid var(--ui-border-container-empty); */ /* Optional separator */
+  background-color: var(--ui-background-main); /* Or transparent if page has bg */
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-dropdown); /* Subtle shadow for sections */
+  padding: var(--space-md); /* Inner padding for the section box */
+}
+
+/* For when the last section shouldn't have a bottom margin or border */
+.reportSection:last-child {
+  margin-bottom: 0;
+  /* border-bottom: none; */
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--ui-border-container-empty); /* Separator below header */
+}
+
+.iconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ui-accent-primary); /* Icon color */
+  /* Size of icon can be controlled by width/height on SVG inside iconWrapper */
+}
+
+.iconWrapper svg {
+  width: var(--font-size-heading-h1-mobile); /* Match title size roughly */
+  height: var(--font-size-heading-h1-mobile);
+}
+@media (min-width: 768px) {
+  .iconWrapper svg {
+    width: var(--font-size-heading-h1-desktop);
+    height: var(--font-size-heading-h1-desktop);
+  }
+}
+
+
+.title {
+  /* GDS Heading H2 for section titles within report */
+  font-size: var(--font-size-heading-h2-mobile);
+  line-height: var(--line-height-heading-h2);
+  font-weight: var(--font-weight-semibold);
+  color: var(--ui-text-primary);
+  margin-bottom: 0; /* Remove default heading margin as header handles spacing */
+}
+
+.content {
+  /* Styles for the content area, e.g., default text styling if not handled by children */
+  font-size: var(--font-size-body-main-mobile);
+  line-height: var(--line-height-body-main);
+  color: var(--ui-text-secondary);
+}
+.content p, .content li, .content div { /* Ensure children also use GDS */
+  font-size: inherit; /* Inherit from .content by default */
+  line-height: inherit;
+  font-weight: var(--font-weight-regular);
+  color: var(--ui-text-primary); /* Content text usually primary */
+  margin-bottom: var(--space-sm); /* Space between paragraphs in content */
+}
+.content p:last-child, .content li:last-child, .content div:last-child {
+  margin-bottom: 0;
+}
+.content strong {
+  font-weight: var(--font-weight-semibold);
+  color: var(--ui-text-primary);
+}
+.content ul, .content ol {
+  padding-left: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
+
+
+@media (min-width: 768px) {
+  .reportSection {
+    padding: var(--space-lg); /* Larger inner padding for desktop */
+  }
+  .title {
+    font-size: var(--font-size-heading-h2-desktop);
+  }
+  .content {
+    font-size: var(--font-size-body-main-desktop);
+  }
+}
+```

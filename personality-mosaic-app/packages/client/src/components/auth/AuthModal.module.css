@@ -1,0 +1,100 @@
+/* AuthModal.module.css */
+/* Shared styles for RegistrationModal and LoginModal */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm); /* Smaller gap between form elements within modal */
+}
+
+.modalBenefitsText {
+  font-size: 14px; /* body-small */
+  color: var(--ui-text-secondary);
+  margin-bottom: var(--space-sm);
+  text-align: center;
+}
+
+.serverError {
+  background-color: var(--system-error-background);
+  color: var(--system-error-primary);
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: var(--space-sm);
+}
+
+/* Button styles (can be moved to a common button component later) */
+.button {
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-pill); /* Consistent with Welcome page CTA */
+  font-weight: var(--font-weight-semibold);
+  font-size: 16px;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease-in-out;
+  border: 2px solid transparent;
+  width: 100%; /* Full width buttons in modal */
+  margin-top: var(--space-xs); /* Add some space above buttons */
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-dropdown);
+}
+
+.primaryButton {
+  background-color: var(--ui-accent-primary);
+  color: var(--ui-text-on-dark);
+}
+.primaryButton:hover:not(:disabled) {
+  background-color: var(--ui-accent-secondary); /* Or a darker shade */
+}
+
+.secondaryButton { /* For a potential secondary action button */
+  background-color: transparent;
+  color: var(--ui-accent-primary);
+  border-color: var(--ui-accent-primary);
+}
+.secondaryButton:hover:not(:disabled) {
+  background-color: var(--ui-accent-primary);
+  color: var(--ui-text-on-dark);
+}
+
+.linkButton {
+  background: none;
+  border: none;
+  color: var(--ui-accent-primary);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px; /* body-small */
+  font-weight: var(--font-weight-medium);
+}
+.linkButton:disabled {
+  color: var(--ui-text-secondary);
+  cursor: not-allowed;
+  text-decoration: none;
+}
+.linkButton:hover:not(:disabled) {
+  color: var(--ui-accent-secondary); /* Or darker accent */
+}
+
+.switchFormLink {
+  text-align: center;
+  margin-top: var(--space-sm);
+  font-size: 14px; /* body-small */
+  color: var(--ui-text-secondary);
+}
+
+.forgotPasswordLinkContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: calc(var(--space-xs) * -1); /* Pull it up slightly if inputs have margin-bottom */
+  margin-bottom: var(--space-xs); /* Add some space before the main button */
+}

@@ -1,0 +1,80 @@
+/* FoundationPage.module.css - Updated: Removed local .navButton styles */
+.foundationPage {
+  display: flex; flex-direction: column; align-items: center;
+  padding: var(--space-lg) var(--space-md); gap: var(--space-xl);
+  min-height: calc(100vh - 100px); box-sizing: border-box;
+}
+.pageHeader {
+  width: 100%; max-width: var(--max-width-stone-container);
+  text-align: center; margin-bottom: var(--space-md);
+}
+.pageTitle {
+  font-size: var(--font-size-heading-h2-mobile);
+  line-height: var(--line-height-heading-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--ui-text-primary); margin-bottom: var(--space-sm);
+}
+.progressIndicator p {
+  font-size: var(--font-size-body-main-mobile);
+  line-height: var(--line-height-body-main);
+  font-weight: var(--font-weight-regular);
+  color: var(--ui-text-secondary); margin-bottom: var(--space-md);
+}
+.progressBarContainer {
+  width: 100%; max-width: 400px; height: 8px;
+  background-color: var(--ui-border-container-empty);
+  border-radius: var(--radius-pill); margin: var(--space-sm) auto 0; overflow: hidden;
+}
+.progressBar { height: 100%; background-color: var(--ui-accent-primary); border-radius: var(--radius-pill); transition: width 0.3s ease-in-out; }
+.mainContent { display: flex; flex-direction: column; align-items: center; gap: var(--space-xl); width: 100%; }
+.navigationFooter {
+  display: flex; justify-content: space-between; align-items: center;
+  width: 100%; max-width: var(--max-width-stone-container);
+  padding: var(--space-lg) 0; margin-top: var(--space-lg);
+  border-top: 1px solid var(--ui-border-container-empty);
+}
+
+/* .navButton, .primaryButton, .secondaryButton styles removed as they are now common components */
+
+@media (min-width: 768px) {
+  .foundationPage { padding: var(--space-lg) var(--space-md); }
+  .pageTitle { font-size: var(--font-size-heading-h2-desktop); }
+  .progressIndicator p { font-size: var(--font-size-body-main-desktop); }
+  /* Common button components handle their own responsive text if size prop is used or CSS is responsive */
+}
+.errorPage {
+  padding: var(--space-xl); text-align: center;
+  color: var(--system-error-primary);
+  font-size: var(--font-size-body-large-mobile);
+  line-height: var(--line-height-body-large);
+  font-weight: var(--font-weight-medium);
+}
+.debugResults {
+  margin-top: var(--space-lg); padding: var(--space-md);
+  background-color: var(--ui-background-main);
+  border: 1px dashed var(--ui-border-container-empty);
+  border-radius: var(--radius-md);
+  max-width: var(--max-width-stone-container); width: 100%;
+  text-align: left;
+}
+.debugResults h3 {
+  font-size: var(--font-size-body-large-mobile);
+  line-height: var(--line-height-body-large);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-sm);
+}
+.debugResults pre {
+  white-space: pre-wrap; word-wrap: break-word;
+  background-color: var(--ui-text-primary);
+  color: var(--ui-background-main);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-caption-text-mobile);
+  line-height: var(--line-height-caption-text);
+}
+
+@media (min-width: 768px) {
+  .errorPage { font-size: var(--font-size-body-large-desktop); }
+  .debugResults h3 { font-size: var(--font-size-body-large-desktop); }
+  .debugResults pre { font-size: var(--font-size-caption-text-desktop); }
+}

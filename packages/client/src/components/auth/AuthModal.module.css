@@ -1,0 +1,69 @@
+/* AuthModal.module.css - Updated: Button styles removed, now handled by common components */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.modalBenefitsText {
+  font-size: var(--font-size-body-small-mobile);
+  line-height: var(--line-height-body-small);
+  font-weight: var(--font-weight-regular);
+  color: var(--ui-text-secondary);
+  margin-bottom: var(--space-sm);
+  text-align: center;
+}
+
+.serverError {
+  background-color: var(--system-error-background);
+  color: var(--system-error-primary);
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-body-small-mobile);
+  line-height: var(--line-height-body-small);
+  font-weight: var(--font-weight-regular);
+  text-align: center;
+  margin-bottom: var(--space-sm);
+}
+
+/* Removed .button, .primaryButton, .secondaryButton, .linkButton specific styles. */
+/* These are now handled by:
+   - PrimaryButton.module.css
+   - SecondaryButton.module.css
+   - LinkButton.module.css
+*/
+/* Common buttons are expected to be full-width by default if used in modals,
+   or their fullWidth prop can be set to true.
+   The forms might need a wrapper around buttons if specific layout (e.g. margin-top) is needed.
+   PrimaryButton in AuthModals will have margin-top via its own props or a wrapper div.
+*/
+.form > button[type="submit"] { /* Add margin to submit buttons if they are direct children */
+  margin-top: var(--space-sm);
+}
+
+
+.switchFormLink { /* The text part "Already have an account?" */
+  text-align: center; margin-top: var(--space-sm);
+  font-size: var(--font-size-body-small-mobile);
+  line-height: var(--line-height-body-small);
+  font-weight: var(--font-weight-regular);
+  color: var(--ui-text-secondary);
+}
+/* The actual clickable part within .switchFormLink will be a LinkButton component */
+
+
+.forgotPasswordLinkContainer {
+  display: flex; justify-content: flex-end;
+  /* margin-top: calc(var(--space-xs) * -1); Pull it up slightly if inputs have margin-bottom */
+  margin-bottom: var(--space-xs);
+}
+/* The clickable part within .forgotPasswordLinkContainer will be a LinkButton component */
+
+/* Responsive adjustments for text if needed, but body-small is often consistent */
+@media (min-width: 768px) {
+  .modalBenefitsText,
+  .serverError,
+  .switchFormLink {
+    font-size: var(--font-size-body-small-desktop);
+  }
+}

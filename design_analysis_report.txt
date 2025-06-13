@@ -1,0 +1,36 @@
+## Design Consistency Analysis
+
+### Consistencies:
+
+*   **Typography:** "Inter" font family is consistently specified across all phases and elements (titles, subtitles, body text, button text, stone/block text, labels, instructions). Font weights (Regular, Medium, SemiBold, Bold) and a responsive sizing scale (e.g., 16px desktop / 14px mobile for common elements) are generally maintained.
+*   **Color Palette Philosophy:** While specific colors change based on context (e.g., Welcome Screen general UI, stone-specific gradients, state-specific colors), the use of gradients is a recurring theme (Welcome background, stone backgrounds, block backgrounds, palette backgrounds, token backgrounds). The general UI background color #f8fafc is used for Welcome screen, Stone Set Container, Palette Container, and Instruction Panel in Phase 4, providing a consistent backdrop. Text colors (primary #1e293b, secondary #64748b) from the Welcome Screen are likely reused for general text unless overridden (e.g., white text on dark stones).
+*   **Layout Principles:** Responsive design is a core tenet. Max-width containers (1200px, 800px, 600px depending on content) with centered content and appropriate padding are common. Mobile layouts consistently use single columns or stacked elements for clarity.
+*   **Visual Metaphor:** The "building a tower" metaphor is central and visually reinforced in each phase (foundation stones, building blocks, coloring the tower, adding details). The tower itself is progressively visualized.
+*   **Shadows and Borders:** Subtle shadows are consistently used to give depth to interactive elements (stones, blocks, palettes, tokens). Borders (e.g., 2px solid white for stones/blocks/palettes, 1px for tokens) are used for definition.
+*   **Interactive Feedback:** Hover effects (scaling, increased shadow) and selected states (glow, checkmarks, color intensification) are consistently applied to clickable/selectable elements.
+*   **Animations:** Smooth animations are emphasized (Welcome screen gradient, tower preview floating, stone placement, block integration, color transitions, token movement) using CSS transitions or Framer Motion.
+
+### Potential Inconsistencies/Areas for Clarification:
+
+*   **Button Styles:** The Welcome Screen defines "Primary Button (large, prominent)" and "Secondary Button (smaller, less prominent)". While navigation controls are mentioned in subsequent phases (e.g., "NavigationControls" component in 5.6, "Continue to Building" button implied in 2.1), their visual styling (do they follow the Welcome Screen's primary/secondary definition?) isn't explicitly reiterated for each phase. Consistency here is important.
+*   **Report Typography Hierarchy:** Section 6.2.2 mentions "clear typography hierarchy" for the written report, but specific font sizes and weights for report section headers, sub-headers, and body text within the report itself aren't as explicitly detailed as in other sections. Assuming it follows the "Inter" family and established scales is likely, but could be confirmed.
+*   **Custom SVG Icons:** Icons are mentioned for "Feature Highlights" (0.1.2) on the Welcome Screen and for "Report Sections" (6.2.2). The style guide or origin of these SVGs (e.g., a common library, custom-designed set) isn't specified, which could lead to visual inconsistencies if sourced differently.
+*   **Error/Validation Message Styling:** While error handling is extensively covered (Section 8), the visual design of error messages or validation feedback (e.g., for incomplete selections) isn't explicitly detailed. This should align with the overall UI aesthetic.
+*   **Specific Gradient Implementations:** While "gradient based on stone type" or "gradient based on personality type" is mentioned, the exact color stops or generation logic for these numerous dynamic gradients (beyond the 5 state colors in 4.3.1) might need a centralized definition or utility function (as hinted in 4.3.2 `getTypeSpecificGradient`) to ensure they are harmonious.
+
+## Project Understanding
+
+*   **Project Name:** Personality Mosaic Assessment System.
+*   **Core Purpose:** To provide users with a detailed and personalized understanding of their personality based on the Enneagram system and related concepts (wings, arrows, states, instinctual variants/subtypes).
+*   **Methodology:** It uses an engaging, gamified, and visually interactive assessment structured around the metaphor of building a personalized "tower." Users make a series of choices across five distinct phases.
+*   **Phased Assessment:**
+    1.  **Welcome:** Introduction and orientation.
+    2.  **Foundation:** Users select 9 "Foundation Stones" (1 from each of 9 sets of 3) to determine their core Enneagram type.
+    3.  **Building:** Users select 4 "Building Blocks" (1 from each of 4 pairs) to define their wing and integration/disintegration patterns.
+    4.  **Colors:** Users select 2 of 5 "Color Palettes" and their distribution to represent their common psychological operating states.
+    5.  **Details:** Users distribute 10 "detail tokens" into 3 containers to determine their instinctual variant stacking (subtype).
+*   **Output:**
+    *   A **Final Tower Visualization:** A unique, dynamically generated visual representation of the user's personality, incorporating elements from each phase.
+    *   A **Comprehensive Written Report:** A detailed, multi-section report explaining their core type, wing, arrow movements, operating states, instinctual variants, and personalized growth plan.
+*   **User Experience Goals:** Engaging, visually interactive, intuitive, personalized, insightful, and completed within 5-7 minutes for the core assessment.
+*   **Technical Foundation:** A React-based Single Page Application with a Node.js/Express backend and MongoDB database, designed to be responsive, accessible, and performant. It includes complex algorithms for personality calculation at each step.

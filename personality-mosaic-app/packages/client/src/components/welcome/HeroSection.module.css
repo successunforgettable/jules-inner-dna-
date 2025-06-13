@@ -1,0 +1,68 @@
+/* HeroSection.module.css */
+.heroSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  width: 100%;
+  max-width: 800px; /* Or adjust as per design for this specific section */
+  margin: 0 auto; /* Center if max-width is applied */
+  text-align: center;
+}
+
+.towerPreviewPlaceholder {
+  width: 300px;
+  height: 400px;
+  background-color: var(--ui-accent-secondary); /* Placeholder color */
+  color: var(--ui-text-on-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-modal); /* A slightly larger shadow for emphasis */
+  /* Placeholder for subtle glow - could be a box-shadow or pseudo-element */
+}
+
+.descriptionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.descriptionText {
+  /* Using GDS body-main (16px desktop, 14px mobile) */
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ui-text-secondary); /* Or primary if it needs more emphasis */
+  max-width: 600px; /* Keep text readable */
+  margin: 0 auto;
+}
+
+.timeEstimate {
+  /* Using GDS caption-text (12px) */
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--ui-text-secondary);
+  font-style: italic;
+}
+
+@media (min-width: 768px) {
+  .heroSection {
+    flex-direction: row; /* Side-by-side on larger screens */
+    text-align: left;
+    gap: var(--space-xl);
+  }
+
+  .towerPreviewPlaceholder {
+    /* Potentially adjust size or margins if needed for desktop */
+  }
+
+  .descriptionContainer {
+    align-items: flex-start; /* Align text to the start for left alignment */
+  }
+
+  .descriptionText {
+    font-size: 16px; /* body-main desktop */
+    margin: 0; /* Reset auto margin for flex layout */
+  }
+}

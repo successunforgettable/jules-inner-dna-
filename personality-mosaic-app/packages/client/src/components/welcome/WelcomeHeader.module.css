@@ -1,0 +1,32 @@
+/* WelcomeHeader.module.css */
+.welcomeHeader {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.logoTitle {
+  /* Using GDS display-large equivalent from globals.css h1 styling */
+  font-size: 36px; /* mobile */
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  color: var(--ui-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.subtitle {
+  /* Using GDS heading-h2 equivalent from globals.css h2 styling */
+  font-size: 20px; /* mobile */ /* Adjusted to match GDS H2 mobile: 24px, then to 20px as per prompt's Sec 0.1.1 */
+  font-weight: var(--font-weight-semibold); /* GDS H2 is semibold */
+  line-height: 1.4; /* GDS H2 line-height */
+  color: var(--ui-text-secondary);
+}
+
+/* Responsive adjustments based on GDS definitions for display-large and heading-h2 */
+@media (min-width: 768px) {
+  .logoTitle {
+    font-size: 48px; /* desktop */
+  }
+  .subtitle {
+    font-size: 24px; /* desktop */ /* GDS H2 desktop: 32px. Prompt Sec 0.1.1 implies "heading-h2" for subtitle. Let's take 24px as a reasonable size. */
+  }
+}

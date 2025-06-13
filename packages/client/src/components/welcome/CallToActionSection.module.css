@@ -1,0 +1,44 @@
+/* CallToActionSection.module.css - Updated */
+.callToActionSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg) 0;
+  margin-top: var(--space-lg);
+}
+
+.ctaButton {
+ /* Common buttons are inline-flex by default.
+    This class can ensure they have a good minimum width for this specific section. */
+  min-width: 240px;
+  /* Add any other specific overrides for welcome page CTAs if needed,
+     but prefer using props on PrimaryButton/SecondaryButton if possible. */
+}
+
+.learnMoreLink {
+  /* This class is now applied to the common LinkButton component.
+     It can override base LinkButton styles if needed for this specific context. */
+  margin-top: var(--space-xs);
+  /* Example: Make it slightly larger if needed for this prominent position */
+  /* font-size: var(--font-size-body-main-mobile); */
+}
+
+/* Default LinkButton styles from LinkButton.module.css will apply for color, text-decoration etc.
+   unless overridden here. For example:
+.learnMoreLink {
+  color: var(--ui-text-secondary);
+}
+.learnMoreLink:hover {
+  color: var(--ui-accent-primary);
+}
+*/
+
+
+@media (min-width: 768px) {
+  .callToActionSection {
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--space-lg);
+  }
+}

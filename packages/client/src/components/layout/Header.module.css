@@ -1,0 +1,53 @@
+/* Header.module.css - Updated */
+.appHeader {
+  background-color: var(--ui-background-main);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--ui-border-container-empty);
+  box-shadow: var(--shadow-dropdown);
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.headerContainer {
+  width: 100%;
+  max-width: var(--max-width-welcome);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logoTitle { /* This is like an H3 */
+  font-size: var(--font-size-heading-h3-mobile);
+  line-height: var(--line-height-heading-h3);
+  font-weight: var(--font-weight-bold); /* Make logo title bold */
+  color: var(--ui-accent-primary);
+  text-decoration: none;
+}
+.logoTitle:hover { color: var(--ui-accent-secondary); }
+
+.navigation { display: flex; gap: var(--space-sm); }
+
+.navLink { /* These are like body-main text */
+  font-size: var(--font-size-body-main-mobile);
+  line-height: var(--line-height-body-main);
+  font-weight: var(--font-weight-medium);
+  color: var(--ui-text-secondary);
+  text-decoration: none;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+.navLink:hover { color: var(--ui-accent-primary); background-color: var(--ui-background-welcome-gradient-end); }
+
+@media (min-width: 768px) {
+  .headerContainer { padding: 0 var(--space-lg); }
+  .logoTitle {
+    font-size: var(--font-size-heading-h3-desktop);
+  }
+  .navLink {
+    font-size: var(--font-size-body-main-desktop);
+    gap: var(--space-md);
+  }
+}

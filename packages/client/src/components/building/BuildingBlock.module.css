@@ -1,0 +1,107 @@
+/* BuildingBlock.module.css - Updated with GDS typography vars & texture comment */
+.buildingBlock {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  padding: var(--space-md);
+  border: 2px solid var(--ui-border-interactive);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-block);
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  color: var(--ui-text-on-dark);
+  /* Default background, will be overridden by gradientStyle prop in component */
+  background: linear-gradient(135deg, var(--ui-accent-secondary), var(--ui-accent-primary));
+  font-size: var(--font-size-interactive-text-mobile);
+  line-height: var(--line-height-interactive-text);
+}
+
+.desktop { width: 200px; height: 120px; }
+.tablet {
+  width: 180px; height: 110px;
+  font-size: var(--font-size-interactive-text-mobile);
+}
+.mobile { width: 100%; max-width: 280px; height: 100px; }
+
+@media (min-width: 768px) {
+  .buildingBlock {
+    font-size: var(--font-size-interactive-text-desktop);
+  }
+}
+
+.contentText {
+  font-weight: var(--font-weight-medium);
+  z-index: 1; /* Ensure text is above texture background images */
+}
+
+/* Placeholder Texture Variations:
+   These classes provide examples of how different textures could be applied
+   on top of or blended with the base gradientStyle (which is applied via inline style).
+   If specific, detailed textures become a design requirement, they should be
+   formally defined within the Global Design System (GDS) with precise visual
+   characteristics (e.g., SVG patterns, specific image assets, detailed CSS effects).
+   The current implementations are for demonstration and basic differentiation.
+   These background-images will layer ON TOP of the inline 'background' gradient if not transparent.
+   Consider using multiple backgrounds or pseudo-elements for better layering if gradients + textures are complex.
+*/
+.texture-smooth { /* No additional texture, relies on gradient only */ }
+.texture-lines {
+  background-image: repeating-linear-gradient(
+    135deg, /* Changed angle for variety */
+    rgba(255, 255, 255, 0.07),
+    rgba(255, 255, 255, 0.07) 3px, /* Thinner lines */
+    transparent 3px,
+    transparent 9px /* Wider spacing */
+  );
+}
+.texture-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1.2px); /* Slightly larger dots */
+  background-size: 10px 10px; /* Wider spacing */
+}
+.texture-swirl { /* Placeholder - complex textures might use SVG backgrounds or pseudo-elements */
+  /* Example: A very subtle border effect to differentiate */
+  border-top-color: rgba(255,255,255,0.3);
+  border-left-color: rgba(255,255,255,0.3);
+}
+.texture-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 15px 15px; /* Grid size */
+}
+.texture-bubbles { /* Softer, larger dots */
+  background-image: radial-gradient(rgba(255,255,255,0.06) 2px, transparent 3px);
+  background-size: 25px 25px;
+}
+.texture-diagonal {  /* Different angle */
+  background-image: repeating-linear-gradient(
+    -60deg,
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.05) 4px,
+    transparent 4px,
+    transparent 12px
+  );
+}
+.texture-sharp { /* Using pseudo-elements for sharp accents */
+  position: relative;
+}
+.texture-sharp::before {
+  content: '';
+  position: absolute;
+  top: 5px; right: 5px;
+  width: 10px; height: 10px;
+  background-color: rgba(255,255,255,0.15);
+  clip-path: polygon(0 0, 100% 0, 0 100%); /* Triangle */
+}
+.texture-organic { /* Softer border radius, slightly different shadow */
+  border-radius: var(--radius-xl); /* Softer edges than default radius-md */
+  box-shadow: var(--shadow-block), 0 0 10px rgba(0,0,0,0.05) inset; /* Add subtle inset */
+}
+
+
+.selected {
+  border-color: var(--ui-accent-primary);
+  box-shadow: 0 0 12px 3px var(--ui-accent-primary), var(--shadow-block);
+  transform: scale(1.02);
+}
+.selected:hover { transform: scale(1.05); }
+.disabled { opacity: 0.5; cursor: not-allowed; background: var(--ui-border-container-empty); color: var(--ui-text-secondary); border-color: var(--ui-text-secondary); box-shadow: none; }
+```

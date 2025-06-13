@@ -1,0 +1,66 @@
+/* TokenPool.module.css */
+.tokenPoolWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background-color: var(--ui-background-main);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-dropdown);
+  width: 100%;
+  max-width: var(--max-width-content-s); /* Or adjust as needed */
+  margin: 0 auto; /* Center if it has max-width */
+}
+
+.poolTitle {
+  font-size: var(--font-size-heading-h3-mobile);
+  line-height: var(--line-height-heading-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--ui-text-primary);
+}
+@media (min-width: 768px) {
+  .poolTitle {
+    font-size: var(--font-size-heading-h3-desktop);
+  }
+}
+
+.tokensContainer {
+  display: flex;
+  flex-wrap: wrap; /* Allow tokens to wrap to next line */
+  justify-content: center; /* Center tokens in the container */
+  gap: var(--space-sm);
+  min-height: 40px; /* Ensure it has some height even when empty for layout stability */
+  padding: var(--space-xs);
+  /* Could add a subtle border or different background to differentiate this area */
+  /* border: 1px dashed var(--ui-border-container-empty); */
+  /* border-radius: var(--radius-md); */
+}
+
+.allTokensDistributedText {
+  font-size: var(--font-size-body-main-mobile);
+  line-height: var(--line-height-body-main);
+  color: var(--ui-text-secondary);
+  font-style: italic;
+  padding: var(--space-md) 0; /* Add some padding if it's the only thing shown */
+}
+@media (min-width: 768px) {
+  .allTokensDistributedText {
+    font-size: var(--font-size-body-main-desktop);
+  }
+}
+
+.tokenCount {
+  font-size: var(--font-size-caption-text-mobile);
+  line-height: var(--line-height-caption-text);
+  font-weight: var(--font-weight-medium);
+  color: var(--ui-text-secondary);
+  background-color: var(--ui-border-container-empty); /* Subtle background for count */
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-pill);
+}
+@media (min-width: 768px) {
+  .tokenCount {
+    font-size: var(--font-size-caption-text-desktop);
+  }
+}

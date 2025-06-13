@@ -1,0 +1,79 @@
+/* packages/client/src/styles/globals.css - Updated with prefers-reduced-motion */
+
+/* Basic CSS Reset/Normalization (Conceptual) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  color: var(--ui-text-primary);
+  background-color: var(--ui-background-main);
+  font-size: var(--font-size-body-main-mobile);
+  line-height: var(--line-height-body-main);
+  min-height: 100vh;
+}
+
+/* Base Typographic Element Styling using GDS Variables */
+h1, .h1-style {
+  font-size: var(--font-size-heading-h1-mobile);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading-h1);
+  color: var(--ui-text-primary);
+  margin-bottom: var(--space-md);
+}
+h2, .h2-style { font-size: var(--font-size-heading-h2-mobile); font-weight: var(--font-weight-semibold); line-height: var(--line-height-heading-h2); color: var(--ui-text-primary); margin-bottom: var(--space-sm); }
+h3, .h3-style { font-size: var(--font-size-heading-h3-mobile); font-weight: var(--font-weight-semibold); line-height: var(--line-height-heading-h3); color: var(--ui-text-primary); margin-bottom: var(--space-xs); }
+h4, .h4-style { font-size: var(--font-size-body-large-mobile); font-weight: var(--font-weight-bold); line-height: var(--line-height-body-large); color: var(--ui-text-primary); margin-bottom: var(--space-xs); }
+p, .p-style, li, div { font-size: var(--font-size-body-main-mobile); font-weight: var(--font-weight-regular); line-height: var(--line-height-body-main); margin-bottom: var(--space-sm); }
+p:last-child, li:last-child, div:last-child { margin-bottom: 0; }
+small, .small-style { font-size: var(--font-size-caption-text-mobile); font-weight: var(--font-weight-regular); line-height: var(--line-height-caption-text); color: var(--ui-text-secondary); }
+
+
+@media (min-width: 768px) {
+  body { font-size: var(--font-size-body-main-desktop); }
+  h1, .h1-style { font-size: var(--font-size-heading-h1-desktop); }
+  h2, .h2-style { font-size: var(--font-size-heading-h2-desktop); }
+  h3, .h3-style { font-size: var(--font-size-heading-h3-desktop); }
+  h4, .h4-style { font-size: var(--font-size-body-large-desktop); }
+  p, .p-style, li, div { font-size: var(--font-size-body-main-desktop); }
+  small, .small-style { font-size: var(--font-size-caption-text-desktop); }
+}
+
+/* Global Link Styles */
+a { color: var(--ui-accent-primary); text-decoration: none; transition: color var(--animation-duration-micro) ease-in-out; } /* Added GDS duration */
+a:hover, a:focus { text-decoration: underline; color: var(--ui-accent-secondary); }
+
+/* Utility classes */
+.text-center { text-align: center; }
+.container { width: 100%; margin-left: auto; margin-right: auto; padding-left: var(--space-md); padding-right: var(--space-md); }
+@media (min-width: 640px) { .container { max-width: 640px; } }
+@media (min-width: 768px) { .container { max-width: 768px; } }
+img, picture, video, canvas, svg { display: block; max-width: 100%; }
+
+/* Accessibility: Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important; /* For keyframe animations */
+    transition-duration: 0.01ms !important; /* For CSS transitions */
+    scroll-behavior: auto !important;
+  }
+  /* Framer Motion typically respects prefers-reduced-motion at OS level for spring/tween physics.
+     However, for direct `animate` props with `repeat: Infinity`, specific component logic
+     using `useReducedMotion` hook is more robust for stopping those.
+     This global CSS rule helps catch CSS-based animations and transitions.
+  */
+}
+```

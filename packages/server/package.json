@@ -1,0 +1,41 @@
+{
+  "name": "server",
+  "private": true,
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "build": "tsc && node src/scripts/copySeedData.js",
+    "start": "node dist/index.js",
+    "lint": "eslint . --ext .ts",
+    "test": "echo \"Error: no test specified for this version yet\" && exit 0",
+    "db:seed": "node dist/scripts/seedDatabase.js",
+    "db:seed:dev": "ts-node src/scripts/seedDatabase.ts",
+    "prebuild": "echo 'Copying seed_data for build...' && node src/scripts/copySeedData.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsonwebtoken": "^9.0.0",
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0",
+    "zod": "^3.20.2",
+    "mongoose": "^7.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "typescript": "^5.0.2",
+    "ts-node": "^10.9.1",
+    "@types/express": "^4.17.17",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/bcrypt": "^5.0.0",
+    "@types/cors": "^2.8.13",
+    "@types/node": "^20.5.0",
+    "@types/mongoose": "^5.11.97",
+    "eslint": "^8.45.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "fs-extra": "^11.1.1" // Added fs-extra
+  }
+}

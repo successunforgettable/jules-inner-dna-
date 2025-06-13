@@ -1,0 +1,64 @@
+/* FoundationBase.module.css - Updated with GDS Neumorphic Vars */
+/* Placed stone size variables are now expected to be in the global variables.css,
+   but can be defined here as fallbacks if needed.
+:root {
+  --placed-stone-size-desktop: 32px;
+  --placed-stone-size-tablet: 28px;
+  --placed-stone-size-mobile: 24px;
+}
+*/
+.foundationBaseWrapper {
+  display: flex; justify-content: center; align-items: center;
+  padding: var(--space-md); margin-top: var(--space-xl); width: 100%;
+}
+.baseCircle {
+  position: relative;
+  border-radius: var(--radius-circular);
+  background-color: var(--ui-neumorphic-background); /* UPDATED */
+  box-shadow:
+    inset 5px 5px 10px var(--ui-neumorphic-shadow-dark), /* UPDATED */
+    inset -5px -5px 10px var(--ui-neumorphic-shadow-light); /* UPDATED */
+  display: flex; align-items: center; justify-content: center;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+.desktop .baseCircle { width: 320px; height: 320px; }
+.tablet .baseCircle { width: 280px; height: 280px; }
+.mobile .baseCircle { width: 250px; height: 250px; }
+
+.placedStone {
+  border-radius: var(--radius-circular);
+  box-shadow: var(--shadow-token);
+  border: 1px solid rgba(255,255,255,0.7);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ui-text-on-dark);
+  font-size: var(--font-size-caption-text-mobile);
+  line-height: var(--line-height-caption-text);
+  font-weight: var(--font-weight-bold);
+  transform: translate(-50%, -50%);
+}
+
+.desktop .placedStone {
+  width: var(--placed-stone-size-desktop, 32px);
+  height: var(--placed-stone-size-desktop, 32px);
+}
+.tablet .placedStone {
+  width: var(--placed-stone-size-tablet, 28px);
+  height: var(--placed-stone-size-tablet, 28px);
+}
+.mobile .placedStone {
+  width: var(--placed-stone-size-mobile, 24px);
+  height: var(--placed-stone-size-mobile, 24px);
+}
+
+.emptyBaseText {
+  font-size: var(--font-size-body-small-mobile);
+  line-height: var(--line-height-body-small);
+  font-weight: var(--font-weight-regular);
+  color: var(--ui-text-secondary);
+  text-align: center; padding: var(--space-lg);
+  user-select: none;
+}
+@media (min-width: 768px) {
+  .emptyBaseText { font-size: var(--font-size-body-small-desktop); }
+}
+```

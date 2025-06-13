@@ -1,0 +1,69 @@
+/* Footer.module.css */
+.appFooter {
+  background-color: var(--ui-text-primary); /* Dark background for footer */
+  color: var(--ui-background-main); /* Light text on dark background */
+  padding: var(--space-lg) 0; /* Vertical padding */
+  width: 100%;
+  margin-top: auto; /* Pushes footer to bottom if Layout uses flex column */
+}
+
+.footerContainer {
+  width: 100%;
+  max-width: var(--max-width-welcome); /* Consistent max-width */
+  margin: 0 auto;
+  padding: 0 var(--space-md); /* Mobile padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-sm);
+}
+
+.copyrightText {
+  /* Using GDS caption-text or body-small */
+  font-size: 12px; /* mobile */
+  font-weight: var(--font-weight-regular);
+  line-height: 1.4;
+}
+
+.footerLinks {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap; /* Allow links to wrap on smaller screens */
+  justify-content: center;
+}
+
+.footerLink {
+  /* Using GDS caption-text or body-small */
+  font-size: 12px; /* mobile */
+  font-weight: var(--font-weight-medium);
+  color: var(--ui-background-main); /* Light text */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.footerLink:hover {
+  color: var(--ui-accent-secondary); /* A light accent for hover */
+  text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  .footerContainer {
+    padding: 0 var(--space-lg); /* Desktop padding */
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .copyrightText {
+    font-size: 14px; /* desktop */
+  }
+
+  .footerLink {
+    font-size: 14px; /* desktop */
+  }
+
+  .footerLinks {
+    gap: var(--space-md);
+  }
+}

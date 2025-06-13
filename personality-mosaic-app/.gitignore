@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+**/node_modules/
+.pnpm-store/
+
+# Build artifacts
+dist/
+**/dist/
+build/
+**/build/
+.vite/
+coverage/
+**/coverage/
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+packages/*/.env
+packages/*/.env.*
+!packages/*/.env.example
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor-specific files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Test results (if applicable and not stored elsewhere)
+junit.xml
+test-results/
+
+# Next.js specific (good to have if Next.js might be used in a package)
+# .next/
+# out/
+
+# TypeScript cache files
+*.tsbuildinfo
+
+# Debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+```

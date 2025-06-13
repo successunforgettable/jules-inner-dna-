@@ -1,0 +1,148 @@
+/* DetailElementsPage.module.css */
+.detailElementsPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-lg) var(--space-md);
+  gap: var(--space-lg); /* Reduced gap slightly */
+  min-height: calc(100vh - 100px); /* Adjust based on header/footer */
+  box-sizing: border-box;
+}
+
+.pageHeader {
+  width: 100%;
+  max-width: var(--max-width-welcome); /* Wide for intro text */
+  text-align: center;
+  margin-bottom: var(--space-sm); /* Reduced margin */
+}
+
+.pageTitle {
+  font-size: var(--font-size-heading-h2-mobile);
+  line-height: var(--line-height-heading-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--ui-text-primary);
+  margin-bottom: var(--space-md); /* Increased margin for title */
+}
+
+.instructionPanel { /* Sec 5.2.4 */
+  background-color: var(--ui-background-main);
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-dropdown);
+  margin-bottom: var(--space-lg);
+  max-width: var(--max-width-stone-container); /* Consistent width for text blocks */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.instructionTitle { /* GDS H3 for panel title */
+  font-size: var(--font-size-heading-h3-mobile);
+  line-height: var(--line-height-heading-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--ui-text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.instructionText { /* Body main */
+  font-size: var(--font-size-body-main-mobile);
+  line-height: var(--line-height-body-main);
+  color: var(--ui-text-secondary);
+  margin-bottom: var(--space-sm);
+}
+.instructionText strong {
+  font-weight: var(--font-weight-semibold);
+  color: var(--ui-text-primary);
+}
+
+.progressText { /* Body small or caption */
+  font-size: var(--font-size-body-small-mobile);
+  line-height: var(--line-height-body-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--ui-accent-primary);
+  margin-top: var(--space-sm);
+}
+
+
+.containersLayout {
+  display: flex;
+  width: 100%;
+  gap: var(--space-lg);
+  justify-content: center;
+  align-items: stretch; /* Make containers same height if in a row */
+}
+
+/* Responsive layout for containers */
+.mobile.containersLayout { /* Stacked on mobile */
+  flex-direction: column;
+  align-items: center; /* Center containers when stacked */
+}
+.mobile.containersLayout > * { /* Ensure children take appropriate width */
+  width: 100%;
+  max-width: var(--max-width-content-s); /* Max width for stacked containers */
+}
+
+
+.tablet.containersLayout { /* 2 top, 1 bottom - requires more complex grid or flex setup */
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: calc(2 * 220px + var(--space-lg)); /* Max width for 2 tablet containers + gap */
+}
+.tablet.containersLayout > * {
+  flex-basis: calc(50% - (var(--space-lg) / 2)); /* Two items per row, considering gap */
+  min-width: 200px; /* Prevent becoming too small */
+}
+/* Specific styling for the third item on tablet if needed to center it on its own row */
+.tablet.containersLayout > *:nth-child(3) {
+  flex-basis: auto; /* Allow it to take its own width or a larger part */
+  margin-top: var(--space-lg); /* Add margin if it's on a new row */
+}
+
+
+.desktop.containersLayout { /* Side-by-side on desktop */
+  flex-direction: row;
+  align-items: stretch; /* Ensure containers have same height */
+  max-width: var(--max-width-stone-container); /* Or enough for 3 desktop containers */
+}
+.desktop.containersLayout > * {
+   flex: 1; /* Distribute space equally */
+}
+
+
+.navigationFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: var(--max-width-stone-container); /* Align with content */
+  padding: var(--space-lg) 0;
+  margin-top: var(--space-lg);
+  border-top: 1px solid var(--ui-border-container-empty);
+}
+
+/* Placeholder Button Styles */
+.navButton { padding: var(--space-sm) var(--space-xl); font-size: var(--font-size-button-text-large-mobile); line-height: var(--line-height-button-text-large); font-weight: var(--font-weight-semibold); border-radius: var(--radius-pill); cursor: pointer; transition: background-color 0.2s ease, transform 0.1s ease; border: 2px solid transparent; min-width: 150px; text-align: center; }
+.navButton:disabled { opacity: 0.6; cursor: not-allowed; }
+.navButton:not(:disabled):hover { transform: translateY(-1px); }
+.primaryButton { background-color: var(--ui-accent-primary); color: var(--ui-text-on-dark); }
+.primaryButton:not(:disabled):hover { background-color: var(--ui-accent-secondary); }
+.secondaryButton { background-color: transparent; color: var(--ui-accent-primary); border-color: var(--ui-accent-primary); }
+.secondaryButton:not(:disabled):hover { background-color: var(--ui-accent-primary); color: var(--ui-text-on-dark); }
+
+
+@media (min-width: 768px) {
+  .pageTitle { font-size: var(--font-size-heading-h2-desktop); }
+  .instructionPanel { padding: var(--space-lg); }
+  .instructionTitle { font-size: var(--font-size-heading-h3-desktop); }
+  .instructionText { font-size: var(--font-size-body-main-desktop); }
+  .progressText { font-size: var(--font-size-body-small-desktop); }
+  .navButton { font-size: var(--font-size-button-text-large-desktop); }
+}
+
+.loadingOrError { padding: var(--space-xl); text-align: center; color: var(--ui-text-secondary); font-size: var(--font-size-body-large-mobile); line-height: var(--line-height-body-large); font-weight: var(--font-weight-medium); }
+@media (min-width: 768px) { .loadingOrError { font-size: var(--font-size-body-large-desktop); } }
+
+.debugResults { margin-top: var(--space-lg); padding: var(--space-md); background-color: var(--ui-background-main); border: 1px dashed var(--ui-border-container-empty); border-radius: var(--radius-md); max-width: var(--max-width-stone-container); width: 100%; text-align: left; }
+.debugResults h3 { font-size: var(--font-size-body-large-mobile); line-height: var(--line-height-body-large); font-weight: var(--font-weight-semibold); margin-bottom: var(--space-sm); }
+.debugResults pre { white-space: pre-wrap; word-wrap: break-word; background-color: var(--ui-text-primary); color: var(--ui-background-main); padding: var(--space-sm); border-radius: var(--radius-sm); font-size: var(--font-size-caption-text-mobile); line-height: var(--line-height-caption-text); }
+@media (min-width: 768px) { .debugResults h3 { font-size: var(--font-size-body-large-desktop); } .debugResults pre { font-size: var(--font-size-caption-text-desktop); } }
+```

@@ -1,0 +1,33 @@
+/* DetailToken.module.css */
+.detailToken {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-circular); /* Circular shape */
+  border: 1px solid rgba(var(--ui-text-on-dark-rgb, 255,255,255), 0.8); /* Ensure --ui-text-on-dark-rgb is in variables.css */
+  box-shadow: var(--shadow-token);
+  cursor: pointer; /* Default to pointer, can be overridden if not interactive */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.detailToken:hover:not(.placed) { /* Hover effect only for tokens in the pool */
+  transform: scale(1.1);
+  box-shadow: var(--shadow-interactive-hover);
+}
+
+.placed {
+  cursor: default; /* Placed tokens might not be interactive directly, or have different interaction */
+  /* Optionally, slightly different style for placed tokens */
+  /* e.g., border: 1px solid rgba(var(--ui-accent-primary-rgb), 0.5); */
+}
+
+/* Add --ui-text-on-dark-rgb: 255,255,255; to variables.css if not already there */
+/* For drag state (if DnD is implemented later) */
+/*
+.dragging {
+  opacity: 0.7;
+  cursor: grabbing;
+}
+*/

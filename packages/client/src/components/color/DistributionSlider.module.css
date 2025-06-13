@@ -1,0 +1,58 @@
+/* DistributionSlider.module.css - Updated */
+.sliderContainerWrapper {
+  width: 100%; max-width: var(--max-width-content-s, 500px);
+  margin: var(--space-lg) auto; padding: var(--space-md);
+  background-color: var(--ui-background-main);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-dropdown);
+}
+.paletteLabels {
+  display: flex; justify-content: space-between; margin-bottom: var(--space-sm);
+  font-size: var(--font-size-body-small-mobile);
+  line-height: var(--line-height-body-small);
+  font-weight: var(--font-weight-medium); color: var(--ui-text-secondary);
+}
+/* Desktop size for labels if needed, but body-small is often consistent */
+@media (min-width: 768px) {
+  .paletteLabels { font-size: var(--font-size-body-small-desktop); }
+}
+
+.paletteLabelA { color: var(--ui-text-primary); } /* Or could be dynamic based on palette color */
+.paletteLabelB { color: var(--ui-text-primary); } /* Or could be dynamic based on palette color */
+
+.sliderTrackContainer { width: 100%; padding: var(--space-xs) 0; }
+.slider {
+  -webkit-appearance: none; appearance: none; width: 100%;
+  cursor: grab; outline: none; border-radius: var(--radius-pill);
+  transition: background 0.2s ease-in-out;
+}
+.desktop .slider { height: 20px; }
+.tablet .slider  { height: 18px; }
+.mobile .slider  { height: 16px; }
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 32px; height: 32px;
+  background: var(--ui-text-on-dark); border-radius: var(--radius-circular);
+  border: 2px solid var(--ui-accent-primary); box-shadow: var(--shadow-token);
+}
+.desktop .slider::-webkit-slider-thumb { margin-top: -6px; }
+.tablet .slider::-webkit-slider-thumb  { margin-top: -7px; }
+.mobile .slider::-webkit-slider-thumb  { margin-top: -8px; }
+.slider::-moz-range-thumb {
+  width: 30px; height: 30px; background: var(--ui-text-on-dark);
+  border-radius: var(--radius-circular); border: 2px solid var(--ui-accent-primary);
+  box-shadow: var(--shadow-token); cursor: grab;
+}
+.slider:focus {}
+.slider::-webkit-slider-thumb:focus { outline: 2px solid var(--ui-accent-secondary); outline-offset: 2px; }
+.slider::-moz-range-thumb:focus { outline: 2px solid var(--ui-accent-secondary); outline-offset: 2px; }
+
+.placeholder {
+  text-align: center; padding: var(--space-lg);
+  color: var(--ui-text-secondary); font-style: italic;
+  font-size: var(--font-size-body-main-mobile);
+  line-height: var(--line-height-body-main);
+  font-weight: var(--font-weight-regular);
+}
+@media (min-width: 768px) {
+  .placeholder { font-size: var(--font-size-body-main-desktop); }
+}

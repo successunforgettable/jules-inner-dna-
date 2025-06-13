@@ -1,0 +1,226 @@
+// building_block_pairs_seed.jsonc
+// Data for BuildingBlockPair documents, based on Sec 3.3
+// Includes 2 generic pairs and 2 type-specific pairs for each of the 9 Enneagram types.
+// Placeholder textureVariation and gradientStyle can be refined later.
+[
+  // --- Generic Pairs (Growth Focus & Response Pattern) ---
+  {
+    "pairId": "generic_growth_focus",
+    "questionText": "I primarily grow and develop through:",
+    "pairType": "growth_focus",
+    "enneagramType": null,
+    "blocks": [
+      { "blockId": "gf_a", "content": "Structured self-improvement and discipline", "textureVariation": "texture-grid", "choiceValue": 0 },
+      { "blockId": "gf_b", "content": "Spontaneous experiences and embracing the new", "textureVariation": "texture-bubbles", "choiceValue": 1 }
+    ]
+  },
+  {
+    "pairId": "generic_response_pattern",
+    "questionText": "When faced with significant challenges, my initial tendency is to:",
+    "pairType": "response_pattern",
+    "enneagramType": null,
+    "blocks": [
+      { "blockId": "rp_a", "content": "Withdraw and reflect internally to find solutions", "textureVariation": "texture-swirl", "choiceValue": 0 },
+      { "blockId": "rp_b", "content": "Take immediate action and engage externally", "textureVariation": "texture-sharp", "choiceValue": 1 }
+    ]
+  },
+
+  // --- Type 1 Specific Pairs ---
+  {
+    "pairId": "type1_wing_pair",
+    "questionText": "In pursuing my ideals, I am more often:",
+    "pairType": "wing",
+    "enneagramType": "1",
+    "blocks": [
+      { "blockId": "t1_w9", "content": "Seeking peace and maintaining calm while upholding standards", "associatedWingValue": 9, "textureVariation": "texture-smooth" },
+      { "blockId": "t1_w2", "content": "Helping others improve and feeling responsible for their growth", "associatedWingValue": 2, "textureVariation": "texture-smooth" }
+    ]
+  },
+  {
+    "pairId": "type1_arrow_pair",
+    "questionText": "My personal evolution involves balancing my principles with:",
+    "pairType": "arrow",
+    "enneagramType": "1",
+    "blocks": [
+      { "blockId": "t1_a7", "content": "Embracing more joy, spontaneity, and variety (Growth to 7)", "arrowDirection": "integration", "textureVariation": "texture-smooth" },
+      { "blockId": "t1_a4", "content": "Acknowledging deeper emotions and personal needs (Stress to 4)", "arrowDirection": "disintegration", "textureVariation": "texture-smooth" }
+    ]
+  },
+
+  // --- Type 2 Specific Pairs ---
+  {
+    "pairId": "type2_wing_pair",
+    "questionText": "In my relationships and desire to help, I lean towards:",
+    "pairType": "wing",
+    "enneagramType": "2",
+    "blocks": [
+      { "blockId": "t2_w1", "content": "Being more principled and objectively guiding others", "associatedWingValue": 1, "textureVariation": "texture-smooth" },
+      { "blockId": "t2_w3", "content": "Being more ambitious and focused on achieving for others", "associatedWingValue": 3, "textureVariation": "texture-smooth" }
+    ]
+  },
+  {
+    "pairId": "type2_arrow_pair",
+    "questionText": "My personal evolution involves balancing my helpfulness with:",
+    "pairType": "arrow",
+    "enneagramType": "2",
+    "blocks": [
+      { "blockId": "t2_a4", "content": "Focusing on my own creativity and emotional depth (Growth to 4)", "arrowDirection": "integration", "textureVariation": "texture-smooth" },
+      { "blockId": "t2_a8", "content": "Becoming more assertive and direct about my needs (Stress to 8)", "arrowDirection": "disintegration", "textureVariation": "texture-smooth" }
+    ]
+  },
+
+  // --- Type 3 Specific Pairs ---
+  {
+    "pairId": "type3_wing_pair",
+    "questionText": "In achieving my goals, my style is more:",
+    "pairType": "wing",
+    "enneagramType": "3",
+    "blocks": [
+      { "blockId": "t3_w2", "content": "Charismatic and focused on connecting with people", "associatedWingValue": 2, "textureVariation": "texture-smooth" },
+      { "blockId": "t3_w4", "content": "Authentic and focused on expressing unique value", "associatedWingValue": 4, "textureVariation": "texture-smooth" }
+    ]
+  },
+  {
+    "pairId": "type3_arrow_pair",
+    "questionText": "My personal evolution involves balancing my drive for success with:",
+    "pairType": "arrow",
+    "enneagramType": "3",
+    "blocks": [
+      { "blockId": "t3_a6", "content": "Committing to cooperation and community well-being (Growth to 6)", "arrowDirection": "integration", "textureVariation": "texture-smooth" },
+      { "blockId": "t3_a9", "content": "Slowing down and avoiding over-commitment (Stress to 9)", "arrowDirection": "disintegration", "textureVariation": "texture-smooth" }
+    ]
+  },
+
+  // --- Type 4 Specific Pairs ---
+  {
+    "pairId": "type4_wing_pair",
+    "questionText": "In expressing my individuality, I tend to be more:",
+    "pairType": "wing",
+    "enneagramType": "4",
+    "blocks": [
+      { "blockId": "t4_w3", "content": "Driven to create and present a distinct image", "associatedWingValue": 3, "textureVariation": "texture-smooth" },
+      { "blockId": "t4_w5", "content": "Introspective and seeking unique understanding", "associatedWingValue": 5, "textureVariation": "texture-smooth" }
+    ]
+  },
+  {
+    "pairId": "type4_arrow_pair",
+    "questionText": "My personal evolution involves balancing my emotional depth with:",
+    "pairType": "arrow",
+    "enneagramType": "4",
+    "blocks": [
+      { "blockId": "t4_a1", "content": "Applying principled action to my creative insights (Growth to 1)", "arrowDirection": "integration", "textureVariation": "texture-smooth" },
+      { "blockId": "t4_a2", "content": "Over-focusing on relationships to fill what's missing (Stress to 2)", "arrowDirection": "disintegration", "textureVariation": "texture-smooth" }
+    ]
+  },
+
+  // --- Type 5 Specific Pairs ---
+  {
+    "pairId": "type5_wing_pair",
+    "questionText": "In my pursuit of knowledge and understanding, I am more:",
+    "pairType": "wing",
+    "enneagramType": "5",
+    "blocks": [
+      { "blockId": "t5_w4", "content": "Focused on intuitive insights and unique perspectives", "associatedWingValue": 4, "textureVariation": "texture-smooth" },
+      { "blockId": "t5_w6", "content": "Pragmatic and seeking certainty through analysis", "associatedWingValue": 6, "textureVariation": "texture-smooth" }
+    ]
+  },
+  {
+    "pairId": "type5_arrow_pair",
+    "questionText": "My personal evolution involves balancing my intellectual pursuits with:",
+    "pairType": "arrow",
+    "enneagramType": "5",
+    "blocks": [
+      { "blockId": "t5_a8", "content": "Confidently asserting my findings and taking action (Growth to 8)", "arrowDirection": "integration", "textureVariation": "texture-smooth" },
+      { "blockId": "t5_a7", "content": "Becoming scattered and hyperactive in seeking experiences (Stress to 7)", "arrowDirection": "disintegration", "textureVariation": "texture-smooth" }
+    ]
+  },
+
+  // --- Type 6 Specific Pairs ---
+  {
+    "pairId": "type6_wing_pair",
+    "questionText": "In seeking security and support, I tend to be more:",
+    "pairType": "wing",
+    "enneagramType": "6",
+    "blocks": [
+      { "blockId": "t6_w5", "content": "Analytical and questioning to find certainty", "associatedWingValue": 5, "textureVariation": "texture-smooth" },
+      { "blockId": "t6_w7", "content": "Optimistic and seeking positive future possibilities", "associatedWingValue": 7, "textureVariation": "texture-smooth" }
+    ]
+  },
+  {
+    "pairId": "type6_arrow_pair",
+    "questionText": "My personal evolution involves balancing my need for security with:",
+    "pairType": "arrow",
+    "enneagramType": "6",
+    "blocks": [
+      { "blockId": "t6_a9", "content": "Relaxing into trust and a more peaceful state (Growth to 9)", "arrowDirection": "integration", "textureVariation": "texture-smooth" },
+      { "blockId": "t6_a3", "content": "Becoming frantically active and image-conscious (Stress to 3)", "arrowDirection": "disintegration", "textureVariation": "texture-smooth" }
+    ]
+  },
+
+  // --- Type 7 Specific Pairs ---
+  {
+    "pairId": "type7_wing_pair",
+    "questionText": "In my pursuit of new experiences and joy, I am more:",
+    "pairType": "wing",
+    "enneagramType": "7",
+    "blocks": [
+      { "blockId": "t7_w6", "content": "Practical and seeking enjoyable security", "associatedWingValue": 6, "textureVariation": "texture-smooth" },
+      { "blockId": "t7_w8", "content": "Assertive and wanting to experience everything intensely", "associatedWingValue": 8, "textureVariation": "texture-smooth" }
+    ]
+  },
+  {
+    "pairId": "type7_arrow_pair",
+    "questionText": "My personal evolution involves balancing my enthusiasm with:",
+    "pairType": "arrow",
+    "enneagramType": "7",
+    "blocks": [
+      { "blockId": "t7_a5", "content": "Focusing my mind and appreciating depth of knowledge (Growth to 5)", "arrowDirection": "integration", "textureVariation": "texture-smooth" },
+      { "blockId": "t7_a1", "content": "Becoming more critical and restricted by perfectionism (Stress to 1)", "arrowDirection": "disintegration", "textureVariation": "texture-smooth" }
+    ]
+  },
+
+  // --- Type 8 Specific Pairs ---
+  {
+    "pairId": "type8_wing_pair",
+    "questionText": "In asserting my strength and protecting what's mine, I am more:",
+    "pairType": "wing",
+    "enneagramType": "8",
+    "blocks": [
+      { "blockId": "t8_w7", "content": "Expansive and seeking to maximize opportunities for impact", "associatedWingValue": 7, "textureVariation": "texture-smooth" },
+      { "blockId": "t8_w9", "content": "Strategic and seeking peace through control", "associatedWingValue": 9, "textureVariation": "texture-smooth" }
+    ]
+  },
+  {
+    "pairId": "type8_arrow_pair",
+    "questionText": "My personal evolution involves balancing my power with:",
+    "pairType": "arrow",
+    "enneagramType": "8",
+    "blocks": [
+      { "blockId": "t8_a2", "content": "Using my strength to care for and empower others (Growth to 2)", "arrowDirection": "integration", "textureVariation": "texture-smooth" },
+      { "blockId": "t8_a5", "content": "Withdrawing and becoming more secretive or detached (Stress to 5)", "arrowDirection": "disintegration", "textureVariation": "texture-smooth" }
+    ]
+  },
+
+  // --- Type 9 Specific Pairs ---
+  {
+    "pairId": "type9_wing_pair",
+    "questionText": "In maintaining peace and harmony, I lean towards being more:",
+    "pairType": "wing",
+    "enneagramType": "9",
+    "blocks": [
+      { "blockId": "t9_w8", "content": "Comfortably assertive and able to take a stand when necessary", "associatedWingValue": 8, "textureVariation": "texture-smooth" },
+      { "blockId": "t9_w1", "content": "Orderly and focused on right action to maintain peace", "associatedWingValue": 1, "textureVariation": "texture-smooth" }
+    ]
+  },
+  {
+    "pairId": "type9_arrow_pair",
+    "questionText": "My personal evolution involves balancing my desire for peace with:",
+    "pairType": "arrow",
+    "enneagramType": "9",
+    "blocks": [
+      { "blockId": "t9_a3", "content": "Taking decisive action and pursuing my own goals (Growth to 3)", "arrowDirection": "integration", "textureVariation": "texture-smooth" },
+      { "blockId": "t9_a6", "content": "Becoming more anxious and dependent on others for support (Stress to 6)", "arrowDirection": "disintegration", "textureVariation": "texture-smooth" }
+    ]
+  }
+]
+```

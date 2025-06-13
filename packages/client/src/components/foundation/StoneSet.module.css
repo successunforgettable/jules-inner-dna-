@@ -1,0 +1,55 @@
+/* StoneSet.module.css - Updated */
+.stoneSetContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-lg);
+  background-color: var(--ui-background-main);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-dropdown);
+  width: 100%;
+  max-width: var(--max-width-stone-container);
+  margin: var(--space-lg) auto;
+}
+.desktop.stoneSetContainer {}
+.tablet.stoneSetContainer {}
+.mobile.stoneSetContainer { padding: var(--space-md); }
+
+.instructionPanel {
+  width: 100%;
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+.instructionText { /* This is body-large */
+  font-size: var(--font-size-body-large-mobile);
+  line-height: var(--line-height-body-large);
+  font-weight: var(--font-weight-medium);
+  color: var(--ui-text-primary);
+}
+.stonesDisplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  width: 100%;
+  flex-wrap: wrap;
+}
+.tablet .stonesDisplay { gap: var(--space-lg); flex-wrap: nowrap; }
+.tablet .stonesDisplay.twoStones { justify-content: space-around; flex-wrap: nowrap; }
+.desktop .stonesDisplay { gap: var(--space-xl); flex-wrap: nowrap; }
+.desktop .stonesDisplay.twoStones { justify-content: space-around; flex-wrap: nowrap; }
+
+.desktop .instructionText,
+.tablet .instructionText {
+  font-size: var(--font-size-body-large-desktop);
+}
+.error {
+  color: var(--system-error-primary);
+  padding: var(--space-lg);
+  text-align: center;
+  background-color: var(--system-error-background);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-body-main-mobile); /* Added GDS var for error text */
+  line-height: var(--line-height-body-main);
+  font-weight: var(--font-weight-regular);
+}

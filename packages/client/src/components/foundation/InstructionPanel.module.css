@@ -1,0 +1,31 @@
+/* InstructionPanel.module.css */
+.instructionPanel {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-lg);
+  text-align: center;
+  background-color: var(--ui-background-welcome-gradient-end); /* A very light, subtle background */
+  border-radius: var(--radius-md);
+  border: 1px solid var(--ui-border-container-empty);
+}
+
+.setCounter {
+  font-size: 14px; /* body-small */
+  font-weight: var(--font-weight-medium);
+  color: var(--ui-text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.instructionText {
+  /* GDS body-large: 18px desktop / 16px mobile */
+  font-size: 16px;
+  font-weight: var(--font-weight-regular); /* Or medium if it needs more emphasis */
+  line-height: 1.5;
+  color: var(--ui-text-primary);
+}
+
+@media (min-width: 768px) {
+  .instructionText {
+    font-size: 18px;
+  }
+}

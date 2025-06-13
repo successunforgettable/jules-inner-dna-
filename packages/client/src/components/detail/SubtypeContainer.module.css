@@ -1,0 +1,128 @@
+/* SubtypeContainer.module.css */
+.subtypeContainer {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md);
+  border: 2px dashed var(--ui-border-medium); /* Dashed when empty/partially filled */
+  border-radius: var(--radius-lg);
+  background-color: var(--ui-background-main); /* Subtle background */
+  box-shadow: var(--shadow-dropdown);
+  min-height: 120px; /* Mobile height */
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* For pseudo-element background fill */
+  overflow: hidden; /* Ensure fill doesn't spill */
+  cursor: pointer; /* Indicates it's clickable to add tokens */
+}
+
+.subtypeContainer::before { /* Pseudo-element for background fill */
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--fill-percentage, 0%); /* Controlled by inline style from JS */
+  background-color: var(--ui-accent-primary); /* Fill color */
+  opacity: 0.1; /* Subtle fill */
+  transition: height 0.3s ease-in-out;
+  z-index: 0; /* Behind content */
+  border-radius: 0 0 var(--radius-md) var(--radius-md); /* Match bottom radius */
+}
+
+
+.subtypeContainer.hasTokens {
+  /* Potentially change border or other styles when it has tokens */
+}
+
+.subtypeContainer.active,
+.subtypeContainer:hover { /* Highlight on hover or when active target */
+  border-color: var(--ui-accent-primary);
+  box-shadow: var(--shadow-interactive-hover);
+}
+.subtypeContainer.active {
+  border-style: solid; /* Solid border when active */
+}
+
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
+  z-index: 1;
+}
+
+.emoji {
+  font-size: var(--font-size-heading-h2-mobile); /* Large emoji */
+}
+
+.title { /* heading-h3 or body-large semibold */
+  font-size: var(--font-size-heading-h3-mobile);
+  line-height: var(--line-height-heading-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--ui-text-primary);
+}
+
+.description { /* body-small */
+  font-size: var(--font-size-body-small-mobile);
+  line-height: var(--line-height-body-small);
+  color: var(--ui-text-secondary);
+  margin-bottom: var(--space-md);
+  flex-grow: 1; /* Allow description to take available space */
+  z-index: 1;
+}
+
+.tokenDisplayArea {
+  display: flex;
+  flex-wrap: wrap; /* Allow tokens to wrap */
+  gap: var(--space-xs);
+  min-height: 36px; /* Space for at least one row of tokens + gap */
+  align-items: center; /* Center tokens if they don't fill a row */
+  justify-content: flex-start; /* Start tokens from the left */
+  padding: var(--space-xs) 0;
+  z-index: 1;
+}
+
+.extraTokensCount {
+  font-size: var(--font-size-caption-text-mobile);
+  color: var(--ui-text-secondary);
+  font-style: italic;
+  margin-left: var(--space-sm);
+}
+
+.placedTokensCountDisplay {
+  font-size: var(--font-size-caption-text-mobile);
+  font-weight: var(--font-weight-medium);
+  color: var(--ui-accent-primary);
+  text-align: center;
+  margin-top: var(--space-sm);
+  z-index: 1;
+}
+
+
+/* Responsive Sizes */
+.mobile { /* Base styles are mobile-first (100% width) */
+  width: 100%;
+  min-height: 120px; /* Spec height for mobile */
+}
+
+.tablet {
+  width: 220px; /* Spec width */
+  min-height: 140px; /* Spec height */
+}
+.tablet .emoji { font-size: var(--font-size-heading-h1-mobile); } /* Slightly larger emoji for tablet */
+.tablet .title { font-size: var(--font-size-heading-h3-mobile); } /* Keep h3 mobile size or slightly increase */
+
+
+.desktop {
+  width: 240px; /* Spec width */
+  min-height: 160px; /* Spec height */
+}
+.desktop .emoji { font-size: var(--font-size-heading-h1-desktop); } /* Largest emoji */
+.desktop .title { font-size: var(--font-size-heading-h3-desktop); }
+.desktop .description { font-size: var(--font-size-body-small-desktop); }
+
+/* Ensure consistent font sizes for counts across views if not specified by token size */
+.desktop .extraTokensCount, .tablet .extraTokensCount { font-size: var(--font-size-caption-text-desktop); }
+.desktop .placedTokensCountDisplay, .tablet .placedTokensCountDisplay { font-size: var(--font-size-caption-text-desktop); }
+
+```

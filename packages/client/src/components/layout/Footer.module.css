@@ -1,0 +1,47 @@
+/* Footer.module.css - Updated */
+.appFooter {
+  background-color: var(--ui-text-primary);
+  color: var(--ui-background-main);
+  padding: var(--space-lg) 0;
+  width: 100%;
+  margin-top: auto;
+}
+.footerContainer {
+  width: 100%;
+  max-width: var(--max-width-welcome);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-sm);
+}
+.copyrightText {
+  font-size: var(--font-size-caption-text-mobile);
+  line-height: var(--line-height-caption-text);
+  font-weight: var(--font-weight-regular);
+}
+.footerLinks { display: flex; gap: var(--space-sm); flex-wrap: wrap; justify-content: center; }
+.footerLink {
+  font-size: var(--font-size-caption-text-mobile);
+  line-height: var(--line-height-caption-text);
+  font-weight: var(--font-weight-medium); /* Medium for links often looks good */
+  color: var(--ui-background-main);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+.footerLink:hover { color: var(--ui-accent-secondary); text-decoration: underline; }
+
+@media (min-width: 768px) {
+  .footerContainer { padding: 0 var(--space-lg); flex-direction: row; justify-content: space-between; text-align: left; }
+  .copyrightText {
+    font-size: var(--font-size-body-small-desktop); /* Slightly larger for desktop footer */
+    line-height: var(--line-height-body-small);
+  }
+  .footerLink {
+    font-size: var(--font-size-body-small-desktop);
+    line-height: var(--line-height-body-small);
+  }
+  .footerLinks { gap: var(--space-md); }
+}

@@ -1,0 +1,63 @@
+/* FinalTowerDisplay.module.css */
+.towerDisplayContainer {
+  width: 100%;
+  max-width: 400px; /* Max width of the SVG container */
+  margin: var(--space-lg) auto;
+  padding: var(--space-md);
+  background-color: var(--ui-background-main); /* Or a specific display background */
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-modal); /* A significant shadow for the display */
+}
+
+.towerSvg {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  /* No specific background needed here if container has one */
+}
+
+/* Styling for text within SVG (if any was added, e.g., on foundation stones) */
+/*
+.foundationText {
+  font-size: 8px;
+  fill: var(--ui-text-on-dark);
+  text-anchor: middle;
+  font-family: var(--font-family-primary);
+}
+*/
+
+.towerDescription {
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  background-color: var(--ui-background-welcome-gradient-end); /* Subtle background for description */
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.towerDescription h3 {
+  font-size: var(--font-size-heading-h3-mobile);
+  line-height: var(--line-height-heading-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--ui-text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.towerDescription p {
+  font-size: var(--font-size-body-small-mobile);
+  line-height: var(--line-height-body-small);
+  color: var(--ui-text-secondary);
+  margin-bottom: 0; /* Last element, no margin needed */
+}
+
+@media (min-width: 768px) {
+  .towerDisplayContainer {
+    max-width: 500px; /* Slightly larger on desktop */
+  }
+  .towerDescription h3 {
+    font-size: var(--font-size-heading-h3-desktop);
+  }
+  .towerDescription p {
+    font-size: var(--font-size-body-small-desktop);
+  }
+}
+```
