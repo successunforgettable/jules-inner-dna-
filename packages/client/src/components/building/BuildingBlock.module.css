@@ -10,6 +10,7 @@
   color: var(--ui-text-on-dark);
   /* Default background, will be overridden by gradientStyle prop in component */
   background: linear-gradient(135deg, var(--ui-accent-secondary), var(--ui-accent-primary));
+  position: relative; /* For pseudo-elements like selected state overlay */
   font-size: var(--font-size-interactive-text-mobile);
   line-height: var(--line-height-interactive-text);
 }
@@ -19,7 +20,7 @@
   width: 180px; height: 110px;
   font-size: var(--font-size-interactive-text-mobile);
 }
-.mobile { width: 100%; max-width: 280px; height: 100px; }
+.mobile { width: 160px; height: 100px; } /* Spec 3.2.1: width 160px */
 
 @media (min-width: 768px) {
   .buildingBlock {
@@ -101,6 +102,15 @@
   border-color: var(--ui-accent-primary);
   box-shadow: 0 0 12px 3px var(--ui-accent-primary), var(--shadow-block);
   transform: scale(1.02);
+}
+.selected::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: inherit; /* Match parent's border-radius */
+  background-color: rgba(var(--ui-accent-primary-rgb), 0.1); /* Slight accent color overlay for intensification */
+  pointer-events: none; /* So it doesn't interfere with clicks */
+  z-index: 0; /* Ensure it's above the main background but below text/content */
 }
 .selected:hover { transform: scale(1.05); }
 .disabled { opacity: 0.5; cursor: not-allowed; background: var(--ui-border-container-empty); color: var(--ui-text-secondary); border-color: var(--ui-text-secondary); box-shadow: none; }

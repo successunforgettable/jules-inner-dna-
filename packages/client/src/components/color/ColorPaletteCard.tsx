@@ -14,6 +14,9 @@ export interface ColorPaletteCardProps {
   onSelect: (id: string | number) => void;
   isDisabled?: boolean;
   sizeContext?: 'desktop' | 'tablet' | 'mobile';
+  // TODO: Spec 4.2.1 mentions "color swatches specific to each state".
+  // This would require passing an array of colors and rendering them as child elements,
+  // which is a structural change beyond the current scope. The card currently displays one overall gradient.
 }
 
 const ColorPaletteCard: React.FC<ColorPaletteCardProps> = ({ // Corrected component name
@@ -49,7 +52,7 @@ const ColorPaletteCard: React.FC<ColorPaletteCardProps> = ({ // Corrected compon
       aria-disabled={isDisabled}
       tabIndex={isDisabled ? -1 : 0}
       whileHover={!isDisabled ? {
-        scale: 1.05,
+        scale: 1.03, // Spec 4.2.1: Scale to 1.03x
         boxShadow: "var(--shadow-interactive-hover)" // UPDATED to use GDS variable
       } : {}}
       transition={{ type: "spring", stiffness: 300, damping: 15 }}

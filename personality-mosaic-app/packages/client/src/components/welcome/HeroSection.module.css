@@ -13,14 +13,13 @@
 .towerPreviewPlaceholder {
   width: 300px;
   height: 400px;
-  background-color: var(--ui-accent-secondary); /* Placeholder color */
-  color: var(--ui-text-on-dark);
+  /* background-color removed as SVG has its own fill */
+  /* color removed as it's no longer styling text */
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-modal); /* A slightly larger shadow for emphasis */
-  /* Placeholder for subtle glow - could be a box-shadow or pseudo-element */
+  box-shadow: 0 0 15px 5px rgba(var(--ui-accent-primary-rgb), 0.3); /* Subtle glow effect */
 }
 
 .descriptionContainer {

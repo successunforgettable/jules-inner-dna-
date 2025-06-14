@@ -1,4 +1,9 @@
 /* ColorPaletteCard.module.css - Updated */
+/* TODO: Spec 4.2.1 suggests an artist's paint palette shape.
+   This is complex to achieve with CSS alone on the current div structure
+   while maintaining content layout and may require SVG or structural HTML changes.
+   The "color swatches" aspect mentioned in the spec would also require structural changes
+   to the component to pass and render multiple colors. */
 .paletteCard {
   display: flex; flex-direction: column; justify-content: space-between;
   padding: var(--space-md); border: 2px solid var(--ui-border-interactive);
@@ -13,26 +18,26 @@
 .textContainer { display: flex; flex-direction: column; gap: var(--space-xxs); z-index: 1; }
 .mobile .textContainer { text-align: left; }
 
-.stateName { /* This is body-large, semibold */
-  font-size: var(--font-size-body-large-mobile);
-  line-height: var(--line-height-body-large);
-  font-weight: var(--font-weight-semibold);
+.stateName { /* Spec 4.2.1 "Content": Inter Medium, 16px desktop / 14px mobile */
+  font-size: var(--font-size-interactive-text-mobile); /* 14px */
+  line-height: var(--line-height-body-large); /* Existing, consider var(--line-height-interactive-text) if different */
+  font-weight: var(--font-weight-medium);
 }
-.description { /* This is body-small or caption-text */
-  font-size: var(--font-size-caption-text-mobile); /* caption for mobile */
-  line-height: var(--line-height-caption-text);
-  font-weight: var(--font-weight-regular);
-  opacity: 0.85;
+.description { /* Spec 4.2.1 "Content": Inter Medium, 16px desktop / 14px mobile */
+  font-size: var(--font-size-interactive-text-mobile); /* 14px */
+  line-height: var(--line-height-body-small); /* Existing, consider var(--line-height-interactive-text) */
+  font-weight: var(--font-weight-medium);
+  opacity: 0.85; /* Existing, keep for now */
 }
 
 .tablet .stateName,
 .desktop .stateName {
-  font-size: var(--font-size-body-large-desktop);
+  font-size: var(--font-size-interactive-text-desktop); /* 16px */
 }
 .tablet .description,
 .desktop .description {
-  font-size: var(--font-size-body-small-desktop); /* body-small for desktop description */
-  line-height: var(--line-height-body-small);
+  font-size: var(--font-size-interactive-text-desktop); /* 16px */
+  /* line-height will use the one from .description base or could be specified if different for desktop */
 }
 
 .selected { border-color: var(--ui-accent-primary); box-shadow: 0 0 15px 4px var(--ui-accent-primary), var(--shadow-block); transform: scale(1.02); }

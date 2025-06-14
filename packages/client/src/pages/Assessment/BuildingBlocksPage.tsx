@@ -10,6 +10,8 @@ import PrimaryButton from '../../components/common/buttons/PrimaryButton';
 import SecondaryButton from '../../components/common/buttons/SecondaryButton';
 // Import the content fetching service
 import { fetchBuildingBlockPairs } from '../../services/contentService';
+import TowerVisualizer from '../../components/common/TowerVisualizer';
+// Removed problematic type import, as types are defined locally for now or should be exported from TowerVisualizer
 
 const BuildingBlocksPage: React.FC = () => {
   const navigate = useNavigate();
@@ -20,6 +22,9 @@ const BuildingBlocksPage: React.FC = () => {
 
   const coreTypeCalculation = useAssessmentStore((state) => state.typeCalculation);
   const primaryType = coreTypeCalculation?.primaryType || null;
+
+  // Access foundation selections from the store
+  const foundationSelections = useAssessmentStore((state) => state.foundationSelections);
 
   const blockSelectionsUserInput = useAssessmentStore((state) => state.blockSelectionsUserInput);
   const currentBlockPairIndex = useAssessmentStore((state) => state.currentBlockPairIndex);
@@ -105,6 +110,37 @@ const BuildingBlocksPage: React.FC = () => {
   const currentPairSelectionIndex = blockSelectionsUserInput[currentBlockPairIndex];
   const selectedBlockId = currentPairSelectionIndex !== null ? currentPairDataFromAPI.blocks[currentPairSelectionIndex]?.id : null;
 
+  // --- Data Preparation for TowerVisualizer ---
+  // Define local types if not exported from TowerVisualizer (as per current TowerVisualizer.tsx)
+  interface LocalFoundationStoneData { id: string; color: string; }
+  interface LocalBuildingBlockData { id: string; color: string; height: number; }
+
+  const foundationStonesForViz = useMemo(() => {
+    return foundationSelections
+      .map((sel, index) => sel !== null ? ({ id: `fs_mock_${index}_sel_${sel}`, color: 'darkgrey' }) : null) // Using 'darkgrey' as placeholder
+      .filter(s => s !== null) as LocalFoundationStoneData[];
+  }, [foundationSelections]);
+
+  const buildingBlocksForViz = useMemo(() => {
+    const blocks: LocalBuildingBlockData[] = [];
+    if (allBlockPairData) {
+      for (let i = 0; i < currentBlockPairIndex + (currentPairSelectionIndex !== null ? 1: 0) ; i++) { // Iterate up to current pair, include if selected
+        const selectionIndex = blockSelectionsUserInput[i];
+        if (selectionIndex !== null && allBlockPairData[i]) {
+          const selectedBlockData = allBlockPairData[i].blocks[selectionIndex];
+          blocks.push({
+            id: selectedBlockData.id || selectedBlockData.blockId || `bb_mock_${i}_${selectionIndex}`,
+            color: 'steelblue', // Placeholder color for building blocks
+            height: 30 // Placeholder height
+          });
+        }
+      }
+    }
+    return blocks;
+  }, [allBlockPairData, blockSelectionsUserInput, currentBlockPairIndex, currentPairSelectionIndex]);
+  // --- End Data Preparation ---
+
+
   const blockPairPropsForComponent: BlockPairComponentProps['pairData'] = {
     ...currentPairDataFromAPI,
     blocks: [ // Ensure blocks are correctly typed and have ariaLabel
@@ -140,16 +176,10 @@ const BuildingBlocksPage: React.FC = () => {
           sizeContext={sizeContext}
           isDisabled={selectedBlockId !== null}
         />
-        <div className={styles.towerVizPlaceholder}>
-          <p>(Conceptual Tower Visualization Area)</p>
-          {wingCalculation && <p>Wing: {wingCalculation.primaryWing} ({wingCalculation.wingStrength})</p>}
-          {arrowCalculation && (
-            <div>
-              <p>Integration to {arrowCalculation.integrationType} ({arrowCalculation.integrationStrength})</p>
-              <p>Disintegration to {arrowCalculation.disintegrationType} ({arrowCalculation.disintegrationStrength})</p>
-            </div>
-          )}
-        </div>
+        <TowerVisualizer
+          foundationStones={foundationStonesForViz}
+          buildingBlocks={buildingBlocksForViz}
+        />
       </div>
 
       <footer className={styles.navigationFooter}>

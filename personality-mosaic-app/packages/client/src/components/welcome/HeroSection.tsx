@@ -17,7 +17,9 @@ const HeroSection: React.FC = () => {
           // yoyo: Infinity, // yoyo is implicit with array values for animate
         }}
       >
-        <p>Animated Tower Preview (300x400)</p>
+        <svg width="300" height="400" aria-label="Animated Tower Preview">
+          <rect width="300" height="400" fill="var(--ui-accent-secondary)" />
+        </svg>
       </motion.div>
       <div className={styles.descriptionContainer}>
         <p className={styles.descriptionText}>

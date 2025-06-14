@@ -1,6 +1,6 @@
 /* DistributionSlider.module.css - Updated */
 .sliderContainerWrapper {
-  width: 100%; max-width: var(--max-width-content-s, 500px);
+  width: 100%; max-width: 400px; /* Spec 4.2.3: Max-width 400px */
   margin: var(--space-lg) auto; padding: var(--space-md);
   background-color: var(--ui-background-main);
   border-radius: var(--radius-lg); box-shadow: var(--shadow-dropdown);

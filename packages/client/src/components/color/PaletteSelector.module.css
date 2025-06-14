@@ -19,7 +19,7 @@
     flex-wrap: wrap;
     justify-content: center;
     */
-    gap: var(--space-lg);
+    gap: var(--space-md); /* Spec 4.2.2: Change gap to 16px (var(--space-md)) */
   }
 }
 

@@ -1,0 +1,24 @@
+/* packages/client/src/components/common/TowerVisualizer.module.css */
+.towerVisualizerContainer {
+  width: 100%;
+  max-width: 300px; /* Or adjust as needed */
+  margin: var(--space-lg) auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px; /* Ensure it has some default height */
+  background-color: var(--ui-background-main); /* Optional: for contrast */
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+}
+
+.towerSvg {
+  width: 100%;
+  height: auto;
+  max-height: 450px; /* Control max display height */
+}
+
+.placeholderText {
+  font-size: var(--font-size-body-main-desktop);
+  fill: var(--ui-text-secondary);
+}

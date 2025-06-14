@@ -34,16 +34,89 @@ export const determinePersonalityType = (selections: SelectionArray): Personalit
   selections.forEach((selection, setIndex) => {
     const weight = SET_WEIGHTS[setIndex];
     switch (setIndex) {
-      case 0: if (selection === 0) { typeScores.type1 += 3 * weight; typeScores.type3 += 1 * weight; typeScores.type8 += 1 * weight; } else if (selection === 1) { typeScores.type2 += 3 * weight; typeScores.type4 += 1 * weight; typeScores.type9 += 1 * weight; } else { typeScores.type5 += 2 * weight; typeScores.type6 += 2 * weight; typeScores.type7 += 1 * weight; } break;
-      case 1: if (selection === 0) { typeScores.type4 += 3 * weight; typeScores.type5 += 2 * weight; typeScores.type9 += 1 * weight; } else if (selection === 1) { typeScores.type2 += 2 * weight; typeScores.type6 += 3 * weight; typeScores.type7 += 1 * weight; } else { typeScores.type1 += 2 * weight; typeScores.type3 += 2 * weight; typeScores.type8 += 2 * weight; } break;
-      case 2: if (selection === 0) { typeScores.type7 += 3 * weight; typeScores.type5 += 1 * weight; typeScores.type9 += 1 * weight; } else if (selection === 1) { typeScores.type1 += 2 * weight; typeScores.type6 += 2 * weight; typeScores.type8 += 2 * weight; } else { typeScores.type2 += 2 * weight; typeScores.type3 += 1 * weight; typeScores.type4 += 1 * weight; } break;
-      case 3: if (selection === 0) { typeScores.type1 += 3 * weight; typeScores.type5 += 1 * weight; typeScores.type6 += 1 * weight; } else if (selection === 1) { typeScores.type2 += 2 * weight; typeScores.type4 += 2 * weight; typeScores.type9 += 1 * weight; } else { typeScores.type3 += 2 * weight; typeScores.type7 += 2 * weight; typeScores.type8 += 1 * weight; } break;
-      case 4: if (selection === 0) { typeScores.type4 += 2 * weight; typeScores.type5 += 3 * weight; typeScores.type9 += 1 * weight; } else if (selection === 1) { typeScores.type2 += 2 * weight; typeScores.type6 += 2 * weight; typeScores.type7 += 2 * weight; } else { typeScores.type1 += 1 * weight; typeScores.type3 += 2 * weight; typeScores.type8 += 3 * weight; } break;
-      case 5: if (selection === 0) { typeScores.type7 += 2 * weight; typeScores.type8 += 1 * weight; typeScores.type9 += 2 * weight; } else if (selection === 1) { typeScores.type1 += 2 * weight; typeScores.type3 += 2 * weight; typeScores.type6 += 1 * weight; } else { typeScores.type2 += 2 * weight; typeScores.type4 += 1 * weight; typeScores.type5 += 2 * weight; } break;
-      case 6: if (selection === 0) { typeScores.type1 += 2 * weight; typeScores.type2 += 1 * weight; typeScores.type6 += 1 * weight; } else if (selection === 1) { typeScores.type3 += 2 * weight; typeScores.type4 += 1 * weight; typeScores.type5 += 1 * weight; } else { typeScores.type7 += 1 * weight; typeScores.type8 += 1 * weight; typeScores.type9 += 2 * weight; } break;
-      case 7: if (selection === 0) { typeScores.type2 += 1 * weight; typeScores.type4 += 1 * weight; typeScores.type5 += 1 * weight; } else if (selection === 1) { typeScores.type1 += 1 * weight; typeScores.type8 += 2 * weight; typeScores.type9 += 1 * weight; } else { typeScores.type3 += 1 * weight; typeScores.type6 += 1 * weight; typeScores.type7 += 2 * weight; } break;
-      case 8: if (selection === 0) { typeScores.type1 += 1 * weight; typeScores.type3 += 1 * weight; typeScores.type8 += 1 * weight; } else if (selection === 1) { typeScores.type2 += 1 * weight; typeScores.type7 += 1 * weight; typeScores.type9 += 1 * weight; } else { typeScores.type4 += 1 * weight; typeScores.type5 += 1 * weight; typeScores.type6 += 1 * weight; } break;
-      default: console.warn(`Unexpected setIndex: ${setIndex}`);
+      case 0: // Set 1: Decision-Making Center
+        if (selection === 0) { // Head
+          typeScores.type5 += 3 * weight; typeScores.type6 += 2 * weight; typeScores.type7 += 1 * weight;
+        } else if (selection === 1) { // Heart
+          typeScores.type2 += 3 * weight; typeScores.type3 += 2 * weight; typeScores.type4 += 3 * weight;
+        } else { // Body (selection === 2)
+          typeScores.type1 += 2 * weight; typeScores.type8 += 3 * weight; typeScores.type9 += 2 * weight;
+        }
+        break;
+      case 1: // Set 2: Core Motivation
+        if (selection === 0) { // Fear
+          typeScores.type5 += 2 * weight; typeScores.type6 += 3 * weight; typeScores.type7 += 1 * weight;
+        } else if (selection === 1) { // Shame
+          typeScores.type2 += 2 * weight; typeScores.type3 += 3 * weight; typeScores.type4 += 3 * weight;
+        } else { // Anger (selection === 2)
+          typeScores.type1 += 3 * weight; typeScores.type8 += 3 * weight; typeScores.type9 += 2 * weight;
+        }
+        break;
+      case 2: // Set 3: Energy Direction
+        if (selection === 0) { // Withdrawn
+          typeScores.type4 += 2 * weight; typeScores.type5 += 3 * weight; typeScores.type9 += 2 * weight;
+        } else if (selection === 1) { // Assertive
+          typeScores.type3 += 3 * weight; typeScores.type7 += 2 * weight; typeScores.type8 += 3 * weight;
+        } else { // Compliant (selection === 2)
+          typeScores.type1 += 2 * weight; typeScores.type2 += 2 * weight; typeScores.type6 += 3 * weight;
+        }
+        break;
+      case 3: // Set 4: Social Approach
+        if (selection === 0) { // Detached
+          typeScores.type5 += 3 * weight; typeScores.type4 += 2 * weight;
+        } else if (selection === 1) { // Attachment
+          typeScores.type2 += 3 * weight; typeScores.type6 += 2 * weight;
+        } else { // Autonomy (selection === 2)
+          typeScores.type1 += 2 * weight; typeScores.type8 += 2 * weight;
+        }
+        break;
+      case 4: // Set 5: Processing Style
+        if (selection === 0) { // Conceptual
+          typeScores.type5 += 3 * weight; typeScores.type1 += 2 * weight;
+        } else if (selection === 1) { // Emotional
+          typeScores.type4 += 3 * weight; typeScores.type2 += 2 * weight;
+        } else { // Practical (selection === 2)
+          typeScores.type3 += 2 * weight; typeScores.type8 += 2 * weight;
+        }
+        break;
+      case 5: // Set 6: Stress Reaction
+        if (selection === 0) { // Overthinking
+          typeScores.type6 += 3 * weight; typeScores.type5 += 2 * weight;
+        } else if (selection === 1) { // Image-focus
+          typeScores.type3 += 3 * weight; typeScores.type4 += 2 * weight;
+        } else { // Control-seeking (selection === 2)
+          typeScores.type8 += 3 * weight; typeScores.type1 += 2 * weight;
+        }
+        break;
+      case 6: // Set 7: Conflict Style
+        if (selection === 0) { // Avoiding
+          typeScores.type9 += 3 * weight; typeScores.type5 += 1 * weight;
+        } else if (selection === 1) { // Accommodating
+          typeScores.type2 += 2 * weight; typeScores.type6 += 2 * weight;
+        } else { // Confronting (selection === 2)
+          typeScores.type8 += 3 * weight; typeScores.type1 += 1 * weight;
+        }
+        break;
+      case 7: // Set 8: Success Definition
+        if (selection === 0) { // Correctness
+          typeScores.type1 += 3 * weight; typeScores.type6 += 1 * weight;
+        } else if (selection === 1) { // Approval
+          typeScores.type2 += 3 * weight; typeScores.type3 += 1 * weight;
+        } else { // Autonomy (selection === 2)
+          typeScores.type5 += 2 * weight; typeScores.type8 += 2 * weight;
+        }
+        break;
+      case 8: // Set 9: Relationship Priority
+        if (selection === 0) { // Independence
+          typeScores.type5 += 2 * weight; typeScores.type8 += 1 * weight;
+        } else if (selection === 1) { // Interdependence
+          typeScores.type2 += 2 * weight; typeScores.type9 += 2 * weight;
+        } else { // Guidance (selection === 2)
+          typeScores.type1 += 1 * weight; typeScores.type8 += 2 * weight;
+        }
+        break;
+      default:
+        console.warn(`Unexpected setIndex: ${setIndex}`);
     }
   });
   let totalScore = 0; Object.values(typeScores).forEach(score => totalScore += score);
@@ -70,6 +143,11 @@ export const determineWing = (primaryType: string, blockSelections: BlockSelecti
   const chosenWingNumber = blockSelections[0];
   if (chosenWingNumber === null || !WING_OPTIONS_MAP[primaryType].includes(chosenWingNumber)) { return { primaryWing: `${primaryType}w?`, wingStrength: 'moderate', confidence: 0.3 }; }
   const primaryWingString = `${primaryType}w${chosenWingNumber}`;
+  // TODO: Spec 3.5 (calculateWingConsistency) implies using all four block selections (A/B choices for Pairs 1-4).
+  // The current BlockSelectionsProcessed type ([chosenWingNumber, arrowPairChoice, growthFocusChoice, responsePatternChoice])
+  // does not directly provide the A/B choice for Pair 1 (wing selection itself).
+  // A more spec-aligned consistency check would require refactoring BlockSelectionsProcessed and its construction in useAssessmentStore.
+  // The current logic uses selections from Pair 3 (growthFocusChoice) and Pair 4 (responsePatternChoice).
   let consistencyScore = 0.5; if (blockSelections[2] !== null && blockSelections[3] !== null) { if (blockSelections[2] === blockSelections[3]) { consistencyScore = 0.8; } else { consistencyScore = 0.6; } } else if (blockSelections[2] !== null || blockSelections[3] !== null) { consistencyScore = 0.55; }
   const wingStrength = consistencyScore >= 0.7 ? 'strong' : 'moderate';
   const confidence = parseFloat(Math.min(0.6 + (consistencyScore * 0.4), 0.95).toFixed(4));
@@ -83,7 +161,14 @@ export const determineArrows = (primaryType: string, blockSelections: BlockSelec
   const arrowPairChoice = blockSelections[1];
   let integrationStrength: ArrowCalculation['integrationStrength'] = 'developing'; let disintegrationStrength: ArrowCalculation['disintegrationStrength'] = 'developing';
   if (arrowPairChoice === 0) { integrationStrength = 'conscious'; disintegrationStrength = 'developing'; } else { disintegrationStrength = 'conscious'; integrationStrength = 'developing'; }
-  let confidence = 0.5; if (blockSelections[2] !== null && blockSelections[3] !== null) { confidence = Math.min(0.5 + (blockSelections[2] === blockSelections[3] ? 0.4 : 0.2), 0.9); } else if (blockSelections[2] !== null || blockSelections[3] !== null) { confidence = 0.5 + 0.1; }
+  let confidence = 0.5;
+  if (blockSelections[2] !== null && blockSelections[3] !== null) {
+    // Spec 3.6: calculateArrowConfidence uses consistency of 0.8 or 0.6 for supporting selections.
+    // confidence = Math.min(0.5 + (blockSelections[2] === blockSelections[3] ? 0.4 : 0.2), 0.9); // Original
+    confidence = Math.min(0.5 + (blockSelections[2] === blockSelections[3] ? 0.8 : 0.6), 0.9); // Updated as per spec
+  } else if (blockSelections[2] !== null || blockSelections[3] !== null) {
+    confidence = 0.5 + 0.1; // This case remains 0.6, spec doesn't explicitly detail partial selection for this part.
+  }
   return { integrationType: arrows.integration.toString(), integrationStrength, disintegrationType: arrows.disintegration.toString(), disintegrationStrength, confidence: parseFloat(confidence.toFixed(4)) };
 };
 

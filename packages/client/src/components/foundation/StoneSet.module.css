@@ -23,7 +23,7 @@
 .instructionText { /* This is body-large */
   font-size: var(--font-size-body-large-mobile);
   line-height: var(--line-height-body-large);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-regular);
   color: var(--ui-text-primary);
 }
 .stonesDisplay {
@@ -36,7 +36,7 @@
 }
 .tablet .stonesDisplay { gap: var(--space-lg); flex-wrap: nowrap; }
 .tablet .stonesDisplay.twoStones { justify-content: space-around; flex-wrap: nowrap; }
-.desktop .stonesDisplay { gap: var(--space-xl); flex-wrap: nowrap; }
+.desktop .stonesDisplay { gap: var(--space-lg); flex-wrap: nowrap; }
 .desktop .stonesDisplay.twoStones { justify-content: space-around; flex-wrap: nowrap; }
 
 .desktop .instructionText,

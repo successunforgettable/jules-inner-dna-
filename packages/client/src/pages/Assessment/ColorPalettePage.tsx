@@ -11,6 +11,13 @@ import PrimaryButton from '../../components/common/buttons/PrimaryButton';
 import SecondaryButton from '../../components/common/buttons/SecondaryButton';
 // Import content fetching services
 import { fetchColorPalettes, fetchPaletteDescriptionsForType } from '../../services/contentService';
+import TowerVisualizer, {
+  FoundationStoneData,
+  BuildingBlockData,
+  ColorPaletteData as TowerColorPaletteData, // Alias to avoid naming conflict if any
+  ColorDistribution as TowerColorDistribution
+} from '../../components/common/TowerVisualizer';
+
 
 const ColorPalettePage: React.FC = () => {
   const navigate = useNavigate();
@@ -22,6 +29,8 @@ const ColorPalettePage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const primaryType = useAssessmentStore((state) => state.typeCalculation?.primaryType || null);
+  const foundationSelections = useAssessmentStore((state) => state.foundationSelections);
+  const blockSelectionsUserInput = useAssessmentStore((state) => state.blockSelectionsUserInput); // To know how many blocks to render
 
   const {
     colorPaletteSelections,
@@ -35,7 +44,9 @@ const ColorPalettePage: React.FC = () => {
     stateAnalysisResult: state.stateAnalysisResult,
     togglePaletteSelection: state.togglePaletteSelection,
     setColorPaletteDistribution: state.setColorPaletteDistribution,
+    // Not fetching allBlockPairData here, will use placeholders for building block properties other than count
   }));
+
 
   // Fetch base palettes and type-specific descriptions
   useEffect(() => {
@@ -137,6 +148,42 @@ const ColorPalettePage: React.FC = () => {
 
   const canProceed = colorPaletteSelections.ids.length === 2 && colorPaletteDistribution !== null && stateAnalysisResult !== null;
 
+  // --- Data Preparation for TowerVisualizer ---
+  const foundationStonesForViz = useMemo((): FoundationStoneData[] => {
+    return foundationSelections
+      .map((sel, index) => sel !== null ? ({ id: `fs_mock_${index}_sel_${sel}`, color: 'darkslategrey' }) : null) // Darker placeholder for foundation
+      .filter(s => s !== null) as FoundationStoneData[];
+  }, [foundationSelections]);
+
+  const buildingBlocksForViz = useMemo((): BuildingBlockData[] => {
+    // Simplified: create blocks based on selections count, as allBlockPairData is not readily available here.
+    // Actual color/height will be overridden by palette or defaults in TowerVisualizer if not using palette.
+    return blockSelectionsUserInput
+      .filter(sel => sel !== null) // Only count actual selections
+      .map((sel, index) => ({
+        id: `bb_mock_colorpage_${index}_sel_${sel}`,
+        color: 'lightgray', // This color will be overridden by palette gradient in TowerVisualizer
+        height: 30 // Standard height
+      }));
+  }, [blockSelectionsUserInput]);
+
+  const towerPalettesForViz = useMemo((): [TowerColorPaletteData | null, TowerColorPaletteData | null] | undefined => {
+    if (!selectedPalettesFullInfoForSlider[0] || !selectedPalettesFullInfoForSlider[1]) {
+      return undefined; // Or two nulls: [null, null] if TowerVisualizer expects that for no selection
+    }
+    return [
+      selectedPalettesFullInfoForSlider[0] ? {
+        id: selectedPalettesFullInfoForSlider[0].id.toString(),
+        primaryColor: selectedPalettesFullInfoForSlider[0].primaryHighlightColor || selectedPalettesFullInfoForSlider[0].baseGradientStyle.split(', ')[1] || 'rgba(0,0,0,0.1)' // Heuristic
+      } : null,
+      selectedPalettesFullInfoForSlider[1] ? {
+        id: selectedPalettesFullInfoForSlider[1].id.toString(),
+        primaryColor: selectedPalettesFullInfoForSlider[1].primaryHighlightColor || selectedPalettesFullInfoForSlider[1].baseGradientStyle.split(', ')[1] || 'rgba(0,0,0,0.1)' // Heuristic
+      } : null,
+    ];
+  }, [selectedPalettesFullInfoForSlider]);
+  // --- End Data Preparation ---
+
   if (isLoading) {
     return <div className={styles.loadingOrError}>Loading Color Palettes...</div>;
   }
@@ -178,11 +225,12 @@ const ColorPalettePage: React.FC = () => {
           />
         )}
 
-        <div className={styles.towerVizPlaceholder}>
-          <p>(Conceptual Tower Visualization Area)</p>
-          {selectedPalettesFullInfoForSlider[0] && colorPaletteDistribution && <p>Palette 1: {selectedPalettesFullInfoForSlider[0].stateName} ({colorPaletteDistribution.primaryPercentage}%)</p>}
-          {selectedPalettesFullInfoForSlider[1] && colorPaletteDistribution && <p>Palette 2: {selectedPalettesFullInfoForSlider[1].stateName} ({colorPaletteDistribution.secondaryPercentage}%)</p>}
-        </div>
+        <TowerVisualizer
+          foundationStones={foundationStonesForViz}
+          buildingBlocks={buildingBlocksForViz}
+          selectedPalettes={towerPalettesForViz}
+          colorDistribution={colorPaletteDistribution as TowerColorDistribution | null | undefined} // Cast as it might be null from store
+        />
       </div>
 
       <footer className={styles.navigationFooter}>

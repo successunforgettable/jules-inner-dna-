@@ -1,24 +1,31 @@
+import { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/layout/Layout';
-import WelcomePage from './pages/WelcomePage';
-import FoundationPage from './pages/Assessment/FoundationPage';
-import BuildingBlocksPage from './pages/Assessment/BuildingBlocksPage';
-import ColorPalettePage from './pages/Assessment/ColorPalettePage';
-import DetailElementsPage from './pages/Assessment/DetailElementsPage';
-import ResultsPage from './pages/Assessment/ResultsPage'; // Import new page
 import ProtectedRoute from './components/common/ProtectedRoute';
 import './App.css';
+
+// Lazy load page components
+const WelcomePage = lazy(() => import('./pages/WelcomePage'));
+const FoundationPage = lazy(() => import('./pages/Assessment/FoundationPage'));
+const BuildingBlocksPage = lazy(() => import('./pages/Assessment/BuildingBlocksPage'));
+const ColorPalettePage = lazy(() => import('./pages/Assessment/ColorPalettePage'));
+const DetailElementsPage = lazy(() => import('./pages/Assessment/DetailElementsPage'));
+const ResultsPage = lazy(() => import('./pages/Assessment/ResultsPage'));
+const ProfilePage = lazy(() => import('./pages/ProfilePage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
+const TermsPage = lazy(() => import('./pages/TermsPage'));
 
 function App() {
   return (
     <Layout>
-      <Routes>
-        {/* Public Route */}
-        <Route path="/" element={<WelcomePage />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-        <Route path="/terms-of-service" element={<TermsPage />} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          {/* Public Route */}
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms-of-service" element={<TermsPage />} />
 
-        {/* Protected Assessment Routes */}
+          {/* Protected Assessment Routes */}
         <Route element={<ProtectedRoute />}>
           <Route
             path="/assessment"
@@ -43,15 +50,10 @@ function App() {
                 </div>
             }
         />
-      </Routes>
+        </Routes>
+      </Suspense>
     </Layout>
   );
 }
-
-// Need to import these if not already auto-imported by some magic
-import ProfilePage from './pages/ProfilePage';
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-import TermsPage from './pages/TermsPage';
-
 
 export default App;
