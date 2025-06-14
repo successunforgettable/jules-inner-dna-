@@ -1,3 +1,4 @@
+// TODO: TERMINOLOGY (Spec 1.5): Data from fetchPaletteDescriptionsForType() must be terminology compliant.
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './ColorPalettePage.module.css';
@@ -17,6 +18,7 @@ import TowerVisualizer, {
   ColorPaletteData as TowerColorPaletteData, // Alias to avoid naming conflict if any
   ColorDistribution as TowerColorDistribution
 } from '../../components/common/TowerVisualizer';
+import { TYPE_NAMES } from '../../lib/terminology'; // Import TYPE_NAMES
 
 
 const ColorPalettePage: React.FC = () => {
@@ -202,7 +204,7 @@ const ColorPalettePage: React.FC = () => {
       <header className={styles.pageHeader}>
         <h1 className={styles.pageTitle}>Color Your States</h1>
         <p className={styles.instructionText}>
-          Your primary type is: <strong>Type {primaryType || "N/A"}</strong>.
+          Your primary profile is: <strong>{primaryType ? TYPE_NAMES[primaryType.toString()] : "N/A"}</strong>.
           Select two color palettes that best represent your common psychological states.
           Then, define their typical balance in your personality. The descriptions are tailored to your type.
         </p>

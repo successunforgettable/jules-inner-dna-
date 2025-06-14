@@ -1,3 +1,4 @@
+// TODO: TERMINOLOGY (Spec 1.5): Ensure data from fetchFoundationStoneSets() provides stone content and instructions using "BASELINES" instead of "Values" and adheres to all other terminology rules.
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './FoundationPage.module.css';

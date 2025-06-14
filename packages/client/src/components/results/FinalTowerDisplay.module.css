@@ -2,11 +2,11 @@
 .towerDisplayContainer {
   width: 100%;
   max-width: 400px; /* Max width of the SVG container */
-  margin: var(--space-lg) auto;
-  padding: var(--space-md);
-  background-color: var(--ui-background-main); /* Or a specific display background */
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-modal); /* A significant shadow for the display */
+  margin: var(--space-6) auto; /* Was --space-lg (24px) */
+  padding: var(--space-4); /* Was --space-md (16px) */
+  background-color: var(--ui-background-secondary); /* Was --ui-background-main (now white), secondary is light grey */
+  border-radius: var(--border-radius-xl); /* Was --radius-xl (12px) */
+  box-shadow: var(--shadow-xl); /* Was --shadow-modal, now more significant */
 }
 
 .towerSvg {
@@ -27,24 +27,24 @@
 */
 
 .towerDescription {
-  margin-top: var(--space-md);
-  padding: var(--space-md);
-  background-color: var(--ui-background-welcome-gradient-end); /* Subtle background for description */
-  border-radius: var(--radius-md);
+  margin-top: var(--space-4); /* Was --space-md (16px) */
+  padding: var(--space-4); /* Was --space-md (16px) */
+  background-color: var(--ui-background-tertiary); /* Was --ui-background-welcome-gradient-end, now light tertiary grey */
+  border-radius: var(--border-radius-md); /* Was --radius-md (6px) */
   text-align: center;
 }
 
-.towerDescription h3 {
-  font-size: var(--font-size-heading-h3-mobile);
-  line-height: var(--line-height-heading-h3);
+.towerDescription h3 { /* Subheading: Semibold, 24px/20px */
+  font-size: var(--font-size-xl); /* Was --font-size-heading-h3-mobile (20px) */
+  line-height: var(--line-height-snug); /* Was --line-height-heading-h3 (1.4), now 1.375 */
   font-weight: var(--font-weight-semibold);
   color: var(--ui-text-primary);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-3); /* Was --space-sm (12px) */
 }
 
-.towerDescription p {
-  font-size: var(--font-size-body-small-mobile);
-  line-height: var(--line-height-body-small);
+.towerDescription p { /* Body text: 14px */
+  font-size: var(--font-size-sm); /* Was --font-size-body-small-mobile (13px), now 14px */
+  line-height: var(--line-height-normal); /* Was --line-height-body-small (1.5), now 1.5 */
   color: var(--ui-text-secondary);
   margin-bottom: 0; /* Last element, no margin needed */
 }
@@ -54,10 +54,10 @@
     max-width: 500px; /* Slightly larger on desktop */
   }
   .towerDescription h3 {
-    font-size: var(--font-size-heading-h3-desktop);
+    font-size: var(--font-size-2xl); /* Was --font-size-heading-h3-desktop (24px) */
   }
   .towerDescription p {
-    font-size: var(--font-size-body-small-desktop);
+    font-size: var(--font-size-sm); /* Was --font-size-body-small-desktop (14px) */
   }
 }
 ```

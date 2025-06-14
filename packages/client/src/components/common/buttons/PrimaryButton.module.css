@@ -35,7 +35,7 @@
 
 /* Size: Medium */
 .medium {
-  padding: var(--space-xs) var(--space-lg);
+  padding: var(--space-3) var(--space-6); /* Was --space-xs (8px V), --space-lg (24px H). Now 12px V, 24px H */
   font-size: var(--font-size-button-text-small-mobile); /* Using smaller button text for medium */
   line-height: var(--line-height-button-text-small);
 }

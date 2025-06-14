@@ -1,13 +1,12 @@
 /* ReportSection.module.css */
 .reportSection {
   width: 100%;
-  padding: var(--space-lg) 0; /* Vertical padding, horizontal padding handled by parent layout */
-  margin-bottom: var(--space-lg);
-  /* border-bottom: 1px solid var(--ui-border-container-empty); */ /* Optional separator */
-  background-color: var(--ui-background-main); /* Or transparent if page has bg */
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-dropdown); /* Subtle shadow for sections */
-  padding: var(--space-md); /* Inner padding for the section box */
+  /* padding: var(--space-lg) 0; Removed as inner padding is now used */
+  margin-bottom: var(--space-6); /* Was --space-lg (24px) */
+  background-color: var(--ui-background-primary); /* Spec: Use primary/secondary. Primary is white. */
+  border-radius: var(--border-radius-lg); /* Was --radius-lg (8px) */
+  box-shadow: var(--shadow-md); /* Was --shadow-dropdown */
+  padding: var(--space-4); /* Inner padding, was --space-md (16px) */
 }
 
 /* For when the last section shouldn't have a bottom margin or border */
@@ -19,10 +18,10 @@
 .header {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
-  margin-bottom: var(--space-md);
-  padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--ui-border-container-empty); /* Separator below header */
+  gap: var(--space-4); /* Was --space-md (16px) */
+  margin-bottom: var(--space-4); /* Was --space-md (16px) */
+  padding-bottom: var(--space-3); /* Was --space-sm (12px) */
+  border-bottom: var(--border-width-thin) solid var(--ui-border-medium); /* Was 1px solid var(--ui-border-container-empty) */
 }
 
 .iconWrapper {
@@ -34,61 +33,59 @@
 }
 
 .iconWrapper svg {
-  width: var(--font-size-heading-h1-mobile); /* Match title size roughly */
-  height: var(--font-size-heading-h1-mobile);
+  width: var(--font-size-2xl); /* Was --font-size-heading-h1-mobile (28px), now 24px */
+  height: var(--font-size-2xl); /* Was --font-size-heading-h1-mobile (28px), now 24px */
 }
 @media (min-width: 768px) {
   .iconWrapper svg {
-    width: var(--font-size-heading-h1-desktop);
-    height: var(--font-size-heading-h1-desktop);
+    width: var(--font-size-4xl); /* Was --font-size-heading-h1-desktop (36px) */
+    height: var(--font-size-4xl); /* Was --font-size-heading-h1-desktop (36px) */
   }
 }
 
 
-.title {
-  /* GDS Heading H2 for section titles within report */
-  font-size: var(--font-size-heading-h2-mobile);
-  line-height: var(--line-height-heading-h2);
+.title { /* Section Title: Semibold, 30px/24px */
+  font-size: var(--font-size-2xl); /* Was --font-size-heading-h2-mobile (24px) */
+  line-height: var(--line-height-snug); /* Was --line-height-heading-h2 (1.4), now 1.375 */
   font-weight: var(--font-weight-semibold);
   color: var(--ui-text-primary);
   margin-bottom: 0; /* Remove default heading margin as header handles spacing */
 }
 
-.content {
-  /* Styles for the content area, e.g., default text styling if not handled by children */
-  font-size: var(--font-size-body-main-mobile);
-  line-height: var(--line-height-body-main);
-  color: var(--ui-text-secondary);
+.content { /* Body text: Regular, 16px/14px, Line Height Relaxed */
+  font-size: var(--font-size-sm); /* Was --font-size-body-main-mobile (14px) */
+  line-height: var(--line-height-relaxed); /* Was --line-height-body-main (1.6), now 1.625 */
+  color: var(--ui-text-secondary); /* Default text color for content block */
 }
-.content p, .content li, .content div { /* Ensure children also use GDS */
+.content p, .content li, .content div {
   font-size: inherit; /* Inherit from .content by default */
-  line-height: inherit;
+  line-height: inherit; /* Inherit from .content by default */
   font-weight: var(--font-weight-regular);
-  color: var(--ui-text-primary); /* Content text usually primary */
-  margin-bottom: var(--space-sm); /* Space between paragraphs in content */
+  color: var(--ui-text-primary); /* Override for specific content text to be primary */
+  margin-bottom: var(--space-3); /* Was --space-sm (12px) */
 }
 .content p:last-child, .content li:last-child, .content div:last-child {
   margin-bottom: 0;
 }
 .content strong {
   font-weight: var(--font-weight-semibold);
-  color: var(--ui-text-primary);
+  color: var(--ui-text-primary); /* Ensure strong text is also primary or as intended */
 }
 .content ul, .content ol {
-  padding-left: var(--space-lg);
-  margin-bottom: var(--space-sm);
+  padding-left: var(--space-6); /* Was --space-lg (24px) */
+  margin-bottom: var(--space-3); /* Was --space-sm (12px) */
 }
 
 
 @media (min-width: 768px) {
   .reportSection {
-    padding: var(--space-lg); /* Larger inner padding for desktop */
+    padding: var(--space-6); /* Larger inner padding, was --space-lg (24px) */
   }
   .title {
-    font-size: var(--font-size-heading-h2-desktop);
+    font-size: var(--font-size-3xl); /* Was --font-size-heading-h2-desktop (32px), now 30px */
   }
   .content {
-    font-size: var(--font-size-body-main-desktop);
+    font-size: var(--font-size-base); /* Was --font-size-body-main-desktop (16px) */
   }
 }
 ```

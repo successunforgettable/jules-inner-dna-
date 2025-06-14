@@ -1,3 +1,4 @@
+// TODO: TERMINOLOGY (Spec 1.5): Data from fetchSubtypeContainerDescriptionsForType() must be terminology compliant.
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './DetailElementsPage.module.css';
@@ -16,6 +17,7 @@ import SecondaryButton from '../../components/common/buttons/SecondaryButton';
 import clsx from 'clsx';
 // Import content fetching service
 import { fetchSubtypeContainerDescriptionsForType } from '../../services/contentService';
+import { TYPE_NAMES } from '../../lib/terminology'; // Import TYPE_NAMES
 
 
 const TOTAL_TOKENS = 10;
@@ -161,7 +163,7 @@ const DetailElementsPage: React.FC = () => {
         <div className={styles.instructionPanel}>
           <h2 className={styles.instructionTitle}>Distribute Your Instinctual Energy</h2>
           <p className={styles.instructionText}>
-            Your primary type is: <strong>Type {primaryType || "N/A"}</strong>.
+            Your primary profile is: <strong>{primaryType ? TYPE_NAMES[primaryType.toString()] : "N/A"}</strong>.
             You have <strong>{TOTAL_TOKENS}</strong> detail tokens representing your core instinctual energy.
             Click on a focus area below to allocate a token. Click a token within an area to return it to the pool.
             Distribute all tokens to reflect how your energy is typically prioritized.

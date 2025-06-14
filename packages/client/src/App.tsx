@@ -1,8 +1,9 @@
-import { Suspense, lazy, ReactNode } from 'react';
+import React, { useEffect, Suspense, lazy, ReactNode } from 'react'; // Added React and useEffect
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Layout from './components/layout/Layout';
 import ProtectedRoute from './components/common/ProtectedRoute';
+import useAuthStore from './contexts/store/useAuthStore'; // Import auth store
 import './App.css';
 
 // Lazy load page components
@@ -30,6 +31,11 @@ const AnimatedPage: React.FC<{ children: ReactNode }> = ({ children }) => (
 
 function App() {
   const location = useLocation();
+
+  useEffect(() => {
+    // Attempt to refresh token on initial app load
+    useAuthStore.getState().refreshAuthStatus();
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   return (
     <Layout>

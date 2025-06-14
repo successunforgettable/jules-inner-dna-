@@ -20,7 +20,16 @@ import {
 } from '../../../../shared/types/assessment.types';
 import * as contentService from '../../services/contentService';
 
-// Placeholder Icons
+// Placeholder Icons (assuming these are fine for now)
+const IconPlaceholder: React.FC<{ name: string } & React.SVGProps<SVGSVGElement>> = ({ name, ...props }) => (
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" {...props} aria-label={`${name} icon`}>
+    <circle cx="12" cy="12" r="10" stroke="var(--ui-accent-primary)" strokeWidth="1.5" fill="none" />
+    <text x="12" y="16" fontSize="10" textAnchor="middle" fill="var(--ui-accent-primary)">{name.substring(0,1)}</text>
+  </svg>
+);
+import { TYPE_NAMES, TYPE_NICKNAMES } from '../../lib/terminology'; // Import centralized maps
+
+// Placeholder Icons (assuming these are fine for now)
 const IconPlaceholder: React.FC<{ name: string } & React.SVGProps<SVGSVGElement>> = ({ name, ...props }) => (
   <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" {...props} aria-label={`${name} icon`}>
     <circle cx="12" cy="12" r="10" stroke="var(--ui-accent-primary)" strokeWidth="1.5" fill="none" />
@@ -152,24 +161,57 @@ const ResultsPage: React.FC = () => {
   const handleDownloadReport = () => console.log("Download Report Triggered. Profile Data:", JSON.stringify(userProfile, null, 2)) || alert("Report data logged. Download not implemented.");
   const handleStartNewAssessment = () => resetAssessment() || navigate('/assessment/foundation');
 
+  // Terminology compliant narrative helper
+  const applyTerminology = (text: string | undefined): string => {
+    if (!text) return "";
+    return text
+      .replace(/Enneagram/gi, "Inner DNA system") // Updated replacement
+      .replace(/Loyalist/gi, "Sentinel")
+      .replace(/Values/gi, "BASELINES");
+      // Add other global replacements as needed
+  };
+
   const getNarrative = (sectionKey: string, fallbackText: string): string => {
-    if (isFetchingContent && sectionKey !== 'executiveSummary') return "Loading content..."; // Allow exec summary to show basic info
+    if (isFetchingContent && sectionKey !== 'executiveSummary') return "Loading content...";
     if (contentError && sectionKey !== 'executiveSummary') return "Error loading section content.";
-    const coreTypeNumStr = displayCoreType?.number?.toString();
+
+    const coreTypeNumber = displayCoreType?.number;
+    const coreTypeName = coreTypeNumber ? TYPE_NAMES[coreTypeNumber.toString()] || displayCoreType?.name : displayCoreType?.name;
 
     switch(sectionKey) {
-        case 'executiveSummary':
-            return `This is your Inner DNA executive summary. Your core type is ${displayCoreType?.name || 'N/A'}${displayWing ? ` with a ${displayWing.name}` : ''}. Your primary operating state tends to be influenced by feelings of "${displayPrimaryState?.name || 'N/A'}" and your instinctual focus is often on ${displayInstinctualStacking?.primaryInstinct || 'N/A'}.`;
-        case 'coreTypeAnalysis': return displayCoreType?.description || fallbackText;
-        case 'coreFear': return displayCoreType?.coreFear || fallbackText;
-        case 'coreDesire': return displayCoreType?.coreDesire || fallbackText;
-        case 'keyMotivations': return displayCoreType?.keyMotivations || fallbackText;
-        case 'wingInfluence': return displayWing?.description || fallbackText;
-        case 'arrowDynamics': return `When moving towards growth (integrating to Type ${displayArrow?.growthTypeNumber}), you may experience: ${displayArrow?.growthDescription}. Under stress (disintegrating to Type ${displayArrow?.stressTypeNumber}), you might find: ${displayArrow?.stressDescription}` || fallbackText;
-        case 'operatingStatePrimary': return displayPrimaryState?.typeSpecificDescriptions?.find(d => d.typeNumber === displayCoreType?.number)?.description || displayPrimaryState?.description || fallbackText;
-        case 'operatingStateSecondary': return displaySecondaryState?.typeSpecificDescriptions?.find(d => d.typeNumber === displayCoreType?.number)?.description || displaySecondaryState?.description || fallbackText;
-        case 'instinctualStack': return displayInstinctualStacking?.typeSpecificDescriptions?.find(d => d.typeNumber === displayCoreType?.number)?.description || displayInstinctualStacking?.generalDescription || fallbackText;
-        default: return fallbackText;
+      case 'executiveSummary':
+        const coreTypeNameExec = coreTypeNumber ? TYPE_NAMES[coreTypeNumber.toString()] || displayCoreType?.name : 'N/A';
+        const wingNumberExec = (displayWing?.wingType as IEnneagramTypeData)?.number;
+        const wingInfluenceTextExec = wingNumberExec && coreTypeNameExec !== 'N/A'
+          ? ` You are often influenced by the characteristics of the ${coreTypeNameExec} ${wingNumberExec}.`
+          : (displayWing ? ` You also show an influence from ${applyTerminology(displayWing.name)} characteristics.` : '');
+        const primaryStateNameExec = displayPrimaryState?.name ? applyTerminology(displayPrimaryState.name) : 'N/A';
+        const instinctualFocusExec = displayInstinctualStacking?.primaryInstinct ? applyTerminology(displayInstinctualStacking.primaryInstinct) : 'N/A';
+        return `Your Inner DNA profile indicates your core type is the **${coreTypeNameExec}**.${wingInfluenceTextExec} Your primary operating state tends to be influenced by feelings of "${primaryStateNameExec}", and your instinctual focus is often on ${instinctualFocusExec}.`;
+
+      case 'coreTypeAnalysis': return applyTerminology(displayCoreType?.description) || fallbackText; // Placeholder: "[Detailed narrative for Core Type Analysis...]"
+      case 'coreFear': return applyTerminology(displayCoreType?.coreFear) || fallbackText;
+      case 'coreDesire': return applyTerminology(displayCoreType?.coreDesire) || fallbackText;
+      case 'keyMotivations': return applyTerminology(displayCoreType?.keyMotivations) || fallbackText;
+
+      case 'wingInfluence':
+        const wingInfluenceNumber = (displayWing?.wingType as IEnneagramTypeData)?.number;
+        const wingDesc = applyTerminology(displayWing?.description);
+        // return `The ${coreTypeName} ${wingInfluenceNumber} influence means... ${wingDesc || '[Detailed narrative for Wing Influence...]'}`;
+        return `${wingDesc || `[Detailed narrative for the ${coreTypeName} ${wingInfluenceNumber} influence as per Spec 7.3, ensuring approved terminology...]`}`;
+
+
+      case 'arrowDynamics':
+        // const growthTypeName = displayArrow?.growthTypeNumber ? TYPE_NAMES[displayArrow.growthTypeNumber.toString()] : 'your Growth Pathway';
+        // const stressTypeName = displayArrow?.stressTypeNumber ? TYPE_NAMES[displayArrow.stressTypeNumber.toString()] : 'your Stress Pathway';
+        const growthDescContent = applyTerminology(displayArrow?.growthDescription) || "[Description of positive state characteristics, focusing on behaviors and tendencies, avoiding direct type naming, as per Spec 7.3 sample content]";
+        const stressDescContent = applyTerminology(displayArrow?.stressDescription) || "[Description of stress state characteristics, focusing on behaviors and tendencies, avoiding direct type naming, as per Spec 7.3 sample content]";
+        return `When you're in a good mood (accessing your Growth Pathway), you may find you exhibit traits such as: ${growthDescContent}. When you're in a bad mood (accessing your Stress Pathway), you may find you exhibit traits such as: ${stressDescContent}.`;
+
+      case 'operatingStatePrimary': return applyTerminology(displayPrimaryState?.typeSpecificDescriptions?.find(d => d.typeNumber === coreTypeNumber)?.description || displayPrimaryState?.description) || fallbackText;
+      case 'operatingStateSecondary': return applyTerminology(displaySecondaryState?.typeSpecificDescriptions?.find(d => d.typeNumber === coreTypeNumber)?.description || displaySecondaryState?.description) || fallbackText;
+      case 'instinctualStack': return applyTerminology(displayInstinctualStacking?.typeSpecificDescriptions?.find(d => d.typeNumber === coreTypeNumber)?.description || displayInstinctualStacking?.generalDescription) || `[Detailed narrative for your Instinctual Prioritization: ${applyTerminology(displayInstinctualStacking?.stack)} as per Spec 7.3...]`;
+      default: return fallbackText;
     }
   };
 
@@ -193,56 +235,68 @@ const ResultsPage: React.FC = () => {
           <FinalTowerDisplay
             coreTypeNumber={displayCoreType?.number}
             coreTypeColor={displayCoreType?.colorHex}
-            wingNumber={(displayWing?.wingType as IEnneagramTypeData)?.number}
+            wingNumber={(displayWing?.wingType as IEnneagramTypeData)?.number} // This structure might need adjustment for "Reformer 9" style
             foundationSelections={userProfile.foundationStoneSelections}
             buildingBlockSelections={userProfile.buildingBlockSelections}
             resolvedPaletteColors={resolvedPaletteColors}
             distributionData={userProfile.colorPaletteDistribution}
             tokenData={userProfile.detailElementTokenDistribution}
-            blendedStateDescription={userProfile.determinedOperatingStateFocus} // Or generate a more detailed one
+            blendedStateDescription={applyTerminology(userProfile.determinedOperatingStateFocus)}
           />
         </aside>
         <main className={styles.reportColumn}>
           <ReportSection title="Executive Summary" icon={<IconExecutiveSummary />}><p dangerouslySetInnerHTML={{ __html: getNarrative('executiveSummary', "Generating your summary...").replace(/\n/g, '<br />') }} /></ReportSection>
+
           {displayCoreType && (
-            <ReportSection title={`Core Type: ${displayCoreType.name} (${displayCoreType.nickname})`} icon={<IconCoreType />}>
-              <p dangerouslySetInnerHTML={{ __html: getNarrative('coreTypeAnalysis', `...`).replace(/\n/g, '<br />') }} />
+            <ReportSection
+              title={`Your Core Profile: ${TYPE_NAMES[displayCoreType.number.toString()] || displayCoreType.name} (${TYPE_NICKNAMES[displayCoreType.number.toString()] || applyTerminology(displayCoreType.nickname) || ''})`}
+              icon={<IconCoreType />}
+            >
+              <p dangerouslySetInnerHTML={{ __html: getNarrative('coreTypeAnalysis', `[Detailed narrative for Core Profile as per Spec 7.3, using approved terminology, to be inserted here]`).replace(/\n/g, '<br />') }} />
               <p><strong>Core Fear:</strong> {getNarrative('coreFear', '...')}</p>
               <p><strong>Core Desire:</strong> {getNarrative('coreDesire', '...')}</p>
-              <p><strong>Key Motivations:</strong> {getNarrative('keyMotivations', '...')}</p>
-              {/* ScoreBarDisplay might need different data source now, e.g. userProfile.typeCalculation.allScores if that's how it's stored from assessment flow */}
+              <p><strong>Key BASELINES:</strong> {getNarrative('keyMotivations', '...')}</p> {/* Title updated here */}
             </ReportSection>
           )}
-          {displayWing && <ReportSection title={`Wing: ${displayWing.name}`} icon={<IconWing />}><p dangerouslySetInnerHTML={{ __html: getNarrative('wingInfluence', `...`).replace(/\n/g, '<br />') }} /></ReportSection>}
-          {displayArrow && <ReportSection title="Arrows: Integration & Disintegration" icon={<IconArrows />}><p dangerouslySetInnerHTML={{ __html: getNarrative('arrowDynamics', `...`).replace(/\n/g, '<br />') }} /></ReportSection>}
+
+          {displayWing && displayCoreType && (
+            <ReportSection
+              title={`Your Unique Influence: ${TYPE_NAMES[displayCoreType.number.toString()] || displayCoreType.name} ${(displayWing.wingType as IEnneagramTypeData)?.number}`}
+              icon={<IconWing />}
+            >
+              <p dangerouslySetInnerHTML={{ __html: getNarrative('wingInfluence', `[Detailed narrative for Your Unique Influence: ${TYPE_NAMES[displayCoreType.number.toString()] || displayCoreType.name} ${(displayWing.wingType as IEnneagramTypeData)?.number} as per Spec 7.3, using approved terminology...]`).replace(/\n/g, '<br />') }} />
+            </ReportSection>
+          )}
+
+          {displayArrow && <ReportSection title="Your Dynamic Pathways (Mood States)" icon={<IconArrows />}><p dangerouslySetInnerHTML={{ __html: getNarrative('arrowDynamics', `[Detailed narrative for Your Dynamic Pathways (Mood States) as per Spec 7.3, using approved terminology...]`).replace(/\n/g, '<br />') }} /></ReportSection>}
 
           {displayPrimaryState && displaySecondaryState && userProfile.colorPaletteDistribution && (
-            <ReportSection title="Operating States & Activation" icon={<IconStates />}>
+            <ReportSection title="Your Operating State Focus" icon={<IconStates />}>
               <StateDistributionDisplay
                 distribution={{
-                  primaryStateName: displayPrimaryState.name,
+                  primaryStateName: applyTerminology(displayPrimaryState.name),
                   primaryPercentage: userProfile.colorPaletteDistribution.primaryPercentage || 50,
-                  secondaryStateName: displaySecondaryState.name,
+                  secondaryStateName: applyTerminology(displaySecondaryState.name),
                   secondaryPercentage: userProfile.colorPaletteDistribution.secondaryPercentage || 50,
                 }}
                 paletteColors={{ primary: displayPrimaryState.colors[0], secondary: displaySecondaryState.colors[0] }}
                 title="Your State Distribution"
               />
-              <p className={styles.reportParagraphTitle}>Focus on {displayPrimaryState.name}:</p>
-              <p dangerouslySetInnerHTML={{ __html: getNarrative('operatingStatePrimary', '...').replace(/\n/g, '<br />') }}/>
-              <p className={styles.reportParagraphTitle}>Focus on {displaySecondaryState.name}:</p>
-              <p dangerouslySetInnerHTML={{ __html: getNarrative('operatingStateSecondary', '...').replace(/\n/g, '<br />') }}/>
-              {/* Add overall activation and insights from userProfile.stateAnalysisResult if available */}
+              <p className={styles.reportParagraphTitle}>Focus on {applyTerminology(displayPrimaryState.name)}:</p>
+              <p dangerouslySetInnerHTML={{ __html: getNarrative('operatingStatePrimary', `[Detailed narrative for Primary Operating State: ${applyTerminology(displayPrimaryState.name)} as per Spec 7.3...]`).replace(/\n/g, '<br />') }}/>
+              <p className={styles.reportParagraphTitle}>Focus on {applyTerminology(displaySecondaryState.name)}:</p>
+              <p dangerouslySetInnerHTML={{ __html: getNarrative('operatingStateSecondary', `[Detailed narrative for Secondary Operating State: ${applyTerminology(displaySecondaryState.name)} as per Spec 7.3...]`).replace(/\n/g, '<br />') }}/>
             </ReportSection>
           )}
 
           {displayInstinctualStacking && (
-             <ReportSection title={`Instinctual Stack: ${displayInstinctualStacking.stack} (${displayInstinctualStacking.primaryInstinct} Dominant)`} icon={<IconSubtype />}>
-                <p dangerouslySetInnerHTML={{ __html: getNarrative('instinctualStack', `...`).replace(/\n/g, '<br />') }} />
+             <ReportSection title={`Your Instinctual Prioritization`} icon={<IconSubtype />}>
+                <p dangerouslySetInnerHTML={{ __html: getNarrative('instinctualStack', `[Detailed narrative for Your Instinctual Prioritization: ${applyTerminology(displayInstinctualStacking.primaryInstinct)} leading, then ${applyTerminology(displayInstinctualStacking.secondaryInstinct)}, and ${applyTerminology(displayInstinctualStacking.tertiaryInstinct)} as per Spec 7.3...]`).replace(/\n/g, '<br />') }} />
             </ReportSection>
           )}
-          <ReportSection title="Personalized Growth Plan" icon={<IconGrowthPlan />}><p>Personalized growth recommendations...</p></ReportSection>
-          <ReportSection title="Relationship Insights" icon={<IconRelationships />}><p>Understanding your patterns in relationships...</p></ReportSection>
+          <ReportSection title="Personalized Growth Opportunities" icon={<IconGrowthPlan />}><p>[Content for Personalized Growth Opportunities as per Spec 7.2/7.3, using approved terminology, to be inserted here]</p></ReportSection>
+          <ReportSection title="Insights for Relationships" icon={<IconRelationships />}><p>[Content for Insights for Relationships as per Spec 7.2/7.3, using approved terminology, to be inserted here]</p></ReportSection>
+
           <div className={styles.actionButtons}><PrimaryButton onClick={handleDownloadReport} size="large">Download Report (PDF)</PrimaryButton><SecondaryButton onClick={handleStartNewAssessment} size="large">Start New Assessment</SecondaryButton></div>
         </main>
       </div>

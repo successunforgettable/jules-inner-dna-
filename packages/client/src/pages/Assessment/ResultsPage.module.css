@@ -3,31 +3,33 @@
   width: 100%;
   max-width: var(--max-width-welcome); /* Or a specific report max-width */
   margin: 0 auto;
-  padding: var(--space-lg) var(--space-md);
+  padding: var(--space-6) var(--space-4); /* Was --space-lg var(--space-md) */
   box-sizing: border-box;
 }
 
 .pageHeader {
   text-align: center;
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-8); /* Was --space-xl */
 }
 
-.pageHeader h1 { /* Uses global h1 styling, can be overridden */
-  font-size: var(--font-size-display-large-mobile); /* Or heading-h1 */
-  line-height: var(--line-height-display-large);
-  color: var(--ui-accent-primary); /* Accent color for main title */
+.pageHeader h1 { /* Main page title */
+  font-size: var(--font-size-4xl); /* Was --font-size-display-large-mobile (36px) */
+  line-height: var(--line-height-tight); /* Was --line-height-display-large (1.2) */
+  font-weight: var(--font-weight-bold); /* Assuming bold is appropriate */
+  color: var(--ui-accent-primary); /* Accent color for main title - kept */
 }
-.pageHeader p { /* Uses global p styling */
-  font-size: var(--font-size-body-large-mobile);
-  line-height: var(--line-height-body-large);
+.pageHeader p { /* Page subtitle */
+  font-size: var(--font-size-lg); /* Was --font-size-body-large-mobile (16px), now 18px */
+  line-height: var(--line-height-normal); /* Was --line-height-body-large (1.5) */
+  font-weight: var(--font-weight-regular); /* Added for clarity */
   color: var(--ui-text-secondary);
-  margin-top: var(--space-xs);
+  margin-top: var(--space-2); /* Was --space-xs (8px) */
 }
 
 .mainLayout {
   display: flex;
   flex-direction: column; /* Mobile first: tower on top, then report */
-  gap: var(--space-xl);
+  gap: var(--space-8); /* Was --space-xl (32px) */
 }
 
 .towerDisplayColumn {
@@ -35,35 +37,35 @@
   display: flex;
   justify-content: center;
   align-items: flex-start; /* Align top */
-  padding: var(--space-md) 0; /* Add some padding around tower display */
+  padding: var(--space-4) 0; /* Was --space-md (16px) */
 }
 
 .reportColumn {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg); /* Space between ReportSection components */
+  gap: var(--space-6); /* Space between ReportSection components, was --space-lg (24px) */
 }
 
 /* ReportSection content styling is largely handled by ReportSection.module.css */
 /* This file can add specific overrides or context-based styles for report text if needed */
 .reportParagraphTitle { /* For sub-titles within a ReportSection's children */
-  font-size: var(--font-size-body-large-mobile);
-  line-height: var(--line-height-body-large);
+  font-size: var(--font-size-lg); /* Was --font-size-body-large-mobile (16px), now 18px */
+  line-height: var(--line-height-snug); /* Was --line-height-body-large (1.5), now 1.375 */
   font-weight: var(--font-weight-semibold);
   color: var(--ui-text-primary);
-  margin-top: var(--space-md);
-  margin-bottom: var(--space-xs);
+  margin-top: var(--space-4); /* Was --space-md (16px) */
+  margin-bottom: var(--space-2); /* Was --space-xs (8px) */
 }
 
 
 .actionButtons {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
-  margin-top: var(--space-xl);
-  padding-top: var(--space-lg);
-  border-top: 1px solid var(--ui-border-container-empty);
+  gap: var(--space-4); /* Was --space-md (16px) */
+  margin-top: var(--space-8); /* Was --space-xl (32px) */
+  padding-top: var(--space-6); /* Was --space-lg (24px) */
+  border-top: var(--border-width-thin) solid var(--ui-border-medium); /* Was 1px solid var(--ui-border-container-empty) */
   align-items: center;
 }
 
@@ -77,9 +79,9 @@
   .towerDisplayColumn {
     flex: 0 0 320px; /* Fixed width for tower column (adjust as needed) */
     position: sticky; /* Make tower sticky on scroll */
-    top: calc(var(--space-lg) + 60px); /* Adjust based on header height */
+    top: calc(var(--space-6) + 60px); /* Was --space-lg (24px), adjust based on header height */
     max-height: calc(100vh - 100px); /* Prevent it from being too tall */
-    padding-right: var(--space-lg);
+    padding-right: var(--space-6); /* Was --space-lg (24px) */
   }
   .reportColumn {
     flex: 1; /* Takes remaining space */
@@ -93,18 +95,18 @@
 
 @media (min-width: 768px) {
   .pageHeader h1 {
-    font-size: var(--font-size-display-large-desktop);
+    font-size: var(--font-size-5xl); /* Was --font-size-display-large-desktop (48px) */
   }
   .pageHeader p {
-    font-size: var(--font-size-body-large-desktop);
+    font-size: var(--font-size-xl); /* Was --font-size-body-large-desktop (18px), now 20px */
   }
   .reportParagraphTitle {
-    font-size: var(--font-size-body-large-desktop);
+    font-size: var(--font-size-lg); /* Was --font-size-body-large-desktop (18px) */
   }
 }
 
 .loadingOrError {
-  padding: var(--space-xl);
+  padding: var(--space-8); /* Was --space-xl (32px) */
   text-align: center;
   min-height: 300px;
   display: flex;
@@ -113,15 +115,18 @@
   align-items: center;
 }
 .loadingOrError h2 {
-  font-size: var(--font-size-heading-h2-mobile);
-  margin-bottom: var(--space-md);
+  font-size: var(--font-size-2xl); /* Was --font-size-heading-h2-mobile (24px) */
+  font-weight: var(--font-weight-semibold); /* Added */
+  line-height: var(--line-height-snug); /* Added */
+  margin-bottom: var(--space-4); /* Was --space-md (16px) */
 }
 .loadingOrError p {
-  font-size: var(--font-size-body-main-mobile);
-  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-base); /* Was --font-size-body-main-mobile (14px), now 16px */
+  line-height: var(--line-height-normal); /* Added */
+  margin-bottom: var(--space-6); /* Was --space-lg (24px) */
 }
 @media (min-width: 768px) {
-  .loadingOrError h2 { font-size: var(--font-size-heading-h2-desktop); }
-  .loadingOrError p { font-size: var(--font-size-body-main-desktop); }
+  .loadingOrError h2 { font-size: var(--font-size-3xl); } /* Was --font-size-heading-h2-desktop (32px), now 30px */
+  .loadingOrError p { font-size: var(--font-size-lg); } /* Was --font-size-body-main-desktop (16px), now 18px */
 }
 ```

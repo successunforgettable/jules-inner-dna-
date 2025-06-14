@@ -1,3 +1,7 @@
+// TODO: TERMINOLOGY (Spec 1.5): Data from fetchBuildingBlockPairs() (questionText, block content) MUST be terminology compliant:
+// 1. Wing pair questions/content: Use "[Primary Type Name] [Influence Number]" format (e.g., "Reformer 9"), not "1w9" or "wing".
+// 2. Arrow pair questions/content: Use mood-based descriptions ("good mood" / "bad mood"), not "integration/disintegration" or "arrows".
+// 3. All content: Use "BASELINES", no "Enneagram", Type 6 = "Sentinel".
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './BuildingPage.module.css';
@@ -11,6 +15,7 @@ import SecondaryButton from '../../components/common/buttons/SecondaryButton';
 // Import the content fetching service
 import { fetchBuildingBlockPairs } from '../../services/contentService';
 import TowerVisualizer from '../../components/common/TowerVisualizer';
+import { TYPE_NAMES } from '../../lib/terminology'; // Import TYPE_NAMES
 // Removed problematic type import, as types are defined locally for now or should be exported from TowerVisualizer
 
 const BuildingBlocksPage: React.FC = () => {
@@ -154,7 +159,7 @@ const BuildingBlocksPage: React.FC = () => {
       <header className={styles.pageHeader}>
         <h1 className={styles.pageTitle}>Construct Your Tower</h1>
         <p className={styles.instructionText}>
-          Your Core Type is: <strong>Type {primaryType}</strong>.
+          Your Core Profile is: <strong>{primaryType ? TYPE_NAMES[primaryType.toString()] : 'N/A'}</strong>.
           Now, choose the blocks that best represent your typical behaviors and tendencies for each scenario.
         </p>
         <div className={styles.progressIndicator}>

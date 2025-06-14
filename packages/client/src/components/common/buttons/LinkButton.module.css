@@ -8,7 +8,7 @@
   color: var(--ui-accent-primary);
   text-decoration: underline;
   cursor: pointer;
-  padding: var(--space-xxs) var(--space-xs); /* Minimal padding */
+  /* padding: var(--space-xxs) var(--space-xs); /* Old: 4px V, 8px H. Updated below for medium/small */
   font-weight: var(--font-weight-medium);
   transition: color 0.2s ease-in-out, transform 0.1s ease-in-out;
   border-radius: var(--radius-sm); /* Slight radius for focus state */
@@ -16,6 +16,7 @@
 
 /* Size: Medium (default, maps to body-small or button-text-small) */
 .medium {
+  padding: var(--space-3) var(--space-2); /* New: 12px V, 8px H. Was --space-xxs var(--space-xs) */
   font-size: var(--font-size-button-text-small-mobile);
   line-height: var(--line-height-button-text-small);
 }
@@ -25,6 +26,7 @@
 
 /* Size: Small (maps to caption-text) */
 .small {
+  padding: var(--space-3) var(--space-2); /* New: 12px V, 8px H. Was --space-xxs var(--space-xs) */
   font-size: var(--font-size-caption-text-mobile);
   line-height: var(--line-height-caption-text);
 }
