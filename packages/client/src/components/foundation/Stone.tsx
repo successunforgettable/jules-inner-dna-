@@ -64,7 +64,7 @@ const Stone: React.FC<StoneProps> = ({ // Corrected component name
       tabIndex={isDisabled ? -1 : 0}
       whileHover={!isDisabled ? {
         scale: 1.05,
-        boxShadow: "var(--shadow-interactive-hover)" // UPDATED to use GDS variable
+        boxShadow: "var(--shadow-stone-hover)" // Spec 2.4: Use component-specific hover shadow
       } : {}}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
     >

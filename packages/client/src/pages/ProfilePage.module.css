@@ -1,0 +1,102 @@
+/* ProfilePage.module.css */
+.profilePage {
+  max-width: 800px; /* Or var(--max-width-content-l) or similar if defined */
+  margin: var(--space-8) auto; /* Centering with top/bottom margin (32px auto) */
+  padding: var(--space-6); /* 24px padding */
+  background-color: var(--ui-background-primary);
+  border-radius: var(--border-radius-xl); /* 12px */
+  box-shadow: var(--shadow-lg);
+}
+
+.pageTitle {
+  font-size: var(--font-size-3xl); /* 30px */
+  font-weight: var(--font-weight-bold);
+  color: var(--ui-text-primary);
+  text-align: center;
+  margin-bottom: var(--space-8); /* 32px */
+}
+
+.section {
+  margin-bottom: var(--space-8); /* 32px */
+}
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  font-size: var(--font-size-2xl); /* 24px */
+  font-weight: var(--font-weight-semibold);
+  color: var(--ui-text-primary);
+  margin-bottom: var(--space-4); /* 16px */
+  padding-bottom: var(--space-2); /* 8px */
+  border-bottom: var(--border-width-thin) solid var(--ui-border-medium);
+}
+
+.infoRow {
+  display: flex;
+  margin-bottom: var(--space-3); /* 12px */
+  font-size: var(--font-size-base); /* 16px */
+  line-height: var(--line-height-normal); /* 1.5 */
+}
+
+.infoLabel {
+  font-weight: var(--font-weight-semibold);
+  color: var(--ui-text-secondary);
+  width: 150px; /* Adjust as needed */
+  flex-shrink: 0;
+  margin-right: var(--space-4); /* 16px, space between label and value */
+}
+
+.infoValue {
+  color: var(--ui-text-primary);
+}
+
+.buttonGroup {
+  margin-top: var(--space-6); /* 24px */
+  display: flex;
+  gap: var(--space-4); /* 16px */
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.avatarPlaceholder {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--border-radius-full); /* Circular */
+  background-color: var(--ui-border-medium); /* Placeholder color */
+  color: var(--ui-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-4); /* 16px */
+  font-size: var(--font-size-sm); /* 14px */
+}
+
+/* Two-column layout for desktop */
+.profileContentLayout {
+  display: flex;
+  flex-direction: column; /* Mobile first, stacks columns */
+  gap: var(--space-8); /* 32px gap between columns if they were side-by-side, or between stacked groups */
+}
+
+.mainInfoColumn {
+  flex: 2; /* Takes more space */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8); /* Gap between sections within this column */
+}
+
+.sidebarColumn {
+  flex: 1; /* Takes less space */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6); /* Gap between sections within this column */
+}
+
+@media (min-width: 1024px) { /* lg breakpoint or adjust as needed */
+  .profileContentLayout {
+    flex-direction: row; /* Columns side-by-side on desktop */
+  }
+  .sidebarColumn {
+    margin-top: calc(var(--font-size-2xl) + var(--space-4) + var(--space-2)); /* Align top of sections, approx (sectionTitle font-size + margin-bottom + padding-bottom) */
+  }
+}

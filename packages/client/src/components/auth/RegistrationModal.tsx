@@ -86,6 +86,14 @@ const RegistrationModalNew: React.FC<RegistrationModalProps> = ({
         <p className={styles.modalBenefitsText}>
           Create an account to save your personality tower and track your insights over time.
         </p>
+        <div className={styles.socialLoginContainer}>
+            <button type="button" className={`${styles.socialLoginButton} ${styles.googleButton}`} onClick={() => console.log('Register with Google clicked')} disabled={isLoading}>
+              Sign up with Google
+            </button>
+            <button type="button" className={`${styles.socialLoginButton} ${styles.appleButton}`} onClick={() => console.log('Register with Apple clicked')} disabled={isLoading}>
+              Sign up with Apple
+            </button>
+        </div>
         {serverError && <p className={styles.serverError}>{serverError}</p>}
         <Input
           label="Email" type="email" name="email" value={email}
@@ -97,6 +105,13 @@ const RegistrationModalNew: React.FC<RegistrationModalProps> = ({
           onChange={(e) => setPassword(e.target.value)}
           error={errors.password} disabled={isLoading}
         />
+        <div className={styles.passwordStrengthMeter}>
+          <div className={styles.strengthBarSegment}></div>
+          <div className={styles.strengthBarSegment}></div>
+          <div className={styles.strengthBarSegment}></div>
+          <div className={styles.strengthBarSegment}></div>
+        </div>
+        <p className={styles.strengthTextPlaceholder}>Strength: [Text]</p>
         <Input
           label="Confirm Password" type="password" name="confirmPassword" value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}

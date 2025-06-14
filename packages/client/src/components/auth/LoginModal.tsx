@@ -5,8 +5,9 @@ import api from '../../services/api';
 import styles from './AuthModal.module.css';
 // Import common buttons
 import PrimaryButton from '../common/buttons/PrimaryButton';
-import LinkButton from '../common/buttons/LinkButton';
+import LinkButton from '../common/buttons/LinkButton'; // Ensure this is the correct import if SecondaryLinkButton was used
 import useAuthStore, { UserProfile } from '../../contexts/store/useAuthStore';
+import ForgotPasswordModal from './ForgotPasswordModal'; // Import ForgotPasswordModal
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -24,6 +25,7 @@ const LoginModalNew: React.FC<LoginModalProps> = ({
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isForgotPasswordModalOpen, setIsForgotPasswordModalOpen] = useState(false); // State for sub-modal
 
   const isLoading = useAuthStore((state) => state.isLoading);
   const serverError = useAuthStore((state) => state.error);
@@ -73,14 +75,30 @@ const LoginModalNew: React.FC<LoginModalProps> = ({
   useEffect(() => {
     if (!isOpen) {
       setError(null); setErrors({}); setEmail(''); setPassword('');
+      setIsForgotPasswordModalOpen(false); // Also close sub-modal if main modal closes
     }
   }, [isOpen, setError]);
 
+  const handleOpenForgotPassword = () => {
+    // Optionally, clear login modal's email/password or errors if desired
+    // setEmail(''); setPassword(''); setErrors({}); setError(null);
+    setIsForgotPasswordModalOpen(true);
+  };
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Login to Your Account">
-      <form onSubmit={handleSubmit} className={styles.form}>
-        {serverError && <p className={styles.serverError}>{serverError}</p>}
-        <Input
+    <>
+      <Modal isOpen={isOpen} onClose={onClose} title="Login to Your Account">
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <div className={styles.socialLoginContainer}>
+            <button type="button" className={`${styles.socialLoginButton} ${styles.googleButton}`} onClick={() => console.log('Login with Google clicked')} disabled={isLoading}>
+              Sign in with Google
+            </button>
+            <button type="button" className={`${styles.socialLoginButton} ${styles.appleButton}`} onClick={() => console.log('Login with Apple clicked')} disabled={isLoading}>
+              Sign in with Apple
+            </button>
+          </div>
+          {serverError && <p className={styles.serverError}>{serverError}</p>}
+          <Input
           label="Email" type="email" name="email" value={email}
           onChange={(e) => setEmail(e.target.value)}
           error={errors.email} disabled={isLoading}
@@ -91,7 +109,7 @@ const LoginModalNew: React.FC<LoginModalProps> = ({
           error={errors.password} disabled={isLoading}
         />
         <div className={styles.forgotPasswordLinkContainer}>
-          <LinkButton type="button" onClick={() => console.log('Forgot password clicked')} disabled={isLoading}>
+          <LinkButton type="button" onClick={handleOpenForgotPassword} disabled={isLoading}>
             Forgot Password?
           </LinkButton>
         </div>
@@ -106,6 +124,11 @@ const LoginModalNew: React.FC<LoginModalProps> = ({
         </div>
       </form>
     </Modal>
+    <ForgotPasswordModal
+      isOpen={isForgotPasswordModalOpen}
+      onClose={() => setIsForgotPasswordModalOpen(false)}
+    />
+  </>
   );
 };
 

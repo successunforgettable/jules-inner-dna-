@@ -52,7 +52,7 @@ const BuildingBlock: React.FC<BuildingBlockProps> = ({ // Corrected component na
       tabIndex={isDisabled ? -1 : 0}
       whileHover={!isDisabled ? {
         scale: 1.03,
-        boxShadow: "var(--shadow-interactive-hover)" // UPDATED to use GDS variable
+        boxShadow: "var(--shadow-block-hover)" // Spec 2.4: Use component-specific hover shadow
       } : {}}
       transition={{ type: "spring", stiffness: 350, damping: 15 }}
     >

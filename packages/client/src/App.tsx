@@ -16,6 +16,8 @@ const ResultsPage = lazy(() => import('./pages/Assessment/ResultsPage'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const TermsPage = lazy(() => import('./pages/TermsPage'));
+const DashboardPage = lazy(() => import('./pages/DashboardPage')); // Added DashboardPage
+const ResetPasswordPage = lazy(() => import('./pages/ResetPasswordPage')); // Added ResetPasswordPage
 
 // Wrapper for page animations
 const AnimatedPage: React.FC<{ children: ReactNode }> = ({ children }) => (
@@ -46,6 +48,7 @@ function App() {
             <Route path="/" element={<AnimatedPage><WelcomePage /></AnimatedPage>} />
             <Route path="/privacy-policy" element={<AnimatedPage><PrivacyPolicyPage /></AnimatedPage>} />
             <Route path="/terms-of-service" element={<AnimatedPage><TermsPage /></AnimatedPage>} />
+            <Route path="/reset-password" element={<AnimatedPage><ResetPasswordPage /></AnimatedPage>} /> {/* Added ResetPassword route */}
 
             {/* Protected Assessment Routes */}
             {/* The ProtectedRoute itself is not animated as a page, but its children are */}
@@ -61,6 +64,7 @@ function App() {
               <Route path="/assessment/results" element={<AnimatedPage><ResultsPage /></AnimatedPage>} />
 
               <Route path="/profile" element={<AnimatedPage><ProfilePage /></AnimatedPage>} />
+              <Route path="/dashboard" element={<AnimatedPage><DashboardPage /></AnimatedPage>} /> {/* Added Dashboard route */}
             </Route>
 
             {/* Fallback for undefined routes */}

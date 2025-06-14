@@ -14,6 +14,60 @@
   text-align: center;
 }
 
+/* Social Login Section */
+.socialLoginContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3); /* 12px */
+  margin-bottom: var(--space-6); /* 24px */
+  padding-bottom: var(--space-6); /* 24px */
+  border-bottom: var(--border-width-thin) solid var(--ui-border-medium);
+}
+.socialLoginButton {
+  padding: var(--space-3); /* 12px */
+  border-radius: var(--border-radius-md); /* 6px */
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  text-align: center;
+  width: 100%; /* Make them full width within modal */
+  border: var(--border-width-thin) solid var(--ui-border-dark); /* Example border */
+  transition: opacity 0.2s ease-in-out;
+}
+.socialLoginButton:hover:not(:disabled) {
+  opacity: 0.85;
+}
+.googleButton {
+  background-color: #4285F4; /* Google Blue */
+  color: white;
+  border-color: #4285F4;
+}
+.appleButton {
+  background-color: #000000; /* Apple Black */
+  color: white;
+  border-color: #000000;
+}
+/* End Social Login Section */
+
+.instructionText { /* For ForgotPasswordModal */
+  font-size: var(--font-size-sm); /* Using new sm token (14px) */
+  line-height: var(--line-height-normal); /* 1.5 */
+  color: var(--ui-text-secondary);
+  margin-bottom: var(--space-4); /* 16px */
+  text-align: left;
+}
+
+.successMessage { /* For ForgotPasswordModal success */
+  background-color: var(--system-success-background);
+  color: var(--system-success-primary); /* Using primary text color of success for better contrast */
+  padding: var(--space-3); /* 12px */
+  border-radius: var(--border-radius-md); /* 6px */
+  font-size: var(--font-size-sm); /* 14px */
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-regular);
+  text-align: center;
+  margin-bottom: var(--space-3); /* 12px */
+}
+
 .serverError {
   background-color: var(--system-error-background);
   color: var(--system-error-primary);
@@ -57,13 +111,41 @@
   /* margin-top: calc(var(--space-xs) * -1); Pull it up slightly if inputs have margin-bottom */
   margin-bottom: var(--space-xs);
 }
-/* The clickable part within .forgotPasswordLinkContainer will be a LinkButton component */
+  /* The clickable part within .forgotPasswordLinkContainer will be a LinkButton component */
+
+/* Enhanced Password Strength Indicator Styles */
+.passwordStrengthMeter {
+  display: flex;
+  gap: var(--space-1); /* 4px */
+  height: 8px; /* Or var(--space-2) */
+  margin-top: var(--space-1); /* Adjusted from calc(-1 * var(--space-2)) for better spacing with meter */
+  margin-bottom: var(--space-1);
+}
+.strengthBarSegment {
+  flex-grow: 1;
+  background-color: var(--ui-border-medium); /* Default empty bar color */
+  border-radius: var(--border-radius-sm); /* 2px */
+  transition: background-color 0.3s ease; /* For color changes based on strength */
+}
+.strengthTextPlaceholder {
+  font-size: var(--font-size-xs); /* 12px */
+  color: var(--ui-text-secondary); /* Use secondary for less emphasis */
+  text-align: right;
+  margin-bottom: var(--space-2); /* Space before next input */
+  min-height: var(--font-size-xs); /* Ensure it takes space */
+}
+/* End Enhanced Password Strength Indicator Styles */
 
 /* Responsive adjustments for text if needed, but body-small is often consistent */
 @media (min-width: 768px) {
   .modalBenefitsText,
   .serverError,
-  .switchFormLink {
-    font-size: var(--font-size-body-small-desktop);
+  .switchFormLink,
+  .instructionText, /* ensure desktop size for instruction text */
+  .successMessage {  /* ensure desktop size for success message */
+    /* Assuming sm is 14px for mobile, base is 16px for desktop */
+    /* If body-small-desktop (14px) is desired, these are fine. If 16px, use --font-size-base */
+    font-size: var(--font-size-sm); /* Keep at 14px for desktop for these messages, or change to --font-size-base if 16px desired */
   }
+  /* .passwordStrengthPlaceholder font size handled by .strengthTextPlaceholder which is xs */
 }

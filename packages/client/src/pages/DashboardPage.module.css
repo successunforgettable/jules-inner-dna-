@@ -1,0 +1,66 @@
+/* DashboardPage.module.css */
+.dashboardPage {
+  max-width: 1000px; /* Or var(--max-width-content-xl) or similar if defined */
+  margin: var(--space-8) auto; /* 32px auto */
+  padding: var(--space-6); /* 24px */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8); /* 32px */
+}
+
+.welcomeMessage {
+  font-size: var(--font-size-3xl); /* 30px */
+  font-weight: var(--font-weight-semibold);
+  color: var(--ui-text-primary);
+  text-align: center;
+  margin-bottom: var(--space-4); /* 16px - can be adjusted if too small after section gap */
+}
+
+.section {
+  background-color: var(--ui-background-primary);
+  padding: var(--space-6); /* 24px */
+  border-radius: var(--border-radius-xl); /* 12px */
+  box-shadow: var(--shadow-lg);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-2xl); /* 24px */
+  font-weight: var(--font-weight-semibold);
+  color: var(--ui-text-primary);
+  margin-bottom: var(--space-6); /* 24px */
+  padding-bottom: var(--space-3); /* 12px */
+  border-bottom: var(--border-width-thin) solid var(--ui-border-medium);
+}
+
+.quickActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start */
+  gap: var(--space-4); /* 16px */
+}
+
+/* Targets PrimaryButton component rendered by <PrimaryButton> and Link component styled as a button/link */
+.quickActions > :global(button),
+.actionLink { /* If Link is from react-router-dom and needs button-like styling, target its specific class or use a wrapper */
+    align-self: flex-start; /* Ensure buttons don't stretch full width unless intended */
+    /* Note: PrimaryButton component likely has its own styling that might need to be considered
+       if more specific overrides than align-self are needed here. */
+}
+
+.actionLink {
+  font-size: var(--font-size-lg); /* 18px */
+  color: var(--ui-accent-primary);
+  text-decoration: underline;
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-2) 0; /* Add some padding to make it more clickable if it's just text */
+}
+.actionLink:hover {
+  color: var(--ui-accent-secondary);
+}
+
+.placeholderText {
+  font-size: var(--font-size-base); /* 16px */
+  color: var(--ui-text-secondary);
+  font-style: italic;
+  line-height: var(--line-height-normal);
+}
