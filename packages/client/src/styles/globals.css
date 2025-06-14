@@ -1,4 +1,5 @@
 /* packages/client/src/styles/globals.css - Updated with prefers-reduced-motion */
+@import './gradients.css'; /* Import gradient classes */
 
 /* Basic CSS Reset/Normalization (Conceptual) */
 *,
