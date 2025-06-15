@@ -1,94 +1,106 @@
 /* ColorPalettePage.module.css - Updated: Removed local .navButton styles */
 .colorPalettePage {
   display: flex; flex-direction: column; align-items: center;
-  padding: var(--space-lg) var(--space-md); gap: var(--space-xl);
+  padding: var(--space-6) var(--space-4); /* Was --space-lg var(--space-md) */
+  gap: var(--space-8); /* Was --space-xl */
   min-height: calc(100vh - 100px); box-sizing: border-box;
 }
 .pageHeader {
   width: 100%; max-width: var(--max-width-palette-container);
-  text-align: center; margin-bottom: var(--space-md);
+  text-align: center; margin-bottom: var(--space-4); /* Was --space-md */
 }
-.pageTitle {
-  font-size: var(--font-size-heading-h2-mobile);
-  line-height: var(--line-height-heading-h2);
+.pageTitle { /* H2 equivalent */
+  font-size: var(--font-size-2xl); /* Was --font-size-heading-h2-mobile (24px) */
+  line-height: var(--line-height-snug); /* Was --line-height-heading-h2 (1.4) */
   font-weight: var(--font-weight-bold);
-  color: var(--ui-text-primary); margin-bottom: var(--space-sm);
+  color: var(--ui-text-primary); margin-bottom: var(--space-3); /* Was --space-sm */
 }
-.instructionText { /* Spec 4.2.2: Semibold, 18px/16px */
-  font-size: var(--font-size-body-large-mobile); /* 16px */
-  line-height: var(--line-height-body-main); /* Existing, or var(--line-height-body-large) */
+.instructionText { /* Body text: Semibold, 18px/16px */
+  font-size: var(--font-size-base); /* Was --font-size-body-large-mobile (16px) */
+  line-height: var(--line-height-relaxed); /* Was --line-height-body-main (1.6) */
   font-weight: var(--font-weight-semibold);
-  color: var(--ui-text-secondary); margin-bottom: var(--space-md);
+  color: var(--ui-text-secondary); margin-bottom: var(--space-4); /* Was --space-md */
 }
 .mainContent {
   display: flex; flex-direction: column; align-items: center;
-  gap: var(--space-xl); width: 100%;
-  background-color: var(--ui-background-main); /* Spec 4.2.2: Add background color */
+  gap: var(--space-8); /* Was --space-xl */
+  width: 100%;
+  background-color: var(--ui-background-secondary); /* Spec 4.2.2: Changed from --ui-background-main (white) */
 }
 .towerVizPlaceholder {
   width: 100%; max-width: var(--max-width-palette-container);
-  min-height: 150px; background-color: var(--ui-border-container-empty);
-  border-radius: var(--radius-lg); display: flex; flex-direction: column;
+  min-height: 150px; background-color: var(--ui-border-light); /* Was --ui-border-container-empty */
+  border-radius: var(--border-radius-lg); /* Was --radius-lg */
+  display: flex; flex-direction: column;
   align-items: center; justify-content: center; color: var(--ui-text-secondary);
-  font-style: italic; padding: var(--space-md); box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-  margin-top: var(--space-lg);
+  font-style: italic; padding: var(--space-4); /* Was --space-md */
+  box-shadow: var(--shadow-inner); /* Was inset 0 1px 3px rgba(0,0,0,0.05) */
+  margin-top: var(--space-6); /* Was --space-lg */
 }
-.towerVizPlaceholder p {
-  font-size: var(--font-size-body-small-mobile);
-  line-height: var(--line-height-body-small);
+.towerVizPlaceholder p { /* Caption/small text */
+  font-size: var(--font-size-xs); /* Was --font-size-body-small-mobile (13px), now 12px */
+  line-height: var(--line-height-normal); /* Was --line-height-body-small (1.5) */
   font-weight: var(--font-weight-regular);
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-2); /* Was --space-xs */
 }
-.navigationFooter { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: var(--max-width-palette-container); padding: var(--space-lg) 0; margin-top: var(--space-lg); border-top: 1px solid var(--ui-border-container-empty); }
+.navigationFooter {
+  display: flex; justify-content: space-between; align-items: center;
+  width: 100%; max-width: var(--max-width-palette-container);
+  padding: var(--space-6) 0; /* Was --space-lg */
+  margin-top: var(--space-6); /* Was --space-lg */
+  border-top: var(--border-width-thin) solid var(--ui-border-medium); /* Was 1px solid var(--ui-border-container-empty) */
+}
 
 /* .navButton, .primaryButton, .secondaryButton styles removed */
 
 @media (min-width: 768px) {
-  .pageTitle { font-size: var(--font-size-heading-h2-desktop); }
-  .instructionText { font-size: var(--font-size-body-large-desktop); } /* 18px */
-  .towerVizPlaceholder p { font-size: var(--font-size-body-small-desktop); }
+  .pageTitle { font-size: var(--font-size-3xl); } /* Was --font-size-heading-h2-desktop (32px), now 30px */
+  .instructionText { font-size: var(--font-size-lg); } /* Was --font-size-body-large-desktop (18px) */
+  .towerVizPlaceholder p { font-size: var(--font-size-sm); } /* Was --font-size-body-small-desktop (14px) */
   /* Common buttons handle their own responsive text */
 }
 
 @media (max-width: 767px) {
-  .colorPalettePage { padding: var(--space-md) var(--space-sm); gap: var(--space-lg); }
-  .navigationFooter { padding: var(--space-md) 0; margin-top: var(--space-md); }
+  .colorPalettePage { padding: var(--space-4) var(--space-3); gap: var(--space-6); } /* Was --space-md var(--space-sm); gap: var(--space-lg) */
+  .navigationFooter { padding: var(--space-4) 0; margin-top: var(--space-4); } /* Was --space-md */
 }
 .loadingOrError {
-  padding: var(--space-xl); text-align: center;
+  padding: var(--space-8); /* Was --space-xl */
+  text-align: center;
   color: var(--ui-text-secondary);
-  font-size: var(--font-size-body-large-mobile);
-  line-height: var(--line-height-body-large);
+  font-size: var(--font-size-base); /* Was --font-size-body-large-mobile (16px) */
+  line-height: var(--line-height-normal); /* Was --line-height-body-large (1.5) */
   font-weight: var(--font-weight-medium);
 }
 @media (min-width: 768px) {
-  .loadingOrError { font-size: var(--font-size-body-large-desktop); }
+  .loadingOrError { font-size: var(--font-size-lg); } /* Was --font-size-body-large-desktop (18px) */
 }
 
 .debugResults {
-  margin-top: var(--space-lg); padding: var(--space-md);
-  background-color: var(--ui-background-main);
-  border: 1px dashed var(--ui-border-container-empty);
-  border-radius: var(--radius-md);
+  margin-top: var(--space-6); /* Was --space-lg */
+  padding: var(--space-4); /* Was --space-md */
+  background-color: var(--ui-background-secondary); /* Was --ui-background-main (now white) */
+  border: var(--border-width-thin) dashed var(--ui-border-medium); /* Was 1px dashed var(--ui-border-container-empty) */
+  border-radius: var(--border-radius-md); /* Was --radius-md */
   max-width: var(--max-width-palette-container); width: 100%;
   text-align: left;
 }
 .debugResults h3 {
-  font-size: var(--font-size-body-large-mobile);
-  line-height: var(--line-height-body-large);
+  font-size: var(--font-size-base); /* Was --font-size-body-large-mobile (16px) */
+  line-height: var(--line-height-normal); /* Was --line-height-body-large (1.5) */
   font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-3); /* Was --space-sm */
 }
 .debugResults pre {
   white-space: pre-wrap; word-wrap: break-word;
   background-color: var(--ui-text-primary);
-  color: var(--ui-background-main);
-  padding: var(--space-sm);
-  border-radius: var(--radius-sm);
-  font-size: var(--font-size-caption-text-mobile);
-  line-height: var(--line-height-caption-text);
+  color: var(--ui-background-main); /* This is now white, good for contrast */
+  padding: var(--space-3); /* Was --space-sm */
+  border-radius: var(--border-radius-sm); /* Was --radius-sm */
+  font-size: var(--font-size-xs); /* Was --font-size-caption-text-mobile (12px) */
+  line-height: var(--line-height-snug); /* Was --line-height-caption-text (1.4) */
 }
 @media (min-width: 768px) {
-  .debugResults h3 { font-size: var(--font-size-body-large-desktop); }
-  .debugResults pre { font-size: var(--font-size-caption-text-desktop); }
+  .debugResults h3 { font-size: var(--font-size-lg); } /* Was --font-size-body-large-desktop (18px) */
+  .debugResults pre { font-size: var(--font-size-xs); } /* Was --font-size-caption-text-desktop (12px) */
 }

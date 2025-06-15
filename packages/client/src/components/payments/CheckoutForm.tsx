@@ -64,13 +64,15 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ selectedPlanStripePriceId }
     const paymentSuccess = Math.random() > 0.3; // Simulate payment success
     if (paymentSuccess) {
       console.log("Simulated payment successful.");
+      // TODO: For 'PaymentSuccess', include revenue and currency as value or custom parameters when available.
       sendGAEvent('Payment', 'Success', selectedPlanStripePriceId || 'UnknownPlan');
       // TODO: Handle actual success (e.g., navigate to a success page, update user profile)
     } else {
       const simulatedError = "Simulated payment error. Please try again.";
       setError(simulatedError);
       console.log(simulatedError);
-      sendGAEvent('Payment', 'Failure', selectedPlanStripePriceId || 'UnknownPlan', undefined); // Label can be error message if desired
+      const eventLabel = `${selectedPlanStripePriceId || 'UnknownPlan'} - ${simulatedError}`;
+      sendGAEvent('Payment', 'Failure', eventLabel.substring(0, 100)); // GA labels have length limits
     }
     setProcessing(false);
   };

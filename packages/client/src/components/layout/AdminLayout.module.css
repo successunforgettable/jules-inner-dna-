@@ -36,7 +36,8 @@
   font-weight: var(--font-weight-medium); /* Slightly more emphasis for nav links */
   border-radius: var(--border-radius-md); /* 6px */
   margin-bottom: var(--space-2); /* 8px gap between nav items */
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color var(--duration-200) var(--ease-in-out),
+              color var(--duration-200) var(--ease-in-out);
 }
 
 .adminNav li a:hover {
