@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Layout from './components/layout/Layout';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import useAuthStore from './contexts/store/useAuthStore'; // Import auth store
+import RouteChangeTracker from './components/common/RouteChangeTracker'; // Import GA Tracker
 import './App.css';
 
 // Lazy load page components
@@ -16,8 +17,13 @@ const ResultsPage = lazy(() => import('./pages/Assessment/ResultsPage'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const TermsPage = lazy(() => import('./pages/TermsPage'));
-const DashboardPage = lazy(() => import('./pages/DashboardPage')); // Added DashboardPage
-const ResetPasswordPage = lazy(() => import('./pages/ResetPasswordPage')); // Added ResetPasswordPage
+const DashboardPage = lazy(() => import('./pages/DashboardPage'));
+const ResetPasswordPage = lazy(() => import('./pages/ResetPasswordPage'));
+const AdminLayout = lazy(() => import('./components/layout/AdminLayout'));
+const AdminDashboardPage = lazy(() => import('./pages/Admin/AdminDashboardPage'));
+const UserManagementPage = lazy(() => import('./pages/Admin/UserManagementPage'));
+const SubscriptionPage = lazy(() => import('./pages/SubscriptionPage'));
+const PaymentPage = lazy(() => import('./pages/PaymentPage'));
 
 // Wrapper for page animations
 const AnimatedPage: React.FC<{ children: ReactNode }> = ({ children }) => (
@@ -40,15 +46,19 @@ function App() {
   }, []); // Empty dependency array ensures this runs only once on mount
 
   return (
-    <Layout>
-      <Suspense fallback={<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>Loading...</div>}>
-        <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
+    <> {/* Changed to Fragment to include RouteChangeTracker alongside Layout */}
+      <RouteChangeTracker />
+      <Layout>
+        <Suspense fallback={<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>Loading...</div>}>
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
             {/* Public Routes */}
             <Route path="/" element={<AnimatedPage><WelcomePage /></AnimatedPage>} />
             <Route path="/privacy-policy" element={<AnimatedPage><PrivacyPolicyPage /></AnimatedPage>} />
             <Route path="/terms-of-service" element={<AnimatedPage><TermsPage /></AnimatedPage>} />
-            <Route path="/reset-password" element={<AnimatedPage><ResetPasswordPage /></AnimatedPage>} /> {/* Added ResetPassword route */}
+            <Route path="/reset-password" element={<AnimatedPage><ResetPasswordPage /></AnimatedPage>} />
+            <Route path="/subscribe" element={<AnimatedPage><SubscriptionPage /></AnimatedPage>} />
+            <Route path="/payment" element={<AnimatedPage><PaymentPage /></AnimatedPage>} /> {/* Simple route for now, can add /:planId later */}
 
             {/* Protected Assessment Routes */}
             {/* The ProtectedRoute itself is not animated as a page, but its children are */}
@@ -64,7 +74,15 @@ function App() {
               <Route path="/assessment/results" element={<AnimatedPage><ResultsPage /></AnimatedPage>} />
 
               <Route path="/profile" element={<AnimatedPage><ProfilePage /></AnimatedPage>} />
-              <Route path="/dashboard" element={<AnimatedPage><DashboardPage /></AnimatedPage>} /> {/* Added Dashboard route */}
+              <Route path="/dashboard" element={<AnimatedPage><DashboardPage /></AnimatedPage>} />
+            </Route>
+
+            {/* Admin Routes */}
+            <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
+              <Route index element={<Navigate to="dashboard" replace />} />
+              <Route path="dashboard" element={<AnimatedPage><AdminDashboardPage /></AnimatedPage>} />
+              <Route path="users" element={<AnimatedPage><UserManagementPage /></AnimatedPage>} />
+              {/* Add other admin sub-routes here, wrapped with AnimatedPage */}
             </Route>
 
             {/* Fallback for undefined routes */}
@@ -83,6 +101,7 @@ function App() {
         </AnimatePresence>
       </Suspense>
     </Layout>
+    </>
   );
 }
 

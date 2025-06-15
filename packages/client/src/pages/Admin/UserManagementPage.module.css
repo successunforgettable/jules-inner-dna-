@@ -1,0 +1,101 @@
+/* UserManagementPage.module.css */
+.adminSection {
+  padding: var(--space-4); /* 16px */
+}
+
+.sectionTitle {
+  font-size: var(--font-size-2xl); /* 24px */
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-4); /* 16px */
+  color: var(--ui-text-primary);
+}
+
+.searchInput {
+  padding: var(--space-2); /* 8px */
+  font-size: var(--font-size-base); /* 16px */
+  border: var(--border-width-thin) solid var(--ui-border-medium);
+  border-radius: var(--border-radius-md); /* 6px */
+  margin-bottom: var(--space-4); /* 16px */
+  width: 100%;
+  max-width: 400px;
+}
+
+.userTablePlaceholder {
+  border: var(--border-width-thin) dashed var(--ui-border-medium);
+  padding: var(--space-8); /* 32px */
+  text-align: center;
+  color: var(--ui-text-secondary);
+  min-height: 200px;
+  display: flex; /* For centering placeholder text if needed */
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4); /* Reduced padding if table has its own */
+  border-style: solid; /* Change from dashed if table is present */
+}
+
+.userTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm); /* 14px */
+}
+
+.userTable th,
+.userTable td {
+  border: var(--border-width-thin) solid var(--ui-border-medium);
+  padding: var(--space-2) var(--space-3); /* 8px 12px */
+  text-align: left;
+  vertical-align: middle;
+}
+
+.userTable th {
+  background-color: var(--ui-background-secondary);
+  font-weight: var(--font-weight-semibold);
+  color: var(--ui-text-primary);
+}
+
+.userTable td {
+  color: var(--ui-text-secondary);
+}
+
+.userTable td button,
+.actionButton, /* For standalone buttons if needed */
+.actionButtonWarning,
+.actionButtonDestructive {
+  font-size: var(--font-size-xs); /* 12px */
+  padding: var(--space-1) var(--space-2); /* 4px 8px */
+  margin-right: var(--space-2); /* 8px */
+  border-radius: var(--border-radius-sm); /* 2px */
+  cursor: pointer;
+  border: var(--border-width-thin) solid transparent;
+  background-color: var(--ui-accent-primary);
+  color: var(--ui-text-on-dark);
+  font-weight: var(--font-weight-medium);
+}
+.userTable td button:last-child {
+  margin-right: 0;
+}
+.userTable td button:hover,
+.actionButton:hover {
+  opacity: 0.8;
+}
+.actionButtonWarning {
+  background-color: var(--system-warning-primary);
+}
+.actionButtonWarning:hover {
+  background-color: var(--state-average-dark); /* Using a state color for hover */
+}
+.actionButtonDestructive {
+  background-color: var(--system-error-primary);
+}
+.actionButtonDestructive:hover {
+  background-color: var(--state-unhealthy-dark);
+}
+
+
+.paginationPlaceholder {
+  text-align: center;
+  margin-top: var(--space-4); /* 16px */
+  padding: var(--space-3); /* 12px */
+  color: var(--ui-text-secondary);
+  font-style: italic;
+}

@@ -24,6 +24,12 @@ const DashboardPage: React.FC = () => {
     <div className={styles.dashboardPage}>
       <h1 className={styles.welcomeMessage}>Welcome back, {displayName}!</h1>
 
+      {user?.subscriptionPlan === 'free' && (
+        <p className={styles.upgradePrompt}>
+          You are currently on the Free plan. <Link to="/subscribe" className={styles.actionLink}>Upgrade to Premium</Link> for unlimited assessments and full reports!
+        </p>
+      )}
+
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Quick Actions</h2>
         <div className={styles.quickActions}>

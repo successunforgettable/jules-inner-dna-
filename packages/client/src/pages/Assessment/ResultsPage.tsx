@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react'; // Added useRef
 import { useNavigate } from 'react-router-dom';
 import styles from './ResultsPage.module.css';
 import useAssessmentStore from '../../contexts/store/useAssessmentStore';
@@ -19,15 +19,10 @@ import {
     IColorPaletteSelection
 } from '../../../../shared/types/assessment.types';
 import * as contentService from '../../services/contentService';
-
-// Placeholder Icons (assuming these are fine for now)
-const IconPlaceholder: React.FC<{ name: string } & React.SVGProps<SVGSVGElement>> = ({ name, ...props }) => (
-  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" {...props} aria-label={`${name} icon`}>
-    <circle cx="12" cy="12" r="10" stroke="var(--ui-accent-primary)" strokeWidth="1.5" fill="none" />
-    <text x="12" y="16" fontSize="10" textAnchor="middle" fill="var(--ui-accent-primary)">{name.substring(0,1)}</text>
-  </svg>
-);
 import { TYPE_NAMES, TYPE_NICKNAMES } from '../../lib/terminology'; // Import centralized maps
+import WhatsAppShareModal from '../../components/results/WhatsAppShareModal'; // Import the new modal
+import { Link } from 'react-router-dom'; // Ensure Link is imported
+import { sendGAEvent } from '../../lib/analytics'; // Import GA event sender
 
 // Placeholder Icons (assuming these are fine for now)
 const IconPlaceholder: React.FC<{ name: string } & React.SVGProps<SVGSVGElement>> = ({ name, ...props }) => (
@@ -69,6 +64,8 @@ const ResultsPage: React.FC = () => {
 
   const [isFetchingContent, setIsFetchingContent] = useState(false);
   const [contentError, setContentError] = useState<string | null>(null);
+  const [isWhatsAppModalOpen, setIsWhatsAppModalOpen] = useState(false);
+  const gaResultsEventSent = useRef(false); // Ref to track if GA event was sent
 
   useEffect(() => {
     if (!userProfile) {
@@ -146,6 +143,19 @@ const ResultsPage: React.FC = () => {
 
     fetchDetails();
   }, [userProfile]);
+
+  useEffect(() => {
+    if (userProfile && userProfile.isComplete && !isFetchingContent && !gaResultsEventSent.current) {
+      const coreTypeNum = typeof userProfile.determinedCoreType === 'object'
+        ? (userProfile.determinedCoreType as IEnneagramTypeData)?.number
+        : (coreTypeDetails?.number); // Fallback to details if populated by ID
+
+      const coreTypeName = TYPE_NAMES[coreTypeNum?.toString() || ''] || 'UnknownType';
+      const duration = userProfile.assessmentDuration || 0;
+      sendGAEvent('Assessment', 'Complete', coreTypeName, duration);
+      gaResultsEventSent.current = true;
+    }
+  }, [userProfile, coreTypeDetails, isFetchingContent]);
 
   if (isLoadingProfile) return <div className={styles.resultsPage}><div className={styles.loadingOrError}>Loading your profile...</div></div>;
   if (profileError) return <div className={styles.resultsPage}><div className={styles.loadingOrError}><h2>Error Loading Profile</h2><p>{profileError}</p><PrimaryButton onClick={() => fetchUserProfile()}>Try Again</PrimaryButton></div></div>;
@@ -245,6 +255,11 @@ const ResultsPage: React.FC = () => {
           />
         </aside>
         <main className={styles.reportColumn}>
+          {userProfile?.subscriptionPlan === 'free' && (
+            <div className={styles.upgradeBanner}>
+              <p>You are viewing a basic report summary. <Link to="/subscribe" className={styles.upgradeLink}>Upgrade to Premium</Link> for your full, detailed Inner DNA report and insights!</p>
+            </div>
+          )}
           <ReportSection title="Executive Summary" icon={<IconExecutiveSummary />}><p dangerouslySetInnerHTML={{ __html: getNarrative('executiveSummary', "Generating your summary...").replace(/\n/g, '<br />') }} /></ReportSection>
 
           {displayCoreType && (
@@ -297,9 +312,25 @@ const ResultsPage: React.FC = () => {
           <ReportSection title="Personalized Growth Opportunities" icon={<IconGrowthPlan />}><p>[Content for Personalized Growth Opportunities as per Spec 7.2/7.3, using approved terminology, to be inserted here]</p></ReportSection>
           <ReportSection title="Insights for Relationships" icon={<IconRelationships />}><p>[Content for Insights for Relationships as per Spec 7.2/7.3, using approved terminology, to be inserted here]</p></ReportSection>
 
-          <div className={styles.actionButtons}><PrimaryButton onClick={handleDownloadReport} size="large">Download Report (PDF)</PrimaryButton><SecondaryButton onClick={handleStartNewAssessment} size="large">Start New Assessment</SecondaryButton></div>
+          <div className={styles.actionButtons}>
+            <PrimaryButton onClick={handleDownloadReport} size="large">Download Report (PDF)</PrimaryButton>
+            <SecondaryButton
+              onClick={() => setIsWhatsAppModalOpen(true)}
+              size="large"
+            >
+              Share via WhatsApp
+            </SecondaryButton>
+            <SecondaryButton onClick={handleStartNewAssessment} size="large">Start New Assessment</SecondaryButton>
+          </div>
         </main>
       </div>
+      {userProfile?._id && ( // Ensure there's an ID to pass; use appropriate assessment ID from profile if different
+        <WhatsAppShareModal
+          isOpen={isWhatsAppModalOpen}
+          onClose={() => setIsWhatsAppModalOpen(false)}
+          assessmentId={userProfile._id} // Assuming userProfile._id can serve as or contains the assessmentId
+        />
+      )}
     </div>
   );
 };

@@ -100,3 +100,21 @@
     margin-top: calc(var(--font-size-2xl) + var(--space-4) + var(--space-2)); /* Align top of sections, approx (sectionTitle font-size + margin-bottom + padding-bottom) */
   }
 }
+
+.actionLink { /* Style for links used as actions */
+  font-size: var(--font-size-sm); /* 14px */
+  color: var(--ui-accent-primary);
+  text-decoration: underline;
+  font-weight: var(--font-weight-medium);
+  margin-left: var(--space-2); /* Space it from preceding text */
+  display: inline-block;
+}
+.actionLink:hover {
+  color: var(--ui-accent-secondary);
+}
+
+.currentPlanText { /* Style for the text displaying the current plan */
+  font-weight: var(--font-weight-semibold);
+  color: var(--ui-text-primary);
+  margin-right: var(--space-2);
+}

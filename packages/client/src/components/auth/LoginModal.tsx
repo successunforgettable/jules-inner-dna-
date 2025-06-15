@@ -8,6 +8,7 @@ import PrimaryButton from '../common/buttons/PrimaryButton';
 import LinkButton from '../common/buttons/LinkButton'; // Ensure this is the correct import if SecondaryLinkButton was used
 import useAuthStore, { UserProfile } from '../../contexts/store/useAuthStore';
 import ForgotPasswordModal from './ForgotPasswordModal'; // Import ForgotPasswordModal
+import { sendGAEvent } from '../../lib/analytics'; // Import GA event sender
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -49,6 +50,7 @@ const LoginModalNew: React.FC<LoginModalProps> = ({
     setLoading(true);
     try {
       const response = await api.post<{ accessToken: string; user: UserProfile; refreshToken: string; message: string }>('/auth/login', { email, password });
+      sendGAEvent('User', 'LoginSuccess');
       onLoginSuccess({accessToken: response.data.accessToken, user: response.data.user });
     } catch (err: any) {
       let errorMessage = 'Login failed. Please check your credentials or try again.';

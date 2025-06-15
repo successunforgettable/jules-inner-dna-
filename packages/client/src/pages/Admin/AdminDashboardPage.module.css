@@ -1,0 +1,91 @@
+/* AdminDashboardPage.module.css */
+.adminPage {
+  padding: var(--space-6); /* 24px */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8); /* Gap between main sections */
+}
+
+.pageTitle {
+  font-size: var(--font-size-3xl); /* 30px */
+  font-weight: var(--font-weight-bold);
+  /* margin-bottom: var(--space-6); Removed, using gap on adminPage now */
+  color: var(--ui-text-primary);
+  text-align: center; /* Center the main dashboard title */
+}
+
+.welcomeText {
+  font-size: var(--font-size-lg); /* 18px */
+  color: var(--ui-text-secondary);
+  text-align: center;
+  margin-top: calc(-1 * var(--space-4)); /* Pull up if pageTitle has large margin */
+  margin-bottom: var(--space-4); /* Add some space before first section */
+}
+
+.section {
+  background-color: var(--ui-background-primary); /* White cards for sections */
+  padding: var(--space-6); /* 24px */
+  border-radius: var(--border-radius-lg); /* 8px */
+  box-shadow: var(--shadow-md); /* Softer shadow for content cards */
+}
+
+.sectionTitle { /* For titles like "Overview", "Quick Links" */
+  font-size: var(--font-size-2xl); /* 24px */
+  font-weight: var(--font-weight-semibold);
+  color: var(--ui-text-primary);
+  margin-bottom: var(--space-4); /* 16px */
+  padding-bottom: var(--space-3); /* 12px, if a border is used */
+  border-bottom: var(--border-width-thin) solid var(--ui-border-light);
+}
+
+.statsContainer {
+  display: flex;
+  flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+  gap: var(--space-4); /* 16px */
+  justify-content: space-around; /* Distribute cards nicely */
+}
+
+.statCard {
+  background-color: var(--ui-background-secondary); /* Light grey for stat cards */
+  padding: var(--space-4); /* 16px */
+  border-radius: var(--border-radius-md); /* 6px */
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  flex: 1; /* Allow cards to grow */
+  min-width: 150px; /* Minimum width before wrapping */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.statTitle {
+  font-size: var(--font-size-base); /* 16px */
+  font-weight: var(--font-weight-medium);
+  color: var(--ui-text-secondary);
+  margin-bottom: 0; /* Remove default h3 margin */
+}
+
+.statValue {
+  font-size: var(--font-size-3xl); /* 30px, large display for the number */
+  font-weight: var(--font-weight-bold);
+  color: var(--ui-accent-primary); /* Accent color for the stat value */
+  margin-bottom: 0;
+}
+
+.quickLinksContainer {
+  display: flex;
+  flex-wrap: wrap; /* Allow links/buttons to wrap */
+  gap: var(--space-4); /* 16px */
+}
+
+.quickLinkItem { /* This class can be applied to a wrapper div if PrimaryButton doesn't take className */
+  /* PrimaryButton styling will mostly apply. This is for layout within the container if needed. */
+}
+
+.buttonLink { /* Style for the Link component when inside a PrimaryButton */
+  color: inherit; /* Inherit color from button (e.g. white for primary) */
+  text-decoration: none;
+  display: block; /* Ensure it fills the button */
+  /* padding: inherit; /* This might not work as expected, button handles its own padding */
+}

@@ -149,3 +149,18 @@
   }
   /* .passwordStrengthPlaceholder font size handled by .strengthTextPlaceholder which is xs */
 }
+
+/* Button group for modals like ChangePasswordModal */
+.buttonGroupModal {
+  display: flex;
+  justify-content: space-between; /* Example: Cancel left, Submit right */
+  align-items: center;
+  margin-top: var(--space-4); /* 16px */
+  gap: var(--space-3); /* 12px for spacing if they wrap or are side-by-side */
+}
+
+.cancelButton {
+  /* Specific styles for cancel if LinkButton defaults are not enough */
+  /* For example, to make it less prominent if needed */
+  /* color: var(--ui-text-secondary); */
+}

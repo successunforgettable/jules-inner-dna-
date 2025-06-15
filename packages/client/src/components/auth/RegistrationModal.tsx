@@ -7,6 +7,7 @@ import styles from './AuthModal.module.css';
 import PrimaryButton from '../common/buttons/PrimaryButton';
 import LinkButton from '../common/buttons/LinkButton'; // Replaces SecondaryLinkButton
 import useAuthStore from '../../contexts/store/useAuthStore';
+import { sendGAEvent } from '../../lib/analytics'; // Import GA event sender
 
 interface RegistrationModalProps {
   isOpen: boolean;
@@ -51,6 +52,7 @@ const RegistrationModalNew: React.FC<RegistrationModalProps> = ({
     setLoading(true);
     try {
       await api.post('/auth/register', { email, password });
+      sendGAEvent('User', 'RegistrationSuccess');
       // setLoading(false); // Handled by onRegistrationSuccess (via store) or setError
       onRegistrationSuccess();
     } catch (err: any) {

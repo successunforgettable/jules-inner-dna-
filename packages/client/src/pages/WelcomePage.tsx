@@ -9,6 +9,7 @@ import LoginModal from '../components/auth/LoginModal';
 import RegistrationModal from '../components/auth/RegistrationModal';
 import useAuthStore, { UserProfile } from '../contexts/store/useAuthStore';
 import useAssessmentStore from '../contexts/store/useAssessmentStore'; // Import assessment store
+import { sendGAEvent } from '../../lib/analytics'; // Import GA event sender
 import styles from './WelcomePage.module.css';
 
 const WelcomePage: React.FC = () => {
@@ -72,6 +73,8 @@ const WelcomePage: React.FC = () => {
       if (isAssessmentComplete) {
         navigate('/assessment/results');
       } else {
+        // This is where a new assessment effectively starts or resumes
+        sendGAEvent('Assessment', 'Start', 'WelcomePageCTA');
         navigate('/assessment/foundation');
       }
     } else {

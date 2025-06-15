@@ -1,12 +1,15 @@
-import React from 'react'; // useEffect, useState not used in read-only shell
+import React, { useState } from 'react'; // Imported useState
+import { Link } from 'react-router-dom'; // Import Link
 import useAuthStore, { UserProfile } from '../../contexts/store/useAuthStore';
 import styles from './ProfilePage.module.css';
 import PrimaryButton from '../components/common/buttons/PrimaryButton';
 import SecondaryButton from '../components/common/buttons/SecondaryButton';
+import ChangePasswordModal from '../components/auth/ChangePasswordModal'; // Import modal
 
 const ProfilePage: React.FC = () => {
   const user = useAuthStore((state) => state.user);
-  const isLoading = useAuthStore((state) => state.isLoading); // For button states
+  const isLoading = useAuthStore((state) => state.isLoading);
+  const [isChangePasswordModalOpen, setIsChangePasswordModalOpen] = useState(false);
 
   // Placeholder for edit mode and form fields if implementing edit functionality
   // const [isEditMode, setIsEditMode] = useState(false);
@@ -79,7 +82,7 @@ const ProfilePage: React.FC = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Security</h2>
             <div className={styles.buttonGroup}>
-              <SecondaryButton onClick={() => console.log('Change Password clicked')} size="medium" disabled={isLoading}>
+              <SecondaryButton onClick={() => setIsChangePasswordModalOpen(true)} size="medium" disabled={isLoading}>
                 Change Password
               </SecondaryButton>
             </div>
@@ -91,18 +94,34 @@ const ProfilePage: React.FC = () => {
           {/* Assessment History Section */}
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>My Assessment History</h2>
-            <p className={styles.infoValue}>[List of completed assessments will appear here. Each item could link to its detailed report.]</p>
+            {finalUser.subscriptionPlan === 'free' || !finalUser.subscriptionPlan ? (
+              <p className={styles.infoValue}> {/* Use infoValue for consistent styling or a dedicated placeholderText style */}
+                Upgrade to Premium to save and view your full assessment history.
+                <Link to="/subscribe" className={styles.actionLink}>Upgrade Now</Link>
+              </p>
+            ) : (
+              <p className={styles.infoValue}>[List of completed assessments will appear here. Each item could link to its detailed report.]</p>
+            )}
             {/* TODO: Implement list of assessments */}
           </section>
 
           {/* Subscription Status Section (Placeholder) */}
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>My Subscription</h2>
-            <p className={styles.infoValue}>[Current subscription plan and management options will appear here.]</p>
+            <p className={styles.infoValue}>
+              Current Plan: <span className={styles.currentPlanText}>{finalUser.subscriptionPlan ? (finalUser.subscriptionPlan.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())) : 'Free Tier'}</span>
+              <Link to="/subscribe" className={styles.actionLink}>
+                {finalUser.subscriptionPlan === 'free' || !finalUser.subscriptionPlan ? 'Upgrade to Premium' : 'Manage Subscription'}
+              </Link>
+            </p>
             {/* TODO: Implement subscription display based on Spec 23 */}
           </section>
         </div>
       </div>
+      <ChangePasswordModal
+        isOpen={isChangePasswordModalOpen}
+        onClose={() => setIsChangePasswordModalOpen(false)}
+      />
     </div>
   );
 };

@@ -12,6 +12,7 @@ import PrimaryButton from '../../components/common/buttons/PrimaryButton';
 import SecondaryButton from '../../components/common/buttons/SecondaryButton';
 // Import the content fetching service
 import { fetchFoundationStoneSets } from '../../services/contentService';
+import { sendGAEvent } from '../../lib/analytics'; // Import GA event sender
 
 const FoundationPage: React.FC = () => {
   const navigate = useNavigate();
@@ -82,6 +83,8 @@ const FoundationPage: React.FC = () => {
     if (allStoneSetsData && currentStoneSetIndex < allStoneSetsData.length - 1) {
       goToNextStoneSetInStore();
     } else {
+      // This is the completion of the Foundation phase
+      sendGAEvent('Assessment', 'PhaseComplete', 'Foundation');
       console.log("Foundation phase complete. Selections:", foundationSelections);
       console.log("Type Calculation result from store:", typeCalculation);
       navigate('/assessment/building-blocks');

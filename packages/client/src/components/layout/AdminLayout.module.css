@@ -1,0 +1,67 @@
+/* AdminLayout.module.css */
+.adminLayoutContainer {
+  display: flex;
+  min-height: calc(100vh - 60px); /* Assuming main app header is ~60px and visible */
+  /* If main app header is NOT visible for admin, then min-height: 100vh; */
+  background-color: var(--ui-background-tertiary); /* Overall background for admin area */
+}
+
+.adminNav {
+  width: 240px; /* Slightly wider for better text display */
+  background-color: var(--ui-background-secondary); /* Light grey, distinct from main content area */
+  padding: var(--space-6); /* 24px */
+  border-right: var(--border-width-thin) solid var(--ui-border-light);
+  flex-shrink: 0; /* Prevent nav from shrinking */
+}
+
+.adminNavTitle {
+  font-size: var(--font-size-xl); /* 20px */
+  font-weight: var(--font-weight-bold); /* Bolder for nav title */
+  margin-bottom: var(--space-4); /* 16px */
+  color: var(--ui-text-primary);
+}
+
+.adminNav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.adminNav li a {
+  display: block;
+  padding: var(--space-3) var(--space-4); /* 12px vertical, 16px horizontal for larger click targets */
+  color: var(--ui-text-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-base); /* 16px */
+  font-weight: var(--font-weight-medium); /* Slightly more emphasis for nav links */
+  border-radius: var(--border-radius-md); /* 6px */
+  margin-bottom: var(--space-2); /* 8px gap between nav items */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.adminNav li a:hover {
+  color: var(--ui-accent-primary);
+  background-color: var(--ui-background-tertiary); /* Subtle hover background */
+}
+
+.adminNavLink { /* Base class for Link, if needed for clsx */
+  /* Basic link styling is already on .adminNav li a */
+}
+
+.activeAdminNavLink { /* Active link styling */
+  background-color: var(--ui-accent-primary);
+  color: var(--ui-text-on-dark) !important; /* Ensure override */
+  font-weight: var(--font-weight-semibold);
+}
+.activeAdminNavLink:hover {
+  background-color: var(--ui-accent-primary); /* Keep active style on hover */
+  color: var(--ui-text-on-dark) !important;
+}
+
+
+.adminMainContent {
+  flex-grow: 1;
+  padding: var(--space-8); /* 32px, larger padding for main content area */
+  background-color: var(--ui-background-primary); /* White background for content */
+  /* overflow-y: auto; /* If content might exceed viewport height */
+}

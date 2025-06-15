@@ -19,6 +19,7 @@ import TowerVisualizer, {
   ColorDistribution as TowerColorDistribution
 } from '../../components/common/TowerVisualizer';
 import { TYPE_NAMES } from '../../lib/terminology'; // Import TYPE_NAMES
+import { sendGAEvent } from '../../lib/analytics'; // Import GA event sender
 
 
 const ColorPalettePage: React.FC = () => {
@@ -128,6 +129,8 @@ const ColorPalettePage: React.FC = () => {
 
 
   const handleNext = () => {
+    // This is the completion of the Color Palette phase
+    sendGAEvent('Assessment', 'PhaseComplete', 'ColorPalette');
     console.log("Color Palette phase complete.");
     navigate('/assessment/detail-elements');
   };

@@ -1,0 +1,55 @@
+/* CheckoutForm.module.css */
+.checkoutForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5); /* 20px, larger gap for payment form sections */
+}
+
+.formRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1); /* 4px between label and input/element */
+}
+
+.label {
+  font-size: var(--font-size-sm); /* 14px */
+  font-weight: var(--font-weight-medium);
+  color: var(--ui-text-secondary);
+}
+
+.inputField { /* For text inputs like cardholder name */
+  padding: var(--space-3); /* 12px */
+  font-size: var(--font-size-base); /* 16px */
+  border: var(--border-width-thin) solid var(--ui-border-medium);
+  border-radius: var(--border-radius-md); /* 6px */
+  background-color: var(--ui-background-primary);
+  color: var(--ui-text-primary);
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding doesn't make it overflow */
+}
+.inputField:focus {
+  outline: none;
+  border-color: var(--ui-accent-primary);
+  box-shadow: 0 0 0 2px rgba(var(--ui-accent-primary-rgb), 0.2);
+}
+
+.stripeElement { /* Wrapper for the Stripe CardElement or individual elements */
+  padding: var(--space-3); /* 12px, same as other input fields for consistency */
+  border: var(--border-width-thin) solid var(--ui-border-medium);
+  border-radius: var(--border-radius-md); /* 6px */
+  background-color: var(--ui-background-primary); /* Match other inputs */
+}
+/* Stripe elements can also be styled via the 'options' prop in JS */
+
+.errorMessage {
+  font-size: var(--font-size-sm); /* 14px */
+  color: var(--system-error-primary);
+  text-align: center;
+  margin-top: var(--space-2); /* 8px */
+  min-height: var(--line-height-normal); /* Ensure space even if empty */
+}
+
+.submitButton {
+  margin-top: var(--space-4); /* 16px, space above the button */
+  /* width: 100%; /* PrimaryButton fullWidth prop can handle this */
+}

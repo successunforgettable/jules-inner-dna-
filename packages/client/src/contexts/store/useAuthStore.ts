@@ -9,6 +9,8 @@ export interface UserProfile {
   id: string;
   email: string;
   name?: string;
+  subscriptionPlan?: 'free' | 'premium_monthly' | 'premium_annual' | null;
+  // e.g., subscriptionEndDate?: string | Date;
   // Add other relevant user profile fields
 }
 
@@ -17,21 +19,26 @@ interface AuthState {
   isAuthenticated: boolean;
   isLoading: boolean;
   error: string | null;
+}
+
+// Merging AuthState and actions into a single AuthStore type for simplicity with Zustand
+interface AuthStore extends AuthState {
   loginSuccess: (data: { accessToken: string; user: UserProfile }) => void;
   logout: () => Promise<void>;
   setLoading: (loading: boolean) => void;
   setError: (error: string | null) => void;
-  // For direct in-memory token access if needed by interceptors outside of react context
   getInMemoryAccessToken: () => string | null;
-  // For token refresh mechanism
   refreshAuthStatus: () => Promise<void>;
   setRefreshedToken: (newAccessToken: string, user: UserProfile) => void;
+  // Adding registerSuccess for completeness, though not directly used in this subtask's JWT flow
+  registerSuccess: () => void;
 }
 
-const useAuthStore = create<AuthState>()(
+
+const useAuthStore = create<AuthStore>()(
   persist(
     (set, get) => ({
-      user: null,
+      user: null, // Initial state for user
       isAuthenticated: false,
       isLoading: false,
       error: null,

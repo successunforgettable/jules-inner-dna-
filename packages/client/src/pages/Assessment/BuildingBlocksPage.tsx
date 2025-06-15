@@ -16,6 +16,7 @@ import SecondaryButton from '../../components/common/buttons/SecondaryButton';
 import { fetchBuildingBlockPairs } from '../../services/contentService';
 import TowerVisualizer from '../../components/common/TowerVisualizer';
 import { TYPE_NAMES } from '../../lib/terminology'; // Import TYPE_NAMES
+import { sendGAEvent } from '../../lib/analytics'; // Import GA event sender
 // Removed problematic type import, as types are defined locally for now or should be exported from TowerVisualizer
 
 const BuildingBlocksPage: React.FC = () => {
@@ -81,6 +82,8 @@ const BuildingBlocksPage: React.FC = () => {
     if (allBlockPairData && currentBlockPairIndex < allBlockPairData.length - 1) {
       goToNextBlockPairInStore();
     } else {
+      // This is the completion of the Building Blocks phase
+      sendGAEvent('Assessment', 'PhaseComplete', 'BuildingBlocks');
       console.log("Building Blocks phase complete.");
       navigate('/assessment/color-palette');
     }

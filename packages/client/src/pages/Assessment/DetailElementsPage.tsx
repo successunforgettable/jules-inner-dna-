@@ -18,6 +18,7 @@ import clsx from 'clsx';
 // Import content fetching service
 import { fetchSubtypeContainerDescriptionsForType } from '../../services/contentService';
 import { TYPE_NAMES } from '../../lib/terminology'; // Import TYPE_NAMES
+import { sendGAEvent } from '../../lib/analytics'; // Import GA event sender
 
 
 const TOTAL_TOKENS = 10;
@@ -116,6 +117,8 @@ const DetailElementsPage: React.FC = () => {
       // by updating userProfile which implies completion or by setting isAssessmentComplete directly.
       const profile = await submitFullAssessment();
       if (profile) {
+        // This is the completion of the Detail Elements phase and the entire assessment input
+        sendGAEvent('Assessment', 'PhaseComplete', 'DetailElements');
         console.log("Assessment submitted successfully, navigating to results.");
         navigate('/assessment/results');
       } else {
