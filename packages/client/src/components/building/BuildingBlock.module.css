@@ -1,12 +1,14 @@
 /* BuildingBlock.module.css - Updated with GDS typography vars & texture comment */
 .buildingBlock {
   display: flex; align-items: center; justify-content: center; text-align: center;
-  padding: var(--space-md);
-  border: 2px solid var(--ui-border-interactive);
-  border-radius: var(--radius-md);
+  padding: var(--space-4); /* Was --space-md (16px) */
+  border: var(--border-width-thick) solid var(--ui-border-interactive); /* Was 2px */
+  border-radius: var(--border-radius-md); /* Was --radius-md (6px) */
   box-shadow: var(--shadow-block);
   cursor: pointer;
-  transition: opacity 0.3s ease, transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  transition: opacity var(--duration-300) var(--ease-in-out),
+              transform var(--duration-200) var(--ease-out),
+              box-shadow var(--duration-200) var(--ease-out);
   color: var(--ui-text-on-dark);
   /* Default background, will be overridden by gradientStyle prop in component */
   background: linear-gradient(135deg, var(--ui-accent-secondary), var(--ui-accent-primary));
@@ -93,7 +95,7 @@
   clip-path: polygon(0 0, 100% 0, 0 100%); /* Triangle */
 }
 .texture-organic { /* Softer border radius, slightly different shadow */
-  border-radius: var(--radius-xl); /* Softer edges than default radius-md */
+  border-radius: var(--border-radius-xl); /* Was --radius-xl (12px). Softer edges than default radius-md */
   box-shadow: var(--shadow-block), 0 0 10px rgba(0,0,0,0.05) inset; /* Add subtle inset */
 }
 
@@ -113,5 +115,5 @@
   z-index: 0; /* Ensure it's above the main background but below text/content */
 }
 .selected:hover { transform: scale(1.05); }
-.disabled { opacity: 0.5; cursor: not-allowed; background: var(--ui-border-container-empty); color: var(--ui-text-secondary); border-color: var(--ui-text-secondary); box-shadow: none; }
+.disabled { opacity: 0.5; cursor: not-allowed; background: var(--ui-border-medium); color: var(--ui-text-secondary); border-color: var(--ui-text-secondary); box-shadow: none; } /* Was --ui-border-container-empty */
 ```

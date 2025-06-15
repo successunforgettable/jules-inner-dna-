@@ -2,14 +2,14 @@
 .towerVisualizerContainer {
   width: 100%;
   max-width: 300px; /* Or adjust as needed */
-  margin: var(--space-lg) auto;
+  margin: var(--space-6) auto; /* Was --space-lg (24px) */
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 400px; /* Ensure it has some default height */
-  background-color: var(--ui-background-main); /* Optional: for contrast */
-  border-radius: var(--radius-lg);
-  padding: var(--space-md);
+  background-color: var(--ui-background-secondary); /* Was --ui-background-main (now white), secondary for contrast */
+  border-radius: var(--border-radius-lg); /* Was --radius-lg (8px) */
+  padding: var(--space-4); /* Was --space-md (16px) */
 }
 
 .towerSvg {
@@ -19,6 +19,7 @@
 }
 
 .placeholderText {
-  font-size: var(--font-size-body-main-desktop);
+  font-size: var(--font-size-base); /* Was --font-size-body-main-desktop (16px) */
   fill: var(--ui-text-secondary);
+  font-family: var(--font-family-primary); /* Ensure font family is applied */
 }

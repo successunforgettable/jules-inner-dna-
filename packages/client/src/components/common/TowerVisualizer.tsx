@@ -43,7 +43,6 @@ const TowerVisualizer: React.FC<TowerVisualizerProps> = ({
   // Basic SVG setup
   const viewBoxWidth = 300;
   const viewBoxHeight = 500; // Initial height, might need to grow
-  const viewBoxHeight = 500; // Initial height, might need to grow
   const towerGroundY = viewBoxHeight - 50; // Where the base of the foundation sits
   const towerWidth = 150;
   const foundationHeight = foundationStones.length > 0 ? 20 : 5; // Height of the foundation representation
@@ -86,7 +85,9 @@ const TowerVisualizer: React.FC<TowerVisualizerProps> = ({
             y={foundationTopY}
             width={towerWidth}
             height={foundationHeight}
-            fill={foundationStones.length > 0 ? (foundationStones[0]?.color || 'grey') : 'grey'} // Use first foundation stone color or default
+            fill={foundationStones.length > 0 ? (foundationStones[0]?.color || 'var(--ui-border-medium)') : 'var(--ui-border-medium)'}
+            stroke="var(--ui-border-dark)"
+            strokeWidth="var(--border-width-thin)"
           />
 
           {buildingBlocks.map((block, index) => {
@@ -96,7 +97,7 @@ const TowerVisualizer: React.FC<TowerVisualizerProps> = ({
             const blockTopY = currentBlockBottomY - blockHeight;
             currentBlockBottomY = blockTopY - blockGap;
 
-            const individualBlockFill = blockFill === `url(#${gradientId})` ? blockFill : (block.color || 'skyblue');
+            const individualBlockFill = blockFill === `url(#${gradientId})` ? blockFill : (block.color || 'var(--ui-accent-secondary)');
 
             return (
               <motion.rect
@@ -105,6 +106,8 @@ const TowerVisualizer: React.FC<TowerVisualizerProps> = ({
                 width={blockWidth}
                 height={blockHeight}
                 fill={individualBlockFill}
+                stroke="var(--ui-background-primary)"
+                strokeWidth="var(--border-width-thin)"
                 initial={{ opacity: 0, y: towerGroundY + 60 }}
                 animate={{ opacity: 1, y: blockTopY }}
                 transition={{ type: 'spring', stiffness: 100, damping: 15, delay: index * 0.2 }}

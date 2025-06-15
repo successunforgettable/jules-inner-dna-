@@ -27,8 +27,8 @@ const DistributionSlider: React.FC<DistributionSliderProps> = ({
   // Create the gradient for the slider track based on the two selected palettes
   const sliderTrackGradient = useMemo(() => {
     if (!paletteA || !paletteB) {
-      // Default gradient if one or both palettes are missing (should not happen if component is rendered correctly)
-      return 'linear-gradient(to right, var(--ui-border-container-empty), var(--ui-border-container-empty))';
+      // Default gradient if one or both palettes are missing
+      return 'linear-gradient(to right, var(--ui-border-medium), var(--ui-border-medium))'; // Updated fallback
     }
     // Use the actual gradientStyle from palette for a more representative blend
     // This is complex as gradients can have multiple stops.

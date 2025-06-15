@@ -17,10 +17,10 @@
   font-size: var(--font-size-interactive-text-mobile);
   line-height: var(--line-height-interactive-text);
 
-  /* UPDATED transition property */
-  transition: opacity var(--animation-duration-medium, 400ms) ease,
-              transform var(--animation-duration-short, 250ms) ease-in-out,
-              box-shadow var(--animation-duration-short, 250ms) ease-in-out; /* Added box-shadow transition */
+  /* UPDATED transition property using new Design System variables (Spec 2.6) */
+  transition: opacity var(--duration-300) var(--ease-in-out),
+              transform var(--duration-200) var(--ease-in-out),
+              box-shadow var(--duration-200) var(--ease-in-out);
 }
 
 .desktop { width: 160px; height: calc(160px * 0.866 * 1.1); }

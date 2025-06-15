@@ -2,15 +2,15 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space-3); /* Was --space-sm (12px) */
 }
 
 .modalBenefitsText {
-  font-size: var(--font-size-body-small-mobile);
-  line-height: var(--line-height-body-small);
+  font-size: var(--font-size-sm); /* Was --font-size-body-small-mobile (13px), now 14px */
+  line-height: var(--line-height-normal); /* Was --line-height-body-small (1.5) */
   font-weight: var(--font-weight-regular);
   color: var(--ui-text-secondary);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-3); /* Was --space-sm (12px) */
   text-align: center;
 }
 
@@ -30,8 +30,8 @@
   cursor: pointer;
   text-align: center;
   width: 100%; /* Make them full width within modal */
-  border: var(--border-width-thin) solid var(--ui-border-dark); /* Example border */
-  transition: opacity 0.2s ease-in-out;
+  border: var(--border-width-thin) solid var(--ui-border-dark);
+  transition: opacity var(--duration-200) var(--ease-in-out); /* Was 0.2s ease-in-out */
 }
 .socialLoginButton:hover:not(:disabled) {
   opacity: 0.85;
@@ -71,13 +71,13 @@
 .serverError {
   background-color: var(--system-error-background);
   color: var(--system-error-primary);
-  padding: var(--space-sm);
-  border-radius: var(--radius-md);
-  font-size: var(--font-size-body-small-mobile);
-  line-height: var(--line-height-body-small);
+  padding: var(--space-3); /* Was --space-sm (12px) */
+  border-radius: var(--border-radius-md); /* Was --radius-md (6px) */
+  font-size: var(--font-size-sm); /* Was --font-size-body-small-mobile (13px), now 14px */
+  line-height: var(--line-height-normal); /* Was --line-height-body-small (1.5) */
   font-weight: var(--font-weight-regular);
   text-align: center;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-3); /* Was --space-sm (12px) */
 }
 
 /* Removed .button, .primaryButton, .secondaryButton, .linkButton specific styles. */
@@ -92,14 +92,14 @@
    PrimaryButton in AuthModals will have margin-top via its own props or a wrapper div.
 */
 .form > button[type="submit"] { /* Add margin to submit buttons if they are direct children */
-  margin-top: var(--space-sm);
+  margin-top: var(--space-3); /* Was --space-sm (12px) */
 }
 
 
 .switchFormLink { /* The text part "Already have an account?" */
-  text-align: center; margin-top: var(--space-sm);
-  font-size: var(--font-size-body-small-mobile);
-  line-height: var(--line-height-body-small);
+  text-align: center; margin-top: var(--space-3); /* Was --space-sm (12px) */
+  font-size: var(--font-size-sm); /* Was --font-size-body-small-mobile (13px), now 14px */
+  line-height: var(--line-height-normal); /* Was --line-height-body-small (1.5) */
   font-weight: var(--font-weight-regular);
   color: var(--ui-text-secondary);
 }
@@ -109,7 +109,7 @@
 .forgotPasswordLinkContainer {
   display: flex; justify-content: flex-end;
   /* margin-top: calc(var(--space-xs) * -1); Pull it up slightly if inputs have margin-bottom */
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-2); /* Was --space-xs (8px) */
 }
   /* The clickable part within .forgotPasswordLinkContainer will be a LinkButton component */
 
@@ -125,7 +125,7 @@
   flex-grow: 1;
   background-color: var(--ui-border-medium); /* Default empty bar color */
   border-radius: var(--border-radius-sm); /* 2px */
-  transition: background-color 0.3s ease; /* For color changes based on strength */
+  transition: background-color var(--duration-300) var(--ease-in-out); /* Was 0.3s ease */
 }
 .strengthTextPlaceholder {
   font-size: var(--font-size-xs); /* 12px */
